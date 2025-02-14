@@ -1,4 +1,5 @@
 {% load static %}
+{% load crispy_forms_tags %}
 <html>
 
     <head>
@@ -21,9 +22,9 @@
 
       {% csrf_token %}
 
-      {{ RegisterForm.as_p }}
+      {{RegisterForm|crispy}}
 
-      <input type="submit" value="Submit"/>
+      <input class="register-btn" type="submit" value="Submit"/>
 
     </form>
   </div>
