@@ -1,6 +1,22 @@
-<html> 
-    <h1>Register</h1>
+{% load static %}
+<html>
 
+    <head>
+
+        <title> Register </title>
+
+        <form method="POST" autocomplete="off">
+
+        <link rel="stylesheet" type="text/css" href="https://bootswatch.com/5/lux/bootstrap.min.css">
+
+        <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+
+    </head>
+
+    <div class="container bg-white shadow-md p-5 form-layout">
+
+    <h1 class ="header">Register</h1>
+    <p>
     <form method="POST" autocomplete="off">
 
       {% csrf_token %}
@@ -10,5 +26,5 @@
       <input type="submit" value="Submit"/>
 
     </form>
-
+  </div>
 </html>    

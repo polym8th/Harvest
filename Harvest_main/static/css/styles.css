@@ -1,3 +1,13 @@
+body{
+
+  background-color: #f0f0f0;
+  overflow-x: hidden;
+}
+.form-layout{
+
+  width: 500px;
+  border-radius: 20px;
+}
 .login-btn:hover {
   background-color: #f0f0f0; 
   color: #000; 
@@ -20,4 +30,11 @@ margin-top: 20px;
 .register-btn:hover {
 background-color: #005f5f; /* Hover color */
 color: #fff;
+}
+.header {
+  margin-top: 20px;
+  margin-bottom: 40px; 
+}
+form p:last-of-type {
+  margin-bottom: 40px; /* Adds space below the last form field */
 }
