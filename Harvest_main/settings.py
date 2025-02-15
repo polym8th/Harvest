@@ -122,13 +122,11 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 STATIC_URL = '/static/'
-STATIC_ROOT = BASE_DIR / 'staticfiles'  # Change to "staticfiles"
+STATIC_ROOT = BASE_DIR / 'staticfiles'  
 
 STATICFILES_DIRS = [
-    BASE_DIR / 'Harvest_main/static'  # Ensure absolute path
-]
+    BASE_DIR / 'Harvest_main/static'  
 
-# Use WhiteNoise for static files
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # Media files configuration

@@ -1,1 +1,1 @@
-web: gunicorn harvest_main.wsgi
+web: gunicorn Harvest_main.wsgi
