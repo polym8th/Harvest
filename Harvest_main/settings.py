@@ -17,7 +17,7 @@ SECRET_KEY = 'django-insecure-*g%d@oo7(&epb$fd0ahlb_07=z*d=080aaoob5of#b=8+la_v*
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1' ,'https://harvest-main-55fca7957f91.herokuapp.com' ,]
+ALLOWED_HOSTS = ['127.0.0.1' ,'https://harvest-main-55fca7957f91.herokuapp.com' , 'localhost' ,]
 
 
 # Application definition
