@@ -16,24 +16,19 @@ def creator_dashboard(request):
 
 @login_required(login_url='login')
 def create_article(request):
-    
     form = ArticleForm()
 
     if request.method == 'POST':
-
         form = ArticleForm(request.POST)
         
         if form.is_valid():     
-            
             article = form.save(commit=False)
-
-            article.user = request.users
-            
+            article.user = request.user
             article.save()
             
             return HttpResponse ('Article created!')
 
-    context = {'CreateArtcleForm': form}
+    context = {'CreateArticleForm': form}
 
     return render(request, 'creator/create-article.html', context)
 

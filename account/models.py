@@ -14,7 +14,7 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     is_staff = models.BooleanField(default=False)
     date_joined = models.DateTimeField(default=timezone.now)
 
-    is_creator = models.BooleanField(default=False, verbose_name="Are you a writer?")
+    is_creator = models.BooleanField(default=False, verbose_name="Are you a content creator?")
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []
