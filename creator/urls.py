@@ -7,7 +7,7 @@ urlpatterns = [
     
     path('create-article', views.create_article, name="create-article"),
     
-    path('my-article', views.my_article, name="my-article"),
+    path('published', views.published, name="published"),
 
 
     
