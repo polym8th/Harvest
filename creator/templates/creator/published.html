@@ -3,19 +3,38 @@
 {% block content %}
 
 {% for article in AllArticles %}
-    <div class="container col-md-8 col-lg-6 bg-white shadow-md p-5 form-layout">
+    <div class="container col-md-8 col-lg-6 bg-white shadow-md p-5 form-layout mb-4">
+        
+        <h3> {{article.title}} </h3>
 
-            <h3>{{ article.title }}</h3>
-            <br>
-            <p>{{ article.content }}</p>
-            <br>
-            <p>Posted on: {{ article.date_posted }}</p>
-            <br>
-            <br>
-        </div>
+        <br>
 
+        {{article.content}}
+
+        <br> <br>
+
+        {{ article.pub_date|date:"F d, Y H:i" }}
+
+        <br> <br>
+        
+        <a href="{% url 'update-article' article.id %}"> Update Article</a>
+
+
+
+        {% if article.is_premium == True %}
+
+        ⭐️ <strong> Premium </strong>
+
+        {% elif article.is_premium == False %}
+
+            <strong> Standard </strong>
+
+        {% endif %}
+
+
+        <hr>
+    </div>
 {% endfor %}
-
 
 {% endblock %}
 
