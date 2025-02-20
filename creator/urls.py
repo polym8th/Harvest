@@ -15,6 +15,7 @@ urlpatterns = [
     
     path('delete-article/<str:pk>', views.delete_article, name="delete-article"),
     
-
+    path('manage-account', views.manage_account, name="manage-account"),
     
+
 ]

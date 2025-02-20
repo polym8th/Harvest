@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect  
 from django.contrib.auth.decorators import login_required 
-from .forms import ArticleForm 
+from .forms import ArticleForm, UpdateUserForm
 from .models import Article  # Import Article model
 
 
@@ -55,8 +55,22 @@ def delete_article(request, pk):
     except Article.DoesNotExist:
         return redirect('published')  # Redirect if article doesn't exist
 
-    if request.method == 'POST':  #
+    if request.method == 'POST':  
         article.delete()  
         return redirect('published')  
 
     return render(request, 'creator/delete-article.html') 
+
+
+@login_required(login_url='my-login')
+def manage_account(request):
+    form = UpdateUserForm(instance=request.user)
+    
+    if request.method == 'POST':
+        form = UpdateUserForm(request.POST, instance=request.user)
+        if form.is_valid():
+            form.save()
+            return redirect('creator-dashboard')
+    
+    context = {'UpdateUserForm': form}
+    return render(request, 'creator/manage-account.html', context)
