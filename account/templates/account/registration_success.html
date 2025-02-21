@@ -1,0 +1,23 @@
+{% load static %}
+<html lang="en">
+<head>
+
+    <title>Registration Successful</title>
+    <link rel="stylesheet" type="text/css" href="https://bootswatch.com/5/lux/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+</head>
+  
+</head>
+<body>
+
+<div class="success-container, container bg-white shadow-md p-5 form-layout text-center">
+    <h1>🎉 Registration Successful!</h1>
+    {% for message in messages %}<br>
+        <div class="success-message">{{ message }}</div>
+    {% endfor %}
+    <br>
+    <a href="{% url 'my-login' %}" class="register-btn">Login Now</a>
+</div>
+
+</body>
+</html>

@@ -14,7 +14,7 @@ def register(request):
         form = CreateUserForm(request.POST)
         if form.is_valid():
             user = form.save(commit=False)
-           
+
             is_creator = form.cleaned_data.get('is_creator')
             unlimited_access_membership = form.cleaned_data.get('unlimited_access_membership')
 
@@ -22,7 +22,14 @@ def register(request):
             user.unlimited_access_membership = unlimited_access_membership
             user.save()
 
-            return HttpResponse('User created successfully')
+            # Prepare messages based on user selections
+            messages = ["Well done, your account has been created successfully!"]
+            if is_creator:
+                messages.append("You are now a content creator!")
+            if unlimited_access_membership:
+                messages.append("You now have unlimited access!")
+
+            return render(request, 'account/registration_success.html', {'messages': messages})
     else:
         form = CreateUserForm()
 
