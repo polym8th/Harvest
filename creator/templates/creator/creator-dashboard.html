@@ -1,15 +1,26 @@
 {% extends 'creator/navbar.html' %}
-
 {% load static %}
 
 {% block content %}
 
-    <div class="container bg-white shadow-md p-5 form-layout text-center, header">
+<div class="container bg-white shadow-md p-5 form-layout text-center, header">
+    <h5>Welcome, {{ user.first_name }}</h5>
+    <a href="{% url 'user-logout' %}">Logout</a>
 
-        <h5> Welcome,{{user.first_name}}</h5>
-
-<a href="{% url 'user-logout' %}">Logout</a>
-
+    <h3>Your Articles</h3>
+    <ul>
+        {% for article in articles %}
+            <li>
+                {{ article.title }}
+                <form action="{% url 'delete-article' article.id %}" method="POST" style="display:inline;">
+                    {% csrf_token %}
+                    <button type="submit">Delete</button>
+                </form>
+            </li>
+        {% empty %}
+            <li>No articles found.</li>
+        {% endfor %}
+    </ul>
 </div>
 
 {% endblock %}

@@ -8,7 +8,7 @@ class Article(models.Model):
     content = models.TextField(max_length=10000)
     pub_date = models.DateTimeField(auto_now_add=True)
     
-    is_unlimited = models.BooleanField(default=False, verbose_name="Only for Unlimited Access subscribers?")
+    is_unlimited = models.BooleanField(default=False, verbose_name="Only for Unlimited Access member?")
     
     user = models.ForeignKey(CustomUser, max_length=10, on_delete=models.CASCADE, null=True)
     

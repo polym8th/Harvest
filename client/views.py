@@ -23,7 +23,19 @@ def client_dashboard(request):
 
 @login_required(login_url='my-login')
 def browse_articles(request):
+    user = request.user
     articles = Article.objects.filter(pub_date__lte=timezone.now())
+
+    # Filter articles based on user access
+    if user.is_staff or user.is_creator:
+        # Staff and creators see all is_unlimited articles
+        articles = articles.filter(is_unlimited=True) | articles
+    elif hasattr(user, 'membership') and user.membership.is_unlimited:
+        # Unlimited members see all articles
+        pass
+    else:
+        # Users without unlimited access can't see is_unlimited articles
+        articles = articles.filter(is_unlimited=False)
 
     context = {'AllClientArticles': articles}
     return render(request, 'client/browse-articles.html', context)

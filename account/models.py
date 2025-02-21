@@ -21,6 +21,10 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     REQUIRED_FIELDS = []
 
     objects = CustomUserManager()
+    
+    @property
+    def has_unlimited_access(self):
+        return self.unlimited_access_membership
 
     def __str__(self):
         return self.email
