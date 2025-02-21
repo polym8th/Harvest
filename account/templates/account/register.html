@@ -2,30 +2,21 @@
 {% load crispy_forms_tags %}
 <html>
 
-    <head>
+<head>
+    <title> Register </title>
+    <link rel="stylesheet" type="text/css" href="https://bootswatch.com/5/lux/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+</head>
 
-        <title> Register </title>
-
-        <form method="POST" autocomplete="off">
-
-        <link rel="stylesheet" type="text/css" href="https://bootswatch.com/5/lux/bootstrap.min.css">
-
-        <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
-
-    </head>
-
+<body>
     <div class="container bg-white shadow-md p-5 form-layout">
+        <h1 class="header">Register</h1>
+        <form method="POST" autocomplete="off">
+            {% csrf_token %}
+            {{ RegisterForm|crispy }}
+            <input class="register-btn" type="submit" value="Submit" />
+        </form>
+    </div>
+</body>
 
-    <h1 class ="header">Register</h1>
-    <p>
-    <form method="POST" autocomplete="off">
-
-      {% csrf_token %}
-
-      {{RegisterForm|crispy}}
-
-      <input class="register-btn" type="submit" value="Submit"/>
-
-    </form>
-  </div>
-</html>    
+</html>

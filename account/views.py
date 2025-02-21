@@ -13,13 +13,20 @@ def register(request):
     if request.method == 'POST':
         form = CreateUserForm(request.POST)
         if form.is_valid():
-            form.save()
+            user = form.save(commit=False)
+           
+            is_creator = form.cleaned_data.get('is_creator')
+            unlimited_access_membership = form.cleaned_data.get('unlimited_access_membership')
+
+            user.is_creator = is_creator
+            user.unlimited_access_membership = unlimited_access_membership
+            user.save()
+
             return HttpResponse('User created successfully')
     else:
         form = CreateUserForm()
 
     return render(request, 'account/register.html', {'RegisterForm': form})
-
 
 def my_login(request):
     if request.method == 'POST':

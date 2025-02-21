@@ -15,7 +15,7 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     date_joined = models.DateTimeField(default=timezone.now)
 
     is_creator = models.BooleanField(default=False, verbose_name="Are you a content creator?")
-    has_unlimited_access = models.BooleanField(default=False, verbose_name="Has Unlimited Access?")
+    unlimited_access_membership = models.BooleanField(default=False, verbose_name="Has Unlimited Access?")
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []
