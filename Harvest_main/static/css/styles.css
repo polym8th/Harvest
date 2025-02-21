@@ -1,58 +1,80 @@
-body{
-
+/* General body styles */
+body {
   background-color: #f0f0f0;
   overflow-x: hidden;
 }
-.form-layout{
 
-  width: 90%; 
-  max-width: 800px; 
-  border-radius: 20px;
+/* Form Layout */
+.form-layout {
+  width: 90%;
+  max-width: 800px;
+  border-radius: 8px;
+  margin: 20px auto 30px;
+  border: 1px solid #ddd;
+  background-color: #ffffff;
+  padding: 20px;
+}
+
+/* Login Button */
+.login-btn {
+  background-color: #fff;
+  color: #000;
+  text-transform: uppercase;
+  padding: 10px 15px;
+  font-size: 12px;
+  font-weight: bold;
+  border-radius: 4px;
+  text-decoration: none;
+  display: inline-block;
+  text-align: center;
+  margin: 5px;
+  border: 2px solid #333;
   margin-top: 20px;
-  margin-bottom: 30px; /* Space between articles */
-  border: 1px solid #ddd; 
-  border-radius: 8px; 
-  background-color: #ffffff; 
-  padding: 20px; 
 }
+
 .login-btn:hover {
-  background-color: #f0f0f0; 
-  color: #000; 
+  background-color: #b1e2e0;
+  color: #000;
 }
+
+/* Register Button */
 .register-btn {
-background-color: #008b8b;
-color: #fff;
-text-transform: uppercase;
-padding: 15px 35px;
-font-size: 14px;
-font-weight: bold;
-border-radius: 2px;
-text-decoration: none;
-display: inline-block;
-text-align: center;
-margin: 5px;
-margin-top: 20px;
+  background-color: #008b8b;
+  color: #fff;
+  text-transform: uppercase;
+  padding: 15px 35px;
+  font-size: 14px;
+  font-weight: bold;
+  border-radius: 2px;
+  text-decoration: none;
+  display: inline-block;
+  text-align: center;
+  margin: 5px;
+  margin-top: 20px;
 }
 
 .register-btn:hover {
-background-color: #005f5f; /* Hover color */
-color: #fff;
+  background-color: #005f5f;
+  color: #fff;
 }
+
+/* Header */
 .header {
   margin-top: 20px;
-  margin-bottom: 40px; 
+  margin-bottom: 40px;
 }
+
+/* Form field spacing */
 form p:last-of-type {
-  margin-bottom: 40px; /* Adds space below the last form field */
+  margin-bottom: 40px;
 }
-.form-layout {
-  
-}
+
+/* Success Container */
 .success-container {
   background-color: #fff;
   padding: 30px 40px;
   border-radius: 10px;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   text-align: center;
 }
 
@@ -71,17 +93,3 @@ form p:last-of-type {
   font-weight: bold;
 }
 
-.btn {
-  display: inline-block;
-  margin-top: 20px;
-  padding: 10px 20px;
-  background-color: #4CAF50;
-  color: white;
-  text-decoration: none;
-  border-radius: 5px;
-  transition: background-color 0.3s ease;
-}
-
-.btn:hover {
-  background-color: #45a049;
-}

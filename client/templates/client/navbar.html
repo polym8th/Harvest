@@ -3,93 +3,59 @@
 
 <!DOCTYPE html>
 
-    <html lang="en">
+<html lang="en">
 
-        <head>
+<head>
+  <title>HARVEST - Hello there</title>
+  <link rel="stylesheet" type="text/css" href="https://bootswatch.com/5/lux/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+  <style>
 
-          <title> HARVEST - Hello there </title>
+    .nav-item a::after,
+    .nav-item a::before {
+      content: none;
+    }
+  </style>
+</head>
 
+<body>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light justify-content-center">
+    <a class="navbar-brand main-heading" href="#">
+      <img src="{% static 'logo/harvest_local.png' %}" alt="Harvest" width="220">
+    </a>
 
-          <link rel="stylesheet" type="text/css" href="https://bootswatch.com/5/lux/bootstrap.min.css">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+      aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
 
+    <div class="collapse navbar-collapse text-center" id="navbarNavDropdown">
+      <ul class="navbar-nav ml-auto">
 
-          <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+        <li class="nav-item">
+          <a class="btn btn-outline-primary" href="{% url 'client-dashboard' %}">Dashboard</button></a>
+        </li>
 
+        <li class="nav-item">
+          <a class="btn btn-outline-primary" href="{% url 'browse-articles' %}">View Articles</button></a>
+        </li>
 
-        </head>
-
-        <nav class="navbar navbar-expand-lg navbar-light bg-light justify-content-center">
-          <a class="navbar-brand main-heading"> 
-            <a href="#"><img src="{% static 'logo/harvest_local.png'%}" alt="Harvest" width="220">
-            </a>
-            <button
-              class="navbar-toggler"
-              type="button"
-              data-toggle="collapse"
-              data-target="#navbarNavDropdown"
-              aria-controls="navbarNavDropdown"
-              aria-expanded="false"
-              aria-label="Toggle navigation"
-            >
-              <span class="navbar-toggler-icon"></span>
+        <li class="nav-item">
+          <a class="btn btn-outline-primary" href="{% url 'manage-account' %}">Manage Account</button></a>
+        </li>
         
-            </button>
-        
-            
-    
-            <div class="collapse navbar-collapse text-center" id="navbarNavDropdown">
-    
-            
-              <ul class="navbar-nav ml-auto">
-      
-      
-                <li class="nav-item">
-            
-                  <a class="btn btn-secondary navbar-btn" type="button"  href="{% url 'client-dashboard' %}"> Dashboard </a>
-      
-                </li>
-      
-                
-                <li class="nav-item">
-      
-                  <a class="btn btn-secondary navbar-btn" type="button"  href="{% url 'browse-articles' %}"> View articles </a>
-      
-                </li>
+        <li class="nav-item">
+          <a class="btn btn-secondary" href="{% url 'logout' %}">Logout</button></a>
+        </li>
 
-                
-                <li class="nav-item">
-      
-                  <a class="btn btn-secondary navbar-btn" type="button"  href="{% url '' %}"> Manage Account </a>
-      
-                </li>
-  
-  
-                <li class="nav-item">
-      
-                  <a class="btn btn-secondary navbar-btn" type="button"  href="{% url '' %}"> Logout</a>
-      
-                </li>
-                
-      
-              </ul>
-            
-              
-            </div>
-      
-      
-      </nav>
-  
-      {% block content %}
-  
-  
-  
-      {% endblock %}
-  
-  
-  </html>
-  
-  
-  
-  
-  
-  
+
+
+      </ul>
+    </div>
+  </nav>
+
+  {% block content %}
+  {% endblock %}
+</body>
+
+</html>
