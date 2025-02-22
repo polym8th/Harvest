@@ -1,20 +1,18 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required 
-from .forms import ArticleForm, UpdateUserForm
-from .models import Article  # Import Article model
+from django.core.exceptions import PermissionDenied
 from django.contrib import messages
+from .forms import ArticleForm, UpdateUserForm
+from .models import Article
 
-
-
-@login_required(login_url='my-login')  # Ensure only logged-in users can access
+@login_required(login_url='my-login')
 def creator_dashboard(request):
-    return render(request, 'creator/creator-dashboard.html')  # Render dashboard template
-
+    return render(request, 'creator/creator-dashboard.html')
 
 @login_required(login_url='my-login')
 def create_article(request):
     if request.method == 'POST':
-        form = ArticleForm(request.POST, request.FILES)  
+        form = ArticleForm(request.POST, request.FILES)
         if form.is_valid():
             article = form.save(commit=False)
             article.user = request.user
@@ -25,8 +23,6 @@ def create_article(request):
         form = ArticleForm()
     return render(request, 'creator/create-article.html', {'CreateArticleForm': form})
 
-
-
 @login_required(login_url='my-login')
 def published(request):
     if getattr(request.user, 'has_unlimited_access', False):
@@ -35,49 +31,55 @@ def published(request):
         articles = Article.objects.filter(is_unlimited=False)
     return render(request, 'creator/published.html', {'AllArticles': articles})
 
-
 @login_required(login_url='my-login')
 def update_article(request, pk):
-    try:
-        article = Article.objects.get(id=pk, user=request.user)  # Fetch article by ID and user
-    except Article.DoesNotExist:
-        return redirect('published')  # Redirect if article doesn't exist
+    article = get_object_or_404(Article, id=pk)
+    
+    if not (request.user.is_superuser or getattr(request.user, 'is_creator', False)):
+        raise PermissionDenied("You do not have permission to update this article.")
 
-    if request.method == 'POST': 
-        form = ArticleForm(request.POST, request.FILES, instance=article)  # Added request.FILES
-        if form.is_valid():  # Validate form
-            form.save()  
-            return redirect('published')  
+    if request.method == 'POST':
+        form = ArticleForm(request.POST, request.FILES, instance=article)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Your article has been updated successfully!')
+            return redirect('published')
     else:
-        form = ArticleForm(instance=article)  
+        form = ArticleForm(instance=article)
 
-    return render(request, 'creator/update-article.html', {'UpdateArticleForm': form}) 
-
-
+    return render(request, 'creator/update-article.html', {'UpdateArticleForm': form})
 
 @login_required(login_url='my-login')
 def delete_article(request, pk):
+    # Retrieve the article or return 404 if not found
     article = get_object_or_404(Article, id=pk)
-    # Check if user has permission to delete the article
-    if article.user == request.user or getattr(request.user, 'is_unlimited', False) or request.user.is_superuser or getattr(request.user, 'is_creator', False):
-        if request.method == 'POST':
-            article.delete()
-            return redirect('published')
-    else:
-        return redirect('published')  # Redirect if user lacks permission
 
+    # Check if the user is the owner, a superuser, or has 'is_creator' permission
+    if not (article.user == request.user or request.user.is_superuser or getattr(request.user, 'is_creator', False)):
+        raise PermissionDenied("You do not have permission to delete this article.")
+
+    if request.method == 'POST':
+        article.delete()
+        messages.success(request, 'The article has been deleted successfully.')
+        return redirect('delete-success')  # Redirecting to delete-success.html
+
+    # Pass the article to the template for deletion confirmation
     return render(request, 'creator/delete-article.html', {'article': article})
 
+@login_required(login_url='my-login')
+def delete_success(request):
+    return render(request, 'creator/delete-success.html')
 
 @login_required(login_url='my-login')
 def manage_account(request):
     form = UpdateUserForm(instance=request.user)
-    
+
     if request.method == 'POST':
         form = UpdateUserForm(request.POST, instance=request.user)
         if form.is_valid():
             form.save()
+            messages.success(request, 'Your account has been updated successfully!')
             return redirect('creator-dashboard')
-    
+
     context = {'UpdateUserForm': form}
     return render(request, 'creator/manage-account.html', context)
