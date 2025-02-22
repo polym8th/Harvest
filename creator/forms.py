@@ -9,8 +9,10 @@ class ArticleForm(ModelForm):
     class Meta:
         
         model = Article
-        fields = ['title', 'content', 'is_unlimited',]
-        
+        fields = ['title', 'content', 'is_unlimited','image',]
+        labels = {
+            'image':'',
+    }       
         
 class UpdateUserForm(ModelForm):
     

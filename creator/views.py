@@ -12,21 +12,19 @@ def creator_dashboard(request):
 
 
 @login_required(login_url='my-login')
-
-@login_required(login_url='my-login')
 def create_article(request):
-    if request.method == 'POST':  # Check if form is submitted
-        form = ArticleForm(request.POST)
+    if request.method == 'POST':
+        form = ArticleForm(request.POST, request.FILES)  
         if form.is_valid():
-            article = form.save(commit=False)  
+            article = form.save(commit=False)
             article.user = request.user
             article.save()
-            messages.success(request, 'Well done, your article has been created successfully!') 
+            messages.success(request, 'Your article has been created successfully!')
             return redirect('published')
     else:
-        form = ArticleForm() 
+        form = ArticleForm()
+    return render(request, 'creator/create-article.html', {'CreateArticleForm': form})
 
-    return render(request, 'creator/create-article.html', {'CreateArticleForm': form})  # Render form template
 
 
 @login_required(login_url='my-login')
@@ -46,7 +44,7 @@ def update_article(request, pk):
         return redirect('published')  # Redirect if article doesn't exist
 
     if request.method == 'POST': 
-        form = ArticleForm(request.POST, instance=article)  # Bind form with POST data and existing article
+        form = ArticleForm(request.POST, request.FILES, instance=article)  # Added request.FILES
         if form.is_valid():  # Validate form
             form.save()  
             return redirect('published')  
@@ -54,6 +52,7 @@ def update_article(request, pk):
         form = ArticleForm(instance=article)  
 
     return render(request, 'creator/update-article.html', {'UpdateArticleForm': form}) 
+
 
 
 @login_required(login_url='my-login')

@@ -1,45 +1,41 @@
-
 {% extends 'client/navbar.html' %}
 
 {% block content %}
 
+<br>
+
+{% for article in AllClientArticles %}
+
+    <div class="container bg-white shadow-md p-5 form-layout">
+
+        <h3>{{ article.title }}</h3>
+
+        {{ article.content }}
+
+        {% if article.image %}
+            <br><br>
+            <img src="{{ article.image.url }}" alt="Article Image" style="max-width: 100%; height: auto;">
+        {% endif %}
+
+        <br><br>
+
+        {{ article.pub_date|date:"F d, Y H:i" }}
+
+        <br><br>
+
+        {% if article.is_premium %}
+            ⭐️ <strong>Premium</strong>
+        {% else %}
+            <strong>Regular readers mode</strong>
+        {% endif %}
+
+    </div>
+
     <br>
 
-    {% for article in AllClientArticles %}
-
-        <div class="container bg-white shadow-md p-5 form-layout">
-
-            <h3> {{article.title}} </h3>
-
-            <br>
-
-            {{article.content}}
-
-            <br> <br>
-            
-            <hr>
-
-            {{ article.pub_date|date:"F d, Y H:i" }}
-
-            <br> <br>
-
-            {% if article.is_premium == True %}
-
-            ⭐️ <strong> Premium </strong>
-
-            {% elif article.is_premium == False %}
-
-                <strong> Standard </strong>
-
-            {% endif %}
-
-        </div>
-
-        <br>
-
-    {% endfor %}
-
+{% empty %}
+    <p>No articles available.</p>
+{% endfor %}
 
 {% endblock %}
-
 

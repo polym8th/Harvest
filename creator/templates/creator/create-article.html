@@ -1,26 +1,36 @@
 {% extends 'creator/navbar.html' %}
 
 {% load static %}
-
 {% load crispy_forms_tags %}
 
 {% block content %}
-
-
 <div class="container col-md-8 col-lg-6 bg-white shadow-md p-5 rounded-3">
     <div class="row justify-content-center">
-            <h3>Create an article</h3>
-            <hr>
-            <p>As a writer, you can post both standard and premium articles below:</p>
-            
-            <br>
+        <h3>Create an article</h3>
+        <hr>
+        <p>As a content creator, you can post the article as premium or standard below:</p>
+        <br>
+        <form method="POST" enctype="multipart/form-data" autocomplete="off">
+            {% csrf_token %}
+            {{ CreateArticleForm|crispy }}
 
-            <form method="POST" autocomplete="off">
-                {% csrf_token %}
-                {{ CreateArticleForm|crispy }}
-                <br>
-                <input class="btn btn-success w-100" type="submit" value="Create article"/>
-            </form>
-        </div>
+            <!-- Image Uploader -->
+            <div class="form-group">
+                <label for="id_image">Image Upload</label>
+                <div id="drop-area" style="border: 2px dashed #ccc; padding: 20px; text-align: center;">
+                    <p><strong>Upload a file</strong> or drag and drop</p>
+                    <p>PNG, JPG, GIF up to 10MB</p>
+                    <input type="file" id="id_image" name="image" accept="image/*" style="display: none;">
+                    <button type="button" onclick="document.getElementById('id_image').click();" class="btn btn-outline-primary">Browse Files</button>
+                    <div id="preview" style="margin-top: 10px;"></div>
+                </div>
+            </div>
+
+            <br>
+            <input class="btn btn-success w-100" type="submit" value="Create article"/>
+        </form>
     </div>
+</div>
+
+
 {% endblock %}
