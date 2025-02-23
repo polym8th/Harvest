@@ -16,6 +16,16 @@ class Membership(models.Model):
     def __str__(self):
 
         return f'{self.member_name} - {self.membership_plan} membership'
+    
+class Article(models.Model):
+    title = models.CharField(max_length=255)
+    content = models.TextField()
+    pub_date = models.DateTimeField()
+    is_unlimited = models.BooleanField(default=False)
+
+    def __str__(self):
+        return self.title
+    
 
 
 

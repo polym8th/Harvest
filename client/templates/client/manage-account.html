@@ -1,0 +1,59 @@
+
+{% extends 'client/navbar.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+    <br>
+
+    <div class="container bg-white shadow-md p-5 form-layout">
+
+        <h3> Account details </h3>
+
+        <p> You may update your account details below: </p>
+        
+        <br>
+
+        <form method="POST" autocomplete="off">
+
+            {% csrf_token %}
+
+            {{UpdateUserForm|crispy}}
+
+            <br>
+
+            <input class="btn btn-success w-100" type="submit" value="Update details"/>
+
+        </form>
+
+    </div>
+
+    <br>
+
+    <!-- Browse subscription plans -->
+
+    {% if SubscriptionID %}
+
+    <!-- IF there is a SubscriptionID then display no subscription plans (link)-->
+
+    {% else %}
+
+        <div class="container bg-white shadow-md p-5 form-layout text-center">
+
+            <h5> Browse subscription plans </h5>
+
+            <hr>
+
+            <p> Check all the available subscription plans: </p>
+
+            <br>
+
+            <a class="btn btn-success" type="button" href="{% url 'subscription-plans' %}"> 
+
+                View subscription plans
+
+            </a>
+            
+        </div>
+        

@@ -1,9 +1,9 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
+from . forms import UpdateUserForm
 from django.utils import timezone
-
-from creator.models import Article
+from client.models import Article
 from .models import Membership
 from account.models import CustomUser
 
@@ -22,7 +22,7 @@ def client_dashboard(request):
 
 
 @login_required(login_url='my-login')
-def browse_articles(request):
+def regular_articles(request):
     user = request.user
     articles = Article.objects.filter(pub_date__lte=timezone.now())
 
@@ -38,4 +38,34 @@ def browse_articles(request):
         articles = articles.filter(is_unlimited=False)
 
     context = {'AllClientArticles': articles}
-    return render(request, 'client/browse-articles.html', context)
+    return render(request, 'client/regular-articles.html', context)
+
+
+@login_required(login_url='my-login')
+def manage_account(request):
+    try:
+       
+        # Updating our account details
+        form = UpdateUserForm(instance=request.user)
+        if request.method == 'POST':
+            form = UpdateUserForm(request.POST, instance=request.user)
+            if form.is_valid():
+                form.save()
+                return redirect('client-dashboard')
+        
+        memberDetails = Membership.objects.get(user=request.user)
+        context = {'UpdateUserForm': form, 'Membership': memberDetails}
+        return render(request, 'client/manage-account.html', context)
+    except:
+   
+        # Update our account details
+        form = UpdateUserForm(instance=request.user)
+        if form.is_valid():
+            form.save()
+            return redirect('client-dashboard')
+        
+        # Pass through data to our template
+        context = {'UpdateUserForm': form}
+        return render(request, 'client/manage-account.html', context)
+
+

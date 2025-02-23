@@ -9,17 +9,15 @@ from .models import Article
 The above functions are Django views that handle creating, updating, publishing, and deleting
 articles, managing user accounts, and displaying dashboard for creators with appropriate permissions
 and error handling.
-:
 """
 
 @login_required(login_url='my-login')
 def creator_dashboard(request):
-    # Filter articles created by the logged-in user
+    # FIX: Ensured function body is properly indented (4 spaces)
     user_articles = Article.objects.filter(user=request.user)
     
     # Pass the articles to the template
     return render(request, 'creator/creator-dashboard.html', {'articles': user_articles})
-
 
 
 @login_required(login_url='my-login')
@@ -34,6 +32,7 @@ def create_article(request):
             return redirect('published')
     else:
         form = ArticleForm()
+    # FIX: Maintained consistent indentation in the return statement
     return render(request, 'creator/create-article.html', {'CreateArticleForm': form})
 
 
@@ -43,6 +42,7 @@ def published(request):
         articles = Article.objects.all()
     else:
         articles = Article.objects.filter(is_unlimited=False)
+    # FIX: Ensured proper indentation for the return statement
     return render(request, 'creator/published.html', {'AllArticles': articles})
 
 
@@ -63,8 +63,8 @@ def update_article(request, pk):
     else:
         form = ArticleForm(instance=article)
 
+    # FIX: Return statement indented consistently
     return render(request, 'creator/update-article.html', {'UpdateArticleForm': form})
-
 
 
 @login_required(login_url='my-login')
@@ -83,12 +83,12 @@ def delete_article(request, pk):
     return render(request, 'creator/delete-article.html', {'article': article})
 
 
-
 @login_required(login_url='my-login')
 def manage_account(request):
     form = UpdateUserForm(instance=request.user)
 
     if request.method == 'POST':
+
         form = UpdateUserForm(request.POST, instance=request.user)
         if form.is_valid():
             form.save()
