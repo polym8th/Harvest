@@ -50,14 +50,15 @@ def published(request):
 def update_article(request, pk):
     article = get_object_or_404(Article, id=pk)
     
-    if not (article.user == request.user or request.user.is_superuser or getattr(request.user, 'is_creator', False)):
+    # Allow superusers or article owners/creators to update
+    if not (request.user.is_superuser or article.user == request.user or getattr(request.user, 'is_creator', False)):
         raise PermissionDenied("You do not have permission to update this article.")
 
     if request.method == 'POST':
         form = ArticleForm(request.POST, request.FILES, instance=article)
         if form.is_valid():
             form.save()
-            messages.success(request, 'Your article has been updated successfully!')
+            messages.success(request, 'The article has been updated successfully!', extra_tags='update')
             return redirect('update-success')
     else:
         form = ArticleForm(instance=article)
@@ -65,22 +66,22 @@ def update_article(request, pk):
     return render(request, 'creator/update-article.html', {'UpdateArticleForm': form})
 
 
+
 @login_required(login_url='my-login')
 def delete_article(request, pk):
-    # Retrieve the article or return 404 if not found
     article = get_object_or_404(Article, id=pk)
 
-    # Check if the user is the owner, a superuser, or has 'is_creator' permission
-    if not (article.user == request.user or request.user.is_superuser or getattr(request.user, 'is_creator', False)):
+    # Allow superusers or article owners/creators to delete
+    if not (request.user.is_superuser or article.user == request.user or getattr(request.user, 'is_creator', False)):
         raise PermissionDenied("You do not have permission to delete this article.")
 
     if request.method == 'POST':
         article.delete()
-        messages.success(request, 'The article has been deleted successfully.')
-        return redirect('delete-success')  # Redirecting to delete-success.html
+        messages.success(request, 'The article has been deleted successfully.', extra_tags='delete')
+        return redirect('delete-success')
 
-    # Pass the article to the template for deletion confirmation
     return render(request, 'creator/delete-article.html', {'article': article})
+
 
 
 @login_required(login_url='my-login')
