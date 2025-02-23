@@ -5,9 +5,22 @@ from django.contrib import messages
 from .forms import ArticleForm, UpdateUserForm
 from .models import Article
 
+"""
+The above functions are Django views that handle creating, updating, publishing, and deleting
+articles, managing user accounts, and displaying dashboard for creators with appropriate permissions
+and error handling.
+:
+"""
+
 @login_required(login_url='my-login')
 def creator_dashboard(request):
-    return render(request, 'creator/creator-dashboard.html')
+    # Filter articles created by the logged-in user
+    user_articles = Article.objects.filter(user=request.user)
+    
+    # Pass the articles to the template
+    return render(request, 'creator/creator-dashboard.html', {'articles': user_articles})
+
+
 
 @login_required(login_url='my-login')
 def create_article(request):
@@ -23,6 +36,7 @@ def create_article(request):
         form = ArticleForm()
     return render(request, 'creator/create-article.html', {'CreateArticleForm': form})
 
+
 @login_required(login_url='my-login')
 def published(request):
     if getattr(request.user, 'has_unlimited_access', False):
@@ -31,11 +45,12 @@ def published(request):
         articles = Article.objects.filter(is_unlimited=False)
     return render(request, 'creator/published.html', {'AllArticles': articles})
 
+
 @login_required(login_url='my-login')
 def update_article(request, pk):
     article = get_object_or_404(Article, id=pk)
     
-    if not (request.user.is_superuser or getattr(request.user, 'is_creator', False)):
+    if not (article.user == request.user or request.user.is_superuser or getattr(request.user, 'is_creator', False)):
         raise PermissionDenied("You do not have permission to update this article.")
 
     if request.method == 'POST':
@@ -43,11 +58,12 @@ def update_article(request, pk):
         if form.is_valid():
             form.save()
             messages.success(request, 'Your article has been updated successfully!')
-            return redirect('published')
+            return redirect('update-success')
     else:
         form = ArticleForm(instance=article)
 
     return render(request, 'creator/update-article.html', {'UpdateArticleForm': form})
+
 
 @login_required(login_url='my-login')
 def delete_article(request, pk):
@@ -66,9 +82,6 @@ def delete_article(request, pk):
     # Pass the article to the template for deletion confirmation
     return render(request, 'creator/delete-article.html', {'article': article})
 
-@login_required(login_url='my-login')
-def delete_success(request):
-    return render(request, 'creator/delete-success.html')
 
 @login_required(login_url='my-login')
 def manage_account(request):
@@ -83,3 +96,13 @@ def manage_account(request):
 
     context = {'UpdateUserForm': form}
     return render(request, 'creator/manage-account.html', context)
+
+
+@login_required(login_url='my-login')
+def delete_success(request):
+    return render(request, 'creator/delete-success.html')
+
+
+@login_required(login_url='my-login')
+def update_success(request):
+    return render(request, 'creator/update-success.html')

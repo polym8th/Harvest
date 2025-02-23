@@ -3,23 +3,24 @@
 
 {% block content %}
 
-<div class="container bg-white shadow-md p-5 form-layout text-center, header">
-    <h5>Welcome, {{ user.first_name }}</h5>
-    <a href="{% url 'user-logout' %}">Logout</a>
-
-    <h3>Your Articles</h3>
+<div class="container bg-white shadow-md p-5 form-layout">
+    <h5 class>Welcome, {{ user.first_name }}</h5>
+    <br><br>
+    <h3 class w="header">Your Articles</h3>
     <ul>
-        {% for article in articles %}
-            <li>
-                {{ article.title }}
-                <form action="{% url 'delete-article' article.id %}" method="POST" style="display:inline;">
-                    {% csrf_token %}
-                    <button type="submit">Delete</button>
-                </form>
-            </li>
-        {% empty %}
-            <li>No articles found.</li>
-        {% endfor %}
+        {% if articles %}
+            {% for article in articles %}
+                <li>
+                    {{ article.title }}
+                    <form action="{% url 'delete-article' article.id %}" method="POST" style="display:inline;">
+                        {% csrf_token %}
+                        <button class="btn btn-link" type="submit">Delete</button>
+                    </form>
+                </li>
+            {% endfor %}
+        {% else %}
+            No articles found. <a href="{% url 'create-article' %}">Create your first article</a>
+        {% endif %}
     </ul>
 </div>
 
