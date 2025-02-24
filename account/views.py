@@ -43,26 +43,17 @@ def my_login(request):
             password = form.cleaned_data.get('password')
             user = authenticate(request, username=username, password=password)
 
-            if user is not None:
+            if user is not None and hasattr(user, 'is_creator'):
                 login(request, user)
-
-                # Redirect superusers to the creator-dashboard
-                if user.is_superuser:
+                if user.is_creator:
                     return redirect('creator-dashboard')
-
-                # Redirect creators to creator-dashboard
-                elif hasattr(user, 'is_creator') and user.is_creator:
-                    return redirect('creator-dashboard')
-
-                # Redirect regular users to client-dashboard
                 else:
                     return redirect('client-dashboard')
-            else:
-                return HttpResponse("Invalid login credentials.")
     else:
         form = AuthenticationForm()
 
     return render(request, 'account/my-login.html', {'LoginForm': form})
+
 
 def user_logout(request):
     logout(request)
