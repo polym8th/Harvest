@@ -10,4 +10,4 @@ class Article(models.Model):
     image = models.ImageField(upload_to='article_images/', null=True, blank=True)  # New ImageField
 
     def __str__(self):
-        return self.title
+        return self.titles

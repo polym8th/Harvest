@@ -47,6 +47,7 @@ def my_login(request):
 
     return render(request, 'account/my-login.html', {'LoginForm': form})
 
+
 def user_logout(request):
     logout(request)
     return redirect('my-login')
