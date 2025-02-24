@@ -8,18 +8,18 @@ class CustomUserAdmin(UserAdmin):
         ('Personal info', {'fields': ('first_name', 'last_name')}),
         ('Permissions', {'fields': ('is_active', 'is_staff', 'is_superuser', 'groups', 'user_permissions')}),
         ('Important dates', {'fields': ('last_login', 'date_joined')}),
-        ('Custom fields', {'fields': ('is_creator', 'unlimited_access_membership')}),
-    )
+        ('Custom fields', {'fields': ('is_creator',)}),
+    )  
 
     add_fieldsets = (
         (None, {
             'classes': ('wide',),
-            'fields': ('email', 'first_name', 'last_name', 'password1', 'password2', 'is_creator', 'unlimited_access_membership'),
+            'fields': ('email', 'first_name', 'last_name', 'password1', 'password2', 'is_creator'),
         }),
-    )
+    )  
 
-    list_display = ('email', 'first_name', 'last_name', 'is_staff', 'is_creator', 'unlimited_access_membership')
-    list_filter = ('is_staff', 'is_superuser', 'is_creator', 'unlimited_access_membership')
+    list_display = ('email', 'first_name', 'last_name', 'is_staff', 'is_creator')
+    list_filter = ('is_staff', 'is_superuser', 'is_creator')
     search_fields = ('email', 'first_name', 'last_name')
     ordering = ('email',)
 

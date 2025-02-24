@@ -9,7 +9,7 @@ class ArticleForm(ModelForm):
     class Meta:
         
         model = Article
-        fields = ['title', 'content', 'is_unlimited','image',]
+        fields = ['title', 'content','image',]
         labels = {
             'image':'',
     }       
