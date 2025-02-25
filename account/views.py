@@ -36,9 +36,12 @@ def my_login(request):
             password = form.cleaned_data.get('password')
             user = authenticate(request, username=username, password=password)
 
-            if user is not None and hasattr(user, 'is_creator'):
+            if user is not None:
                 login(request, user)
-                if user.is_creator:
+                # Redirect logic based on user roles
+                if user.is_superuser or user.is_staff:
+                    return redirect('creator-dashboard')
+                elif hasattr(user, 'is_creator') and user.is_creator:
                     return redirect('creator-dashboard')
                 else:
                     return redirect('client-dashboard')
@@ -46,7 +49,6 @@ def my_login(request):
         form = AuthenticationForm()
 
     return render(request, 'account/my-login.html', {'LoginForm': form})
-
 
 def user_logout(request):
     logout(request)

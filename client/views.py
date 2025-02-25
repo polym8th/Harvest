@@ -8,15 +8,9 @@ from account.models import CustomUser
 
 @login_required(login_url='my-login')
 def client_dashboard(request):
-    try:
-        memDetails = Membership.objects.get(user=request.user)
-        membership_plan = memDetails.membership_plan
-        context = {'SubPlan': membership_plan}
-        return render(request, 'client/client-dashboard.html', context)
-    except Membership.DoesNotExist:
-        membership_plan = "None"
-        context = {'SubPlan': membership_plan}
-        return render(request, 'client/client-dashboard.html', context)
+    user_articles = Article.objects.filter(user=request.user)
+    return render(request, 'client/client-dashboard.html', {'articles': user_articles})
+    return render(request, 'client/client-dashboard.html', context)
 
 @login_required(login_url='my-login')
 def regular_articles(request):
