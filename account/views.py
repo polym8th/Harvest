@@ -3,9 +3,16 @@ from .forms import CreateUserForm
 from django.http import HttpResponse
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import authenticate, login, logout
+from creator.models import Article 
+
+
 
 def home(request):
-    return render(request, 'account/index.html')
+    # Fetch published articles
+    articles = Article.objects.filter(is_published=True).order_by('-pub_date')[:5]  # Latest 5 articles
+
+    # Pass articles to the template
+    return render(request, 'account/index.html', {'articles': articles})
 
 def register(request):
     if request.method == 'POST':
