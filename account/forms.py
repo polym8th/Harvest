@@ -15,4 +15,4 @@ class CreateUserForm(UserCreationForm):
 class ArticleForm(ModelForm):
     class Meta:
         model = Article
-        fields = ['title', 'content', 'image']  # ✅ Removed 'is_unlimited'
+        fields = ['title', 'content', 'image']  
