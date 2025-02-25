@@ -4,7 +4,7 @@ from django.contrib.auth.decorators import login_required
 from django.core.exceptions import PermissionDenied
 from django.contrib import messages
 from client.forms import ArticleForm, UpdateUserForm
-from .models import Article
+from creator.models import Article
 
 @login_required(login_url='my-login')
 def client_dashboard(request):
@@ -14,9 +14,10 @@ def client_dashboard(request):
 
 @login_required(login_url='my-login')
 def regular_articles(request):
-    articles = Article.objects.all()
-    return render(request, 'creator/regular-articles.html', {'AllArticles': articles})
+    # Fetch only published articles
+    articles = Article.objects.filter(is_published=True)
 
+    return render(request, 'client/regular-articles.html', {'AllArticles': articles})
 @login_required(login_url='my-login')
 def update_article(request, pk):
     article = get_object_or_404(Article, id=pk)

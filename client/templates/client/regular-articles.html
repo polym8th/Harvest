@@ -2,30 +2,25 @@
 
 {% block content %}
 
-<br>
 
-{% for article in AllClientArticles %}
+<p>Total articles fetched: {{ AllArticles|length }}</p>
 
-    <div class="container bg-white shadow-md p-5 form-layout">
+{% for article in AllArticles %}
+    {% if article.is_published %}
+        <div class="container bg-white shadow-md p-5 form-layout">
+            <h3>{{ article.title }}</h3>
+            <p>{{ article.content }}</p>
 
-        <h3>{{ article.title }}</h3>
+            {% if article.image %}
+                <img src="{{ article.image.url }}" alt="Article Image" style="max-width: 100%; height: auto;">
+            {% endif %}
 
-        {{ article.content }}
-
-        {% if article.image %}
-            <br><br>
-            <img src="{{ article.image.url }}" alt="Article Image" style="max-width: 100%; height: auto;">
-        {% endif %}
-
-        <br><br>
-
-        {{ article.pub_date|date:"F d, Y H:i" }}
-
-    </div>
-
-    <br>
-
+            <p>{{ article.pub_date|date:"F d, Y H:i" }}</p>
+        </div>
+        <br>
+    {% endif %}
 {% empty %}
-    <p>No articles available.</p>
+    <p>No published articles available.</p>
 {% endfor %}
+
 {% endblock %}

@@ -30,7 +30,7 @@ def create_article(request):
 
 @login_required(login_url='my-login')
 def published(request):
-    articles = Article.objects.all()
+    articles = Article.objects.filter(is_published=True)
     return render(request, 'creator/published.html', {'AllArticles': articles})
 
 
