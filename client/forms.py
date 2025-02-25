@@ -5,7 +5,10 @@ from account.models import CustomUser
 from django.forms import ModelForm
 
 
-    
+class ArticleForm(ModelForm):
+    class Meta:
+        model = Article
+        fields = ['title', 'content', 'image']    
 
         
 class UpdateUserForm(ModelForm):
