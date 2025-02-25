@@ -90,3 +90,8 @@ def delete_success(request):
 @login_required(login_url='my-login')
 def update_success(request):
     return render(request, 'creator/update-success.html')
+
+@login_required(login_url='my-login')
+def article_detail(request, pk):
+    article = get_object_or_404(Article, id=pk)
+    return render(request, 'creator/article-detail.html', {'article': article})

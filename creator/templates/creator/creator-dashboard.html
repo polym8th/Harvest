@@ -11,7 +11,10 @@
         {% if articles %}
             {% for article in articles %}
                 <li>
-                    {{ article.title }}
+                    <!-- Link to published.html with anchor to the specific article -->
+                    <a href="{% url 'published' %}#article-{{ article.id }}">{{ article.title }}</a>
+
+                    <!-- Delete Article Form -->
                     <form action="{% url 'delete-article' article.id %}" method="POST" style="display:inline;">
                         {% csrf_token %}
                         <button class="btn btn-link" type="submit">Delete</button>

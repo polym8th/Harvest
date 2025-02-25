@@ -8,32 +8,9 @@ from .models import Article
 
 @login_required(login_url='my-login')
 def client_dashboard(request):
-<<<<<<< HEAD
     user_articles = Article.objects.filter(user=request.user)
     return render(request, 'client/client-dashboard.html', {'articles': user_articles})
-    return render(request, 'client/client-dashboard.html', context)
-=======
-    if not (request.user.is_superuser or request.user.is_staff or request.user.is_creator):
-        raise PermissionDenied("You do not have access to the creator dashboard.")
-
-    user_articles = Article.objects.filter(user=request.user)
-    return render(request, 'creator/creator-dashboard.html', {'articles': user_articles})
-
-@login_required(login_url='my-login')
-def create_article(request):
-    if request.method == 'POST':
-        form = ArticleForm(request.POST, request.FILES)
-        if form.is_valid():
-            article = form.save(commit=False)
-            article.user = request.user
-            article.save()
-            messages.success(request, 'Your article has been created successfully!')
-            return redirect('published')
-    else:
-        form = ArticleForm()
-
-    return render(request, 'creator/create-article.html', {'CreateArticleForm': form})
->>>>>>> 9db95efb8e3c3ad66f5385c45b0c93387a5959e2
+  
 
 @login_required(login_url='my-login')
 def regular_articles(request):

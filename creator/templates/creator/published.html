@@ -1,19 +1,15 @@
 {% extends 'creator/navbar.html' %}
-
 {% load static %}
 
 {% block content %}
 {% for article in AllArticles %}
-    <div class="container col-md-8 col-lg-6 bg-white shadow-md p-5 form-layout mb-4">
+    <!-- Add an ID for linking -->
+    <div id="article-{{ article.id }}" class="container col-md-8 col-lg-6 bg-white shadow-md p-5 form-layout mb-4">
         <h3 class="header">{{ article.title }}</h3>
 
-    <form action="" method=POST enctype="multipart/form-data">
-        {% csrf_token %}
-   
         <!-- Display Uploaded Image -->
         {% if article.image %}
-            <img src="{{ article.image.url }}" alt="Article Image" style="max-width: 100%; height: auto; margin-bottom: 15px;"></form>
-            
+            <img src="{{ article.image.url }}" alt="Article Image" style="max-width: 100%; height: auto; margin-bottom: 15px;">
         {% endif %}
 
         {{ article.content }}
