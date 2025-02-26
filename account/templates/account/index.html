@@ -36,8 +36,10 @@
 
   <!-- Hero Section -->
   <div class="text-center mt-5">
-    <h5 class="header">Discover Harvest... Subscribe to our local online hub!</h5>
+    <h5 class="header">Discover Harvest... Subscribe to our local cultural hub!</h5>
     <p class="header">Explore our selection of insights on Brighton's hidden gems in local and surrounding areas.</p>
+    <br>
+    <br>
     <a class="btn btn-success" href="{% url 'register' %}">
       <i class="fa fa-angle-right" aria-hidden="true"></i>&nbsp;See what's happening near you!
     </a>
@@ -76,7 +78,7 @@
               <p class="mt-2">{{ article.content|truncatewords:30 }}...</p>
 
               <!-- Read More Link with lowercase styling -->
-              <a href="{% url 'register' %}" class="btn btn-link p-0 lowercase-link">More... Register Now</a>
+              <a href="{% url 'register' %}" class="btn btn-link p-0 lowercase-link">Read More...Register Now</a>
             </div>
           </div>
         </div>
