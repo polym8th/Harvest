@@ -1,53 +1,32 @@
-
 {% extends 'client/navbar.html' %}
-
 {% load crispy_forms_tags %}
 
 {% block content %}
-
+<br>
+<div class="container bg-white shadow-md p-5 form-layout">
+    <h3>Account details</h3>
+    <p>You may update your account details below:</p>
     <br>
-
-    <div class="container bg-white shadow-md p-5 form-layout">
-
-        <h3> Account details </h3>
-
-        <p> You may update your account details below: </p>
-        
+    <form method="POST" autocomplete="off">
+        {% csrf_token %}
+        {{ UpdateUserForm|crispy }}
         <br>
-
-        <form method="POST" autocomplete="off">
-
-            {% csrf_token %}
-
-            {{UpdateUserForm|crispy}}
-
-            <br>
-
-            <input class="btn btn-success w-100" type="submit" value="Update details"/>
-
-        </form>
-
-    </div>
-
-    <br>
+        <input class="btn btn-success w-100" type="submit" value="Update details"/>
+    </form>
+</div>
 
 
+<br>
+<div class="container bg-white shadow-md p-5 form-layout">
+    <h3>Cancel Your Subscription</h3>
+    <hr>
+    <p>Proceed below to delete your account:</p>
 
-        <div class="container bg-white shadow-md p-5 form-layout text-center">
+    <form method="POST" action="{% url 'delete-account-client' %}">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger">Delete Your Account</button>
+    </form>
+</div>
 
-            <h5> Browse subscription plans </h5>
-
-            <hr>
-
-            <p> Check all the available subscription plans: </p>
-
-            <br>
-
-            <a class="btn btn-success" type="button" href="{% url 'subscription-plans' %}"> 
-
-                View subscription plans
-
-            </a>
-            
-        </div>
-        
+<br>
+{% endblock %}

@@ -1,10 +1,12 @@
 
 from django.shortcuts import render, redirect, get_object_or_404
+from django.contrib.auth import logout
 from django.contrib.auth.decorators import login_required
 from django.core.exceptions import PermissionDenied
 from django.contrib import messages
 from client.forms import ArticleForm, UpdateUserForm
 from creator.models import Article
+from django.contrib.auth.models import User  
 
 @login_required(login_url='my-login')
 def client_dashboard(request):
@@ -59,9 +61,21 @@ def manage_account(request):
         if form.is_valid():
             form.save()
             messages.success(request, 'Your account has been updated successfully!')
-            return redirect('creator-dashboard')
+            return redirect('client-dashboard')
 
-    return render(request, 'creator/manage-account.html', {'UpdateUserForm': form})
+    return render(request, 'client/manage-account.html', {'UpdateUserForm': form})
+
+@login_required(login_url='my-login')
+def delete_account(request):
+    if request.method == 'POST':
+        user = request.user
+        user.delete()  
+        return redirect("delete-account-success")  
+
+    return render(request, 'client/delete-account.html')
+
+def delete_account_success(request):
+    return render(request, 'client/delete-account-success.html')
 
 @login_required(login_url='my-login')
 def delete_success(request):
