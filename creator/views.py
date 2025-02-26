@@ -81,7 +81,6 @@ def manage_account(request):
 
     return render(request, 'creator/manage-account.html', {'UpdateUserForm': form})
 
-
 @login_required(login_url='my-login')
 def delete_success(request):
     return render(request, 'creator/delete-success.html')
@@ -95,3 +94,15 @@ def update_success(request):
 def article_detail(request, pk):
     article = get_object_or_404(Article, id=pk)
     return render(request, 'creator/article-detail.html', {'article': article})
+
+@login_required(login_url='my-login')
+def delete_account(request):
+    if request.method == 'POST':
+        user = request.user
+        user.delete()  
+        return redirect("delete-account-success")  
+
+    return render(request, 'creator/delete-account.html')
+
+def delete_account_success(request):
+    return render(request, 'creator/delete-account-success.html')
