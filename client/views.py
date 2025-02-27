@@ -20,37 +20,6 @@ def regular_articles(request):
     articles = Article.objects.filter(is_published=True)
 
     return render(request, 'client/regular-articles.html', {'AllArticles': articles})
-@login_required(login_url='my-login')
-def update_article(request, pk):
-    article = get_object_or_404(Article, id=pk)
-
-    if not (article.user == request.user or request.user.is_superuser or request.user.is_staff or request.user.is_creator):
-        raise PermissionDenied("You do not have permission to update this article.")
-
-    if request.method == 'POST':
-        form = ArticleForm(request.POST, request.FILES, instance=article)
-        if form.is_valid():
-            form.save()
-            messages.success(request, 'Your article has been updated successfully!')
-            return redirect('update-success')
-    else:
-        form = ArticleForm(instance=article)
-
-    return render(request, 'creator/update-article.html', {'UpdateArticleForm': form})
-
-@login_required(login_url='my-login')
-def delete_article(request, pk):
-    article = get_object_or_404(Article, id=pk)
-
-    if not (article.user == request.user or request.user.is_superuser or request.user.is_staff or request.user.is_creator):
-        raise PermissionDenied("You do not have permission to delete this article.")
-
-    if request.method == 'POST':
-        article.delete()
-        messages.success(request, 'The article has been deleted successfully.')
-        return redirect('delete-success')
-
-    return render(request, 'creator/delete-article.html', {'article': article})
 
 @login_required(login_url='my-login')
 def manage_account(request):
@@ -84,3 +53,4 @@ def delete_success(request):
 @login_required(login_url='my-login')
 def update_success(request):
     return render(request, 'creator/update-success.html')
+

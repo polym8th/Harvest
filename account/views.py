@@ -60,3 +60,4 @@ def my_login(request):
 def user_logout(request):
     logout(request)
     return redirect('my-login')
+
