@@ -92,10 +92,8 @@ form p:last-of-type {
 .success-message span {
   font-weight: bold;
 }
-.article-image {
-  width: 100% !important;
-  max-height: 400px !important;
-  object-fit: cover !important;
-  border-radius: 8px !important;
-  margin-bottom: 15px !important;
+.text-wrap {
+  word-wrap: break-word; /* Ensures words break */
+  overflow-wrap: break-word; /* Alternative for better browser support */
+  white-space: normal; /* Allows text to wrap */
 }

@@ -7,29 +7,27 @@
         <h3 class="header">{{ article.title }}</h3>
 
         {% if article.image %}
-            <img src="{{ article.image.url }}" alt="Article Image" style="max-width: 100%; height: auto; margin-bottom: 15px;">
+            <img src="{{ article.image.url }}" alt="Article Image" class="img-fluid mb-3">
         {% endif %}
 
-        <p>{{ article.content|truncatewords:50 }}</p>  <!-- Show a teaser preview -->
+        <p class="text-break">{{ article.content|truncatewords:50 }}</p>  <!-- Prevent text overspill -->
 
-        <br>
         <p>{{ article.pub_date|date:"F d, Y H:i" }}</p>
 
-            {% if article.is_published %}
-                <a href="{% url 'update-article' article.id %}">
-                    <button type="button" class="btn btn-outline-success me-2">Update Article</button>
-                </a>
+        {% if article.is_published %}
+            <div class="d-flex gap-2 justify-content-start"> <!-- Align buttons in a row -->
+                <a href="{% url 'update-article' article.id %}" class="btn btn-outline-success">Update Article</a>
 
-                <form action="{% url 'delete-article' article.id %}" method="POST">
+                <form action="{% url 'delete-article' article.id %}" method="POST" class="d-inline">
                     {% csrf_token %}
                     <button class="btn btn-outline-danger" type="submit" onclick="return confirm('Are you sure you want to delete this article?');">
                         Delete Article
                     </button>
                 </form>
-            {% endif %}
-        </div>
+            </div>
+        {% endif %}
     </div>
 {% empty %}
-    <p>No articles available.</p>
+    <p>No articles available.</p>s
 {% endfor %}
 {% endblock %}
