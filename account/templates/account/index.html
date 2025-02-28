@@ -45,48 +45,49 @@
     </a>
   </div>
 
-  <!-- Articles Grid -->
   <div class="container mt-5">
     <div class="row g-4">
-      {% for article in articles %}
-        <div class="col-12 col-md-6 d-flex">
-          <div class="card w-100">
-            <!-- Wrap the image in an anchor tag to link to the article -->
-            <a href="{% url 'published' %}#article-{{ article.id }}">
-              {% if article.image %}
-                <img src="{{ article.image.url }}" class="w-100" style="height: 250px; object-fit: cover;" alt="{{ article.title }}">
-              {% else %}
-                <img src="{% static 'default.jpg' %}" class="w-100" style="height: 250px; object-fit: cover;" alt="Default Image">
-              {% endif %}
-            </a>
+        {% for article in articles %}
+            <div class="col-12 col-md-6 d-flex">
+                <div class="card w-100">
+                    <a href="{% url 'published' %}#article-{{ article.id }}">
+                        {% if article.image %}
+                            <img src="{{ article.image.url }}" class="w-100" style="height: 250px; object-fit: cover;" alt="{{ article.title }}">
+                        {% else %}
+                            <img src="{% static 'default.jpg' %}" class="w-100" style="height: 250px; object-fit: cover;" alt="Default Image">
+                        {% endif %}
+                    </a>
 
-            <div class="card-body">
-              <!-- Only display the category if it exists -->
-              {% if article.category %}
-                <p class="text-muted text-uppercase mb-1">{{ article.category }}</p>
-              {% endif %}
+                    <div class="card-body">
+                        {% if article.category %}
+                            <p class="text-muted text-uppercase mb-1">{{ article.category }}</p>
+                        {% endif %}
 
-              <!-- Wrap the title in an anchor tag -->
-              <h5 class="card-title fw-bold">
-                <a href="{% url 'published' %}#article-{{ article.id }}" class="text-dark text-decoration-none">
-                  {{ article.title }}
-                </a>
-              </h5> <!-- Title -->
-              <p class="text-muted mb-0">By {{ article.user.first_name }} {{ article.user.last_name }}</p> <!-- Author -->
+                        <h5 class="card-title fw-bold">
+                            <a href="{% url 'published' %}#article-{{ article.id }}" class="text-dark text-decoration-none">
+                                {{ article.title }}
+                            </a>
+                        </h5>
+                        <p class="text-muted mb-0">By {{ article.user.first_name }} {{ article.user.last_name }}</p>
 
-              <!-- Article Excerpt -->
-              <p class="mt-2">{{ article.content|truncatewords:30 }}...</p>
+                        <p class="mt-2">{{ article.content|truncatewords:30 }}...</p>
 
-              <!-- Read More Link with lowercase styling -->
-              <a href="{% url 'register' %}" class="btn btn-link p-0 lowercase-link">Read More...Subscribe Now</a>
+                        <div class="d-flex justify-content-center">
+                            {% if article.article_teaser %}
+                                <a href="{% url 'article-guest' article.id %}" class="btn btn-primary btn-sm">Read Full Article</a>
+                            {% else %}
+                                <a href="{% url 'register' %}" class="btn btn-link">Read More... Subscribe Now</a>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
-        </div>
-      {% empty %}
-        <p class="text-center">No articles available at the moment. Check back later!</p>
-      {% endfor %}
+        {% empty %}
+            <p class="text-center">No articles available at the moment. Check back later!</p>
+        {% endfor %}
     </div>
-  </div>
+</div>
+
 
   <!-- Footer -->
   <footer class="text-center mt-5 mb-3">

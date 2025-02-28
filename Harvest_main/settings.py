@@ -131,17 +131,6 @@ STATICFILES_STORAGE = "whitenoise.storage.CompressedStaticFilesStorage"
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# SMTP Configuration
-
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_PORT = 587  #An Integer
-EMAIL_USE_TLS = True
-EMAIL_USE_SSL = False  # Ensure this is False if TLS is True
-EMAIL_HOST_USER = 'ecolocate.co@gmail.com'
-EMAIL_HOST_PASSWORD = 'qhbm wjxq jqys otwq'
-DEFAULT_FROM_EMAIL = 'ecolocate.co@gmail.com'
-
 
 # Media files configuration
 MEDIA_URL = '/media/'

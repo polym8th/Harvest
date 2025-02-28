@@ -53,4 +53,3 @@ def delete_success(request):
 @login_required(login_url='my-login')
 def update_success(request):
     return render(request, 'creator/update-success.html')
-

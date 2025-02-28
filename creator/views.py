@@ -5,6 +5,10 @@ from django.contrib import messages
 from creator.forms import ArticleForm, UpdateUserForm
 from .models import Article
 
+def index(request):
+    teaser_articles = Article.objects.filter(article_teaser=True, is_published=True)
+    return render(request, 'accounts/index.html', {'teaser_articles': teaser_articles})
+
 
 @login_required(login_url='my-login')
 def creator_dashboard(request):
@@ -19,6 +23,7 @@ def create_article(request):
         if form.is_valid():
             article = form.save(commit=False)
             article.user = request.user
+            article.article_teaser = request.POST.get('article_teaser',"0")== "1"
             article.save()
             messages.success(request, 'Your article has been created successfully!')
             return redirect('published')
@@ -28,9 +33,13 @@ def create_article(request):
     return render(request, 'creator/create-article.html', {'CreateArticleForm': form})
 
 
+def article_guest(request, pk):
+    article = get_object_or_404(Article, id=pk)
+    return render(request, 'creator/article-guest.html', {'article': article})
+
 @login_required(login_url='my-login')
 def published(request):
-    articles = Article.objects.filter(is_published=True)
+    articles = Article.objects.filter(is_published=True) | Article.objects.filter(article_teaser=True)
     return render(request, 'creator/published.html', {'AllArticles': articles})
 
 
