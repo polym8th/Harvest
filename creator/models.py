@@ -11,5 +11,13 @@ class Article(models.Model):
     is_published = models.BooleanField(default=True) 
     article_teaser = models.BooleanField(default=False, help_text="Allow this article to be viewed without login")
     
+    # Event-related fields
+    is_event_related = models.BooleanField(default=False, help_text="Is this article related to an event?")
+    event_date = models.DateTimeField(null=True, blank=True)
+    event_name = models.CharField(max_length=200, null=True, blank=True)
+    event_venue = models.CharField(max_length=200, null=True, blank=True)
+    event_location = models.CharField(max_length=200, null=True, blank=True)
+    event_postcode = models.CharField(max_length=10, null=True, blank=True)
+    
     def __str__(self):
         return self.title

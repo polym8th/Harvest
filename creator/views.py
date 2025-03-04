@@ -23,7 +23,17 @@ def create_article(request):
         if form.is_valid():
             article = form.save(commit=False)
             article.user = request.user
-            article.article_teaser = request.POST.get('article_teaser',"0")== "1"
+            article.article_teaser = request.POST.get('article_teaser', "0") == "1"
+            
+            # Handle event-related fields
+            article.is_event_related = request.POST.get('is_event_related') == 'on'
+            if article.is_event_related:
+                article.event_date = request.POST.get('event_date')
+                article.event_name = request.POST.get('event_name')
+                article.event_venue = request.POST.get('event_venue')
+                article.event_location = request.POST.get('event_location')
+                article.event_postcode = request.POST.get('event_postcode')
+            
             article.save()
             messages.success(request, 'Your article has been created successfully!')
             return redirect('published')
@@ -40,7 +50,11 @@ def article_guest(request, pk):
 @login_required(login_url='my-login')
 def published(request):
     articles = Article.objects.filter(is_published=True) | Article.objects.filter(article_teaser=True)
-    return render(request, 'creator/published.html', {'AllArticles': articles})
+    events = Article.objects.filter(is_event_related=True, is_published=True)
+    return render(request, 'creator/published.html', {
+        'AllArticles': articles,
+        'Events': events
+    })
 
 
 @login_required(login_url='my-login')
