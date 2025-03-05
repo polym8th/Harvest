@@ -2,13 +2,16 @@
 
 ## About
 
-Harvest is a web application for content creators passionate about sharing the best local finds in Brighton and London. From hidden cafés to scenic trails and unique shops, Harvest curates authentic, high-quality recommendations from local voices.
+ Harvest is a platform for content creators passionate about sharing the best local finds in Brighton and the surround areas.
+ It enables users to share local insights, discover unique experiences, and contribute to a growing community of culture enthusiasts.It provides features for users to sign up to the platform to add articles and related events that are happening in Brighton and parts of East Sussex.
 
 ### Target Users
 
-Harvest - Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McC
+Harvest is designed for people of all ages who are passionate about exploring and sharing cultural experiences. This project was developed as a Full Stack web application, utilizing Python, Django, HTML, CSS, and JavaScript to ensure scalability and maintainability. 
 
- # How to Use Harvest
+The development process incorporates deployment strategies and follows Agile methodologies to enhance the application's stability and performance.
+
+ # Features
 
 - Lorem Ipsum 
     -  is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to ma
