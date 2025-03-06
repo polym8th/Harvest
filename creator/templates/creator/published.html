@@ -12,7 +12,7 @@
             <img src="{{ article.image.url }}" alt="Article Image" class="img-fluid mb-3">
         {% endif %}
         
-        <p class="text-break">{{ article.content|truncatewords:50 }}</p>
+        <p class="text-break">{{ article.content}}</p>
         <p>{{ article.pub_date|date:"F d, Y H:i" }}</p>
 
         {% if article.is_published %}

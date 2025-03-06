@@ -8,107 +8,62 @@
 ### Target Users
 
 Harvest is designed for people of all ages who are passionate about exploring and sharing cultural experiences. This project was developed as a Full Stack web application, utilizing Python, Django, HTML, CSS, and JavaScript to ensure scalability and maintainability. 
-
 The development process incorporates deployment strategies and follows Agile methodologies to enhance the application's stability and performance.
 
  # Features
 
-- Lorem Ipsum 
-    -  is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to ma
-    -  But also the leap into electronic typesetting, remaining essentially unchanged. It was popularised i
+- Index page
+    -  The site visitor can read free articles from the front page, to sample the articles before registering to the Harvest Platform.
 
-- Why do we use it?
-    - It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like re
-    - scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essential 
-    - This option allows you to override the default macronutrient goals with custom values.
+- Register page
+    - An entry for your email, first name, last name and password is included for user registration.
+    - Password validation is utilised to ensure that the password is secure. This is integrated with Crispy forms.
 
-- View Daily Goal Analysis:
-    - Select option 3 to review your daily goal analysis.
-    - The console will display a percentage calculation showing how much of your daily goals have been met based on your food entries.
+- Creator Dashboard
+    - Here you can create article, view published articles, manage your account and logout.
+    - In the navigation menu 
+    - - Dashboard - the user arrives at the front page of the dashboard.
+    - - Create article - allows creator (users) to create and publish and article. They can add the title and content.
+    - - Upload Image - Image png, jpegs and webp can be uploaded to be displayed in the article above the text.
+    - - Published - Allows creator (users) to see the article that has been published.  In addition, they can update and delete articles from the published page.
+    - - Manage account 
+        - Users can update their account details; First Name, Last Name and Email.
+        - Users can delete their account /cancel their subscription.  
+    - - Logout
+        - The creator (user) can log out of the Creator Dashboard.
 
-- Calculate Weekly Totals:
-    - Select option 4 - Calorie Mind will calculate and display the total values for Calories, Protein, and Fat over the last seven days, helping you track your progress and adjust your diet if needed.
+- General User Dashboard
+    - In the navigation menu
+    - - Dashboard - the user arrives at the front page of the dashboard.
+    - - View article - allows registered users to view published articles.
+    - - Manage account 
+        - Users can update their account details; first name, last name and email.
+        - Users can delete their account/cancel their subscription.  
+     - Logout
+        - The user can log out of the General Dashboard.    
 
-# Features
-
-   ![Image of Console](https://github.com/IsaHu-dev/Calorie-Mind/blob/main/media/console.png)
+- Color Palette 
+   ![Image of Console](https://github.com/IsaHu-dev/Harvest/blob/main/media/readme/colorpalette.png)
    
 
-## Existing Features
+## Technologies Used
 
-Harvest It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Co
-
-1 - Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney C
-  - The app allows the user to select n (no) or y (yes) when the user is asked "Do you know the calorie and macronutrient values? If nutritional information is unknown, the application initiates an API request to retrieve accurate values (calories, protein, fat, and carbs). 
-
-  - Roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sy
-
-  - Daily food calorie and macronutrient intakes are logged into the designated worksheet: Entries.
-
-2 - Record New Daily Goals  
-
-  - Set daily macronutrient targets for protein, fat, and carbs. This feature helps you stay aligned with your nutrition goals and maintain a balanced diet.
-
-  - This function allows users to input new daily goals and replace them with custom values.
-
-      The application is pre-configured with the following default daily macronutrient targets:   
-         
-     -   protein goal = 100
-
-     -   fat goal = 70
-         
-     -   carbs goal = 200
-
-     - New daily food calorie and macronutrient goals are logged into the designated Google worksheet: Goal.
-
-3 - Review Your Daily Goal's Analysis  
-
-  - Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor a
-   
-  - The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32
-
-     i.e,. this is the percentage calculation: 
-
-      -   Protein: (34 / 100) * 100 = 34%
-      -   Fat: (4 / 70) * 100 = 5.71%                 
-      -   Carbs: (45 / 200) * 100 = 22.5%
-
-  - These calculations help create a logical nutrition plan, whether it’s for weight loss, muscle gain, or maintaining a healthy diet. Calorie Mind is not merely about weight loss.
-
-
-4 - Calculate Weekly Totals
-
-  - Track your weekly progress by calculating the total calories, protein, and fat consumed over the last seven days.
-
-  - The gspread library retrieves the last 7 entries from Google Sheet for a weekly data analysis. Each entry is recorded with a timestamp, which is used to identify and access the relevant data from the "Week Total" sheet. This functionality enables the accurate calculation of the weekly totals, providing a clear overview of weekly progress. 
-
-  -  Weekly totals are displayed on the console.
-
-  -  Weekly totals are logged into the designated Google worksheet: Week Total.
-
-5 - q for Quit
-
-  - Quit the program at any time by selecting' q'. The program exits.
-    A message is printed to the console: "Great job! You've successfully logged all your calories for the day!"    
-
+  - Backend: Python 3.13, Django 4.2
+  - Frontend: HTML, CSS (Bootstrap 5), JavaScript
+  - Database: PostgreSQL 
+  - Tools: Git, GitHub, Heroku, VS Code
+  - Testing: Flake8 and and Black to adhere to PEP 8 standards.
  
- ### Additional notes: 
+ ### Original Custom Models:
 
-  Use of Libraries
-
-  - The gspread library manages API communication with Google Sheets, while google-auth handles authentication to ensure secure access to the spreadsheet data.
-
-  - Google Sheets acts as a lightweight cloud-based database, allowing seamless data storage, updates, and retrieval from designated worksheets.
+  - The project includes two custom models . An Account model and Creator model.
+    - - In the Account model (account/models.py) The CustomUser model is a custom implementation of Django's user authentication system. It replaces the default user model and is responsible for managing authentication and user attributes.
+    - - The Article model represents content created by users. Each article belongs to a specific user and may include optional event-related content, which can be rendered below the article upon creation.
  
-   
-   ![Daily Entries worksheet](https://github.com/IsaHu-dev/Calorie-Mind/blob/main/media/entries.png)
+
+   ![Daily Entries worksheet](https://)
     Entries Worksheet
 
-   ![Daily Goals worksheet](https://github.com/IsaHu-dev/Calorie-Mind/blob/main/media/goals.png)
-    Goals Worksheet
-
-   ![Weekly Totals worksheet](https://github.com/IsaHu-dev/Calorie-Mind/blob/main/media/weeklytotals.png)    
-    Weekly Totals Worksheet
 
 ### Google Sheets Link
 
