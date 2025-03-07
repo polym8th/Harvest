@@ -6,8 +6,9 @@
 <head>
   <title>HARVEST</title>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="stylesheet" href="https://bootswatch.com/5/lux/bootstrap.min.css"> <!-- Bootswatch Lux Theme -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   <style>
     .lowercase-link {
       text-transform: lowercase;
@@ -17,20 +18,28 @@
 
 <body>
   <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg navbar-light bg-light justify-content-center">
-    <a class="navbar-brand main-heading" href="#">
-      <img src="{% static 'logo/harvest_local_bw.png' %}" alt="Harvest" width="220">
-    </a>
-
-    <div class="collapse navbar-collapse text-center" id="navbarNavDropdown">
-      <ul class="navbar-nav ms-auto">
-        <li class="nav-item">
-          <a class="btn btn-secondary" href="{% url 'register' %}">Register</a>
-        </li>
-        <li class="nav-item">
-          <a class="btn btn-primary" href="{% url 'my-login' %}">Login</a>
-        </li>
-      </ul>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand main-heading" href="#">
+        <img src="{% static 'logo/harvest_local_bw.png' %}" alt="Harvest" width="220">
+      </a>
+      
+      <!-- Hamburger Menu Button -->
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" 
+        aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      
+      <div class="collapse navbar-collapse text-center" id="navbarNavDropdown">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="btn btn-secondary" href="{% url 'register' %}">Register</a>
+          </li>
+          <li class="nav-item">
+            <a class="btn btn-primary" href="{% url 'my-login' %}">Login</a>
+          </li>
+        </ul>
+      </div>
     </div>
   </nav>
 
@@ -44,9 +53,9 @@
       <i class="fa fa-angle-right" aria-hidden="true"></i>&nbsp;See what's happening near you!
     </a>
   </div>
-<br>
-<br>
-<br>
+  <br>
+  <br>
+  <br>
   <div class="container mt-5">
     <div class="row g-4">
         {% for article in articles %}
@@ -88,14 +97,11 @@
             <p class="text-center">No articles available at the moment. Check back later!</p>
         {% endfor %}
     </div>
-</div>
-
+  </div>
 
   <!-- Footer -->
   <footer class="text-center mt-5 mb-3">
     <p>Harvest 2025 - All rights reserved.</p>
   </footer>
-
 </body>
-
 </html>

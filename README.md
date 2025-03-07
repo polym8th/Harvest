@@ -42,7 +42,10 @@ The development process incorporates deployment strategies and follows Agile met
      - Logout
         - The user can log out of the General Dashboard.    
 
-- Color Palette 
+- UX Design - Color Palette
+
+  The Harvest platform is designed to feel calm, cool, and easy on the eyes. The colors I’ve chosen are soft and muted, creating a modern and relaxing look. Instead of overwhelming users with bright colors, I let the article images and content, button styling stand out, letting the user enjoy their user experience.
+
    ![Image of Console](https://github.com/IsaHu-dev/Harvest/blob/main/media/readme/colorpalette.png)
    
 

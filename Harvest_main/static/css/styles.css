@@ -97,3 +97,6 @@ form p:last-of-type {
   overflow-wrap: break-word; /* Alternative for better browser support */
   white-space: normal; /* Allows text to wrap */
 }
+.lowercase-link {
+  text-transform: lowercase;
+}

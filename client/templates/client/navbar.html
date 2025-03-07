@@ -1,61 +1,51 @@
-
 {% load static %}
 
 <!DOCTYPE html>
-
 <html lang="en">
+    <head>
+        <title> HARVEST </title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="https://bootswatch.com/5/lux/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+    </head>
+    <body>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light  ">
+            <div class="container">
+                <a class="navbar-brand" href="#">
+                    <img src="{% static 'logo/harvest_local_bw.png'%}" alt="Harvest" width="220" class="img-fluid">
+                </a>
+                
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" 
+                        aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
 
-<head>
-  <title>HARVEST - Hello there</title>
-  <link rel="stylesheet" type="text/css" href="https://bootswatch.com/5/lux/bootstrap.min.css">
-  <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
-  <style>
+                <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
+                    <ul class="navbar-nav gap-2">
+                        <li class="nav-item">
 
-    .nav-item a::after,
-    .nav-item a::before {
-      content: none;
-    }
-  </style>
-</head>
-
-<body>
-  <nav class="navbar navbar-expand-lg navbar-light bg-light justify-content-center">
-    <a class="navbar-brand main-heading" href="#">
-      <img src="{% static 'logo/harvest_local_bw.png' %}" alt="Harvest" width="220">
-    </a>
-
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
-      aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse text-center" id="navbarNavDropdown">
-      <ul class="navbar-nav ml-auto">
-
-        <li class="nav-item">
-          <a class="btn btn-outline-primary" href="{% url 'client-dashboard' %}">Dashboard</button></a>
+          <a class="btn btn-outline-primary" href="{% url 'client-dashboard' %}">Dashboard</a>
         </li>
-
         <li class="nav-item">
-          <a class="btn btn-outline-primary" href="{% url 'regular-articles' %}">View Articles</button></a>
+          <a class="btn btn-outline-primary" href="{% url 'regular-articles' %}">View Articles</a>
         </li>
-
         <li class="nav-item">
-          <a class="btn btn-outline-primary" href="{% url 'manage-account-client' %}">Manage Account</button></a>
+          <a class="btn btn-outline-primary" href="{% url 'manage-account-client' %}">Manage Account</a>
         </li>
-        
         <li class="nav-item">
-          <a class="btn btn-secondary" href="{% url 'logout' %}">Logout</button></a>
+          <a class="btn btn-secondary" href="{% url 'logout' %}">Logout</a>
         </li>
-
-
-
       </ul>
     </div>
   </nav>
 
   {% block content %}
   {% endblock %}
-</body>
 
+  
+  <!-- Bootstrap JS Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
 </html>
