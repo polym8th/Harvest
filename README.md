@@ -104,11 +104,16 @@ Acceptance criteria:
  
  ### Original Custom Data Models:
 
-  The project includes two custom models . An Account model and Creator model.
-    -  In the Account model (account/models.py) The CustomUser model is a custom implementation of Django's user authentication system. It replaces the default user model and is responsible for managing authentication and user attributes.
-    -  The Article model represents content created by the user. Each article belongs to a specific user and may include optional event details (time, date, venue and address), which can be rendered below the article, upon creation.
- 						
+- **Account Model (`account/models.py`)**
+  - The `CustomUser` model is a custom implementation of Django's user authentication system.
+  - It replaces the default user model and manages authentication and user attributes.
 
+- **Article Model** (`creator/models.py`)**
+  - Represents content created by the user.
+  - Each article belongs to a specific user.
+  - May include optional event details (time, date, venue, and address).
+  - Event details can be rendered below the article upon creation.
+	
 ## Deployment
 
   The application was deployed with Heroku. The following preparatory steps are as follows:
@@ -134,7 +139,7 @@ Acceptance criteria:
       -  Select manual deployment
       -  In the Manual Deploys section, select a branch and click Deploy Branch.
   8.  Access the Live Application.
-      -  Once the deployment is complete, the live application can be accessed at <a href="https://harvest-main-55fca7957f91.herokuapp.com/" target="_blank">Harvest App</a>
+      -  Once the deployment is complete an app link is generated. The live application can be accessed at <a href="https://harvest-main-55fca7957f91.herokuapp.com/" target="_blank">Harvest App</a>
   
 
 ## Flowchart
@@ -147,26 +152,14 @@ Acceptance criteria:
 
 | Test Case                         | Expected Result                                                                     | Test Result |
 |-----------------------------------|-----------------------------------------------------------------------              |-------------|
-| Run program                       | Click run program.  The app will appear with a multiple choice selection.           | ✅ PASS          |
-| Prompt user input                 | Prompt user to enter a food item.                                                   | ✅ PASS          |
-| Prompt user input                 | Prompt user to select if they know the macronutrient values. Select n (no) or y (yes).    | ✅ PASS          |
-| User input 'y' (y)                | Prompt user to enter their protein, fat and carbs.                                  | ✅ PASS          |
-| User input 'n' (no)               | Retrieve API from Calorie Ninjas.                                                   | ✅ PASS          |
-| Outputs results to console        | Outputs daily nutrients result to console.                                          | ✅ PASS          |
-| Daily nutrients appends worksheet | User inputs daily nutrients, which are appended to the 'Entries' worksheet.         | ✅ PASS          |
-| Handles invalid input data        | If the API does not recognize a food item, the app displays the message: 'Food item not recognized'.                                                                                                                                       | ✅ PASS          |
-| Select option 2                   | Prompt user to input your daily target goals for Protein, Fat, and Carbs.                | ✅ PASS          |
-| No user input detected            | The console will display a message "No entry has been made yet"                     | ✅ PASS          |
-| Handles invalid input data        | Prompt the user to input a nutrient value, validate it as a non-negative integer (round number).                         | ✅ PASS  
-| Daily goals appends to worksheet  | Default goals added to worksheet if there are no new daily goal entries (option 2). | ✅ PASS          |
-| Daily goals appends to worksheet  | User inputs new goals, which are appended to the 'Goal' worksheet.                  | ✅ PASS          |
-| Select option 3                   | The console will display a percentage calculation showing how much of your daily goals have been met based on food entries.                                                                                                                  | ✅ PASS          |
-| Select option 4                   | Calculates weekly totals of calories and macronutrients. Retrieves from Google worksheet and sums up the last 7 entries.    | ✅ PASS          |
-| Outputs results to console        | Outputs weekly totals result to console.                                            | ✅ PASS          |
-| Weekly totals appends to worksheet| User inputs option 4. Weekly totals appends to worksheet 'Week Totals'.             | ✅ PASS          |
-| Handles invalid input data        | Identifies empty or invalid non-numeric entries in Google worksheet columns.        | ✅ PASS          |
-| Select q                          | Select q for quit. Exits mock terminal program.                                     | ✅ PASS          |
-
+| Lorem                             |readable content of a page when looking at its layout. The point of using Lorem I    | ✅ PASS          |
+| Lorem                             | Prompt user to enter a food item.                                                   | ✅ PASS          |
+| Lorem                             | readable content of a page when looking at its layout. The point of using Lorem I   | ✅ PASS          |
+| Lorem                             | readable content of a page when looking at its layout. The point of using Lorem I   | ✅ PASS          |
+| Lorem                             | readable content of a page when looking at its layout. The point of using Lorem I   | ✅ PASS          |
+| Lorem                             | readable content of a page when looking at its layout. The point of using Lorem I   | ✅ PASS          |
+| Lorem                             | readable content of a page when looking at its layout. The point of using Lorem I   | ✅ PASS          |
+| Lorem                             | If the API does not recognize a food item, the app displays the message: 'Food item 
 
    ![Calorie and Macronutrient entries](https://github.com/IsaHu-dev/Calorie-Mind/blob/main/media/usertesting.png)
    
