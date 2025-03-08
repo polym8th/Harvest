@@ -73,8 +73,10 @@ def update_article(request, pk):
     else:
         form = ArticleForm(instance=article)
 
-    return render(request, 'creator/update-article.html', {'UpdateArticleForm': form})
-
+    return render(request, 'creator/update-article.html', {
+        'UpdateArticleForm': form,
+        'article': article  # Pass the article to the template for displaying current image
+    })
 
 @login_required(login_url='my-login')
 def delete_article(request, pk):

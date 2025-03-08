@@ -1,38 +1,64 @@
-
 {% extends 'creator/navbar.html' %}
 
 {% load crispy_forms_tags %}
+{% load static %}
 
 {% block content %}
-
-    <br>
-
-    <div class="container bg-white shadow-md p-5 form-layout">
-
-        <h3> Update article </h3>
-
+    <div class="container col-md-8 col-lg-6 bg-white shadow-md p-5 rounded-3">
+        <h3>Update article</h3>
         <hr>
-
-        <p> As a content creator you can also update your articles accordingly: </p>
-        
+        <p>As a content creator you can update your articles accordingly:</p>
         <br>
-
-        <form method="POST" autocomplete="off">
-
+        <form method="POST" enctype="multipart/form-data" autocomplete="off">
             {% csrf_token %}
-
             {{UpdateArticleForm|crispy}}
 
+            <!-- Current Image Preview -->
+            {% if article.image %}
+            <div class="form-group mb-3">
+                <label>Current Image:</label>
+                <div>
+                    <img src="{{ article.image.url }}" alt="Current article image" style="max-width: 200px; margin-top: 10px;">
+                </div>
+            </div>
+            {% endif %}
+
+            <!-- Image Uploader -->
+            <div class="form-group">
+                <label for="id_image">Update Image</label>
+                <div id="drop-area">
+                    <p><strong>Upload a file</strong> or drag and drop</p>
+                    <p>PNG, JPG, GIF up to 10MB</p>
+                    <input type="file" id="id_image" name="image" accept="image/*" style="display: none;">
+                    <button type="button" onclick="document.getElementById('id_image').click();" class="btn btn-outline-primary">Browse Files</button>
+                    <div id="preview"></div>
+                </div>
+            </div>
+
             <br>
-
             <input class="btn btn-success w-100" type="submit" value="Update article"/>
-
         </form>
-
     </div>
 
-    <br>
-
+    <script>
+        // Preview image before upload
+        document.getElementById('id_image').addEventListener('change', function(e) {
+            const preview = document.getElementById('preview');
+            preview.innerHTML = '';
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const img = document.createElement('img');
+                    img.src = e.target.result;
+                    img.style.maxWidth = '200px';
+                    img.style.marginTop = '10px';
+                    preview.appendChild(img);
+                }
+                reader.readAsDataURL(file);
+            }
+        });
+    </script>
 {% endblock %}
 
 

@@ -69,11 +69,7 @@
     </div>
 </div>
 
-<script>
-    document.getElementById('is_event_related').addEventListener('change', function() {
-        const eventFields = document.getElementById('event-fields');
-        eventFields.style.display = this.checked ? 'block' : 'none';
-    });
-</script>
+<script src="{% static 'js/event_toggle.js' %}"></script>
+<script src="{% static 'js/image-upload.js' %}"></script>
 
 {% endblock %}

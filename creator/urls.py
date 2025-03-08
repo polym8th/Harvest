@@ -1,6 +1,6 @@
 from django.urls import path
 from django.conf import settings
-from django.conf.urls.static import static  # ✅ Import static
+from django.conf.urls.static import static 
 
 from . import views
 
@@ -17,4 +17,6 @@ urlpatterns = [
     path('article/<str:pk>/', views.article_detail, name="article-detail"),
     path('delete-account/', views.delete_account, name="delete-account"),
     path('article-guest/<str:pk>/', views.article_guest, name="article-guest"),
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+]
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
