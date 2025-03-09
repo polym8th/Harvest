@@ -6,9 +6,8 @@
 {% block content %}
 <div class="container col-md-8 col-lg-6 bg-white shadow-md p-5 rounded-3">
     <div class="row justify-content-center">
-        <h3>Create an article</h3>
+        <h3 class="header">Create an article</h3>
         <hr>
-        <p>As a content creator, you can post the article as premium or standard below:</p>
         <br>
         <form method="POST" enctype="multipart/form-data" autocomplete="off">
             {% csrf_token %}

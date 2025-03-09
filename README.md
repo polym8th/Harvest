@@ -161,12 +161,20 @@ Acceptance criteria:
 | Lorem                             | readable content of a page when looking at its layout. The point of using Lorem I   | ✅ PASS          |
 | Lorem                             | If the API does not recognize a food item, the app displays the message: 'Food item 
 
-   ![Calorie and Macronutrient entries](https://github.com/IsaHu-dev/Calorie-Mind/blob/main/media/usertesting.png)
    
 ## Bugs/Updates after Testing
 
 - Indentation Fixes: Corrected indentation issues.
-
+- A fix on the image uploader in the published section "Update Article" could not re-upload new images. 
+  - update-article.html: "Added enctype="multipart/form-data" to the form tag (required for file uploads)		
+		return render(request, 'creator/update-article.html', {
+        'UpdateArticleForm': form,
+        'article': article  # Pass the article to the template for displaying current image})". This is presently fixed.		
+  - BUG: Value to long: "DataError at /creator/create-article	
+value too long for type character varying(10)". 
+  - SOLUTION: "class Article(models.Model):title = models.CharField(max_length=255)		
+    evesnt_date = models.CharField(max_length=10)" Increased CharField length to 255. This bug is presently fixed. 	
+		 	
 ## Code Style and Readability
 
 - The code is formatted with the Black Python Formatter to maintain consistent code style and readability.
@@ -178,17 +186,9 @@ Acceptance criteria:
 
 ## Credits 
 
-  - The python code for the app Calorie Mind was refactored to adopt an object-oriented approach. I sourced this youtube tutorial and used it as a rough guide: https://www.youtube.com/watch?v=0-LDsQpKYFU
-
   - [Real Python](https://realpython.com/.com/)
   - [Stack Overflow](https://stackoverflow.com/questions/10004850/python-classes-and-oop-basics)
   - [w3schools - Python](https://www.w3schools.com/python/ref_string_isdigit.asp)
-
- ## Code Attribution
-
-  - There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of 
-
-  ![Code Attribution](####)
 
   ## Acknowledgements
  
