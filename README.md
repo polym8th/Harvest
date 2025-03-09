@@ -166,14 +166,45 @@ Acceptance criteria:
 
 - Indentation Fixes: Corrected indentation issues.
 - A fix on the image uploader in the published section "Update Article" could not re-upload new images. 
-  - update-article.html: "Added enctype="multipart/form-data" to the form tag (required for file uploads)		
-		return render(request, 'creator/update-article.html', {
-        'UpdateArticleForm': form,
-        'article': article  # Pass the article to the template for displaying current image})". This is presently fixed.		
-  - BUG: Value to long: "DataError at /creator/create-article	
-value too long for type character varying(10)". 
-  - SOLUTION: "class Article(models.Model):title = models.CharField(max_length=255)		
-    evesnt_date = models.CharField(max_length=10)" Increased CharField length to 255. This bug is presently fixed. 	
+  - Update: `update-article.html`
+
+Changes Made:
+
+1. **Form Update:**
+   - Added `enctype="multipart/form-data"` to the `<form>` tag (required for file uploads).
+
+   ```html
+   <form method="POST" enctype="multipart/form-data">
+   ```
+
+2. **View Update:**
+   - Updated the `render` function to pass the `article` object to the template, ensuring the current image is displayed.
+
+   ```python
+   return render(request, 'creator/update-article.html', {
+       'UpdateArticleForm': form,
+       'article': article  # Pass the article to the template for displaying current image
+   })
+   ```
+	
+---
+
+Bug Fix: `Value Too Long` Error
+
+Issue:
+- **BUG:** `DataError at /creator/create-article` – Value too long for type character varying(10).
+
+Solution:
+- Increased the `CharField` length for the `title` field from 10 to 255 characters.
+
+  ```python
+  class Article(models.Model):
+      title = models.CharField(max_length=255)  # Increased max_length to 255
+      event_date = models.CharField(max_length=10)
+  ```
+
+- **Status:** Bug fixed.
+
 		 	
 ## Code Style and Readability
 
