@@ -10,7 +10,7 @@
 Harvest is designed for people of all ages who are passionate about exploring and sharing cultural experiences in the local area of Brighton. This project was developed as a Full Stack web application, utilizing Python, Django, HTML, CSS, and JavaScript to ensure scalability and maintainability. 
 The development process incorporates deployment strategies and follows Agile methodologies to enhance the web application's stability and performance.
 
- # Features
+### Features
 
 - Index page
     -  The site visitor can read free articles from the front page, to sample the articles before registering to the Harvest Platform.
@@ -22,21 +22,21 @@ The development process incorporates deployment strategies and follows Agile met
 - Creator Dashboard
     - Here you can create article, view published articles, manage your account and logout.
     - In the navigation menu 
-    - - Dashboard - the user arrives at the front page of the dashboard.
-    - - Create article - allows creator (users) to create and publish and article. They can add the title and content.
-    - - Upload Image - Image png, jpegs and webp can be uploaded to be displayed in the article above the text.
-    - - Published - Allows creator (users) to see the article that has been published.  In addition, they can update and delete articles from the published page. The article is identified to the user who created it, so they have access privileges to delete the article they created only. A Superuser can delete and update all articles. 
-    - - Manage account 
+    -  Dashboard - the user arrives at the front page of the dashboard.
+    -  Create article - allows creator (users) to create and publish and article. They can add the title and content.
+    -  Upload Image - Image png, jpegs and webp can be uploaded to be displayed in the article above the text.
+    -  Published - Allows creator (users) to see the article that has been published.  In addition, they can update and delete articles from the published page. The article is identified to the user who created it, so they have access privileges to delete the article they created only. A Superuser can delete and update all articles. 
+    -  Manage account 
         - Users can update their account details; First Name, Last Name and Email.
         - Users can delete their account / cancel their subscription.  
-    - - Logout
+    -  Logout
         - The creator (user) can log out of the Creator Dashboard.
 
 - General User Dashboard
     - In the navigation menu
-    - - Dashboard - the user arrives at the front page of the dashboard.
-    - - View article - allows registered users to view published articles.
-    - - Manage account 
+    -  Dashboard - the user arrives at the front page of the dashboard.
+    -  View article - allows registered users to view published articles.
+    -  Manage account 
         - Users can update their account details; first name, last name and email.
         - Users can delete their account/cancel their subscription.  
      - Logout
@@ -70,9 +70,9 @@ The development process incorporates deployment strategies and follows Agile met
   - User Stories & Acceptance Criteria - Each feature was decomposed into User Stories with clearly defined Acceptance Criteria, maintaining the main objectives and usability.
   - Task Prioritization:  Issues were categorized using labels to establish development priorities; such as Must-Have, User Story or Implementing a new user authentication system.
   - Kanban Workflow - A three-stage Kanban board was utilized for task management: 
-    - - To Do – Newly created tasks pending development. 
-    - - In Progress – Tasks actively being developed. 
-    - - Done – Completed and verified tasks, ready for deployment.
+    -  To Do – Newly created tasks pending development. 
+    -  In Progress – Tasks actively being developed. 
+    -  Done – Completed and verified tasks, ready for deployment.
 
 #### User Stories
    The following sections outline user stories and their acceptance criterias. These demonstrate how the application fulfills user requirements and delivers front-end CRUD functionality.
