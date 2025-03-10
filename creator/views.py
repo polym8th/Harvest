@@ -50,7 +50,7 @@ def create_article_success(request):
 
 def article_guest(request, pk):
     article = get_object_or_404(Article, id=pk)
-    return render(request, 'creator/article-guest.html', {'article': article})
+    return render(request, 'account/article-guest.html', {'article': article})
 
 @login_required(login_url='my-login')
 def published(request):
