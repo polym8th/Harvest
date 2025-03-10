@@ -44,26 +44,25 @@ The development process incorporates deployment strategies and follows Agile met
 
 ### UX WireFrames
   
-   INDEX PAGE
+   Index Page
 
-  ![Index Page](https://github.com/IsaHu-dev/Harvest/blob/main/media/readme/wireframe/indexpage_rm.png)
+  ![Index Page](https://github.com/IsaHu-dev/Harvest/blob/main/media/readme/wireframes/indexpage_rm.png)
 
   Registration Page
 
-  ![Register Page](https://github.com/IsaHu-dev/Harvest/blob/main/media/readme/wireframe/register_rm.png)
-
+  ![Register Page](https://github.com/IsaHu-dev/Harvest/blob/main/media/readme/wireframes/register_rm.png)
 
   User (General) Dashboard
   
-  ![User Dashboard](https://github.com/IsaHu-dev/Harvest/blob/main/media/readme/wireframe/generaluser_rm.png)
+  ![User Dashboard](https://github.com/IsaHu-dev/Harvest/blob/main/media/readme/wireframes/generaluser_rm.png)
 
   Creator Dashboard - Create Article Page 
 
-  ![Creator Dashboard](https://github.com/IsaHu-dev/Harvest/blob/main/media/readme/wireframe/generaluser_rm.png)
+  ![Creator Dashboard](https://github.com/IsaHu-dev/Harvest/blob/main/media/readme/wireframes/generaluser_rm.png)
 
   Creator Dashboard - Published Articles Page
 
-  ![Creator Dashboard](https://github.com/IsaHu-dev/Harvest/blob/main/media/readme/wireframe/publishedarticles_rm.png)
+  ![Creator Dashboard](https://github.com/IsaHu-dev/Harvest/blob/main/media/readme/wireframes/publishedarticles_rm.png)
 
 ## Agile Framework and Project Management
 
