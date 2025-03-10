@@ -42,26 +42,28 @@
 
                             {% else %}
                                 <!-- Client Dashboard Menu (unchanged) -->
-                                {% if request.user.is_authenticated %}
-                                    <li class="nav-item">
-                                        <a class="btn btn-outline-primary" href="{% url 'client-dashboard' %}">Dashboard</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="btn btn-outline-primary" href="{% url 'regular-articles' %}">View Articles</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="btn btn-outline-primary" href="{% url 'manage-account-client' %}">Manage Account</a>
-                                    </li>
-                                {% endif %}
+                                <li class="nav-item">
+                                    <a class="btn btn-outline-primary" href="{% url 'client-dashboard' %}">Dashboard</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="btn btn-outline-primary" href="{% url 'regular-articles' %}">View Articles</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="btn btn-outline-primary" href="{% url 'manage-account-client' %}">Manage Account</a>
+                                </li>
                             {% endif %}
-
                         {% endif %}
 
                         {% if request.user.is_authenticated %}
+                            <!-- Show logout when user is logged in -->
                             <li class="nav-item">
                                 <a class="btn btn-secondary" href="{% url 'my-logout' %}">Logout</a>
                             </li>
                         {% else %}
+                            <!-- Show login & register only when user is NOT logged in -->
+                            <li class="nav-item">
+                                <a class="btn btn-outline-primary" href="{% url 'register' %}">Register</a>
+                            </li>
                             <li class="nav-item">
                                 <a class="btn btn-outline-primary" href="{% url 'my-login' %}">Login</a>
                             </li>

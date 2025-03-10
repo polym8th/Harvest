@@ -100,7 +100,21 @@ AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
+]    
+# Keep users logged in indefinitely until they log out
+SESSION_ENGINE = "django.contrib.sessions.backends.db"
+SESSION_COOKIE_AGE = 31536000  # 1 year in seconds
+SESSION_EXPIRE_AT_BROWSER_CLOSE = False
+SESSION_SAVE_EVERY_REQUEST = True
+
+# Remember Me functionality
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',  # Default authentication
 ]
+
+# Optional: Enable 'Remember Me' functionality if using a login form
+SESSION_COOKIE_SECURE = False  # Set to True if using HTTPS
+     
 
 AUTH_USER_MODEL = 'account.CustomUser'
 
