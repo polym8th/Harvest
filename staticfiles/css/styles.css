@@ -1,6 +1,6 @@
 /* General body styles */
 body {
-  background-color: #e9fcf8;
+  background-color: #e1eeeb;
   overflow-x: hidden;
 }
 
@@ -92,4 +92,11 @@ form p:last-of-type {
 .success-message span {
   font-weight: bold;
 }
-
+.text-wrap {
+  word-wrap: break-word; /* Ensures words break */
+  overflow-wrap: break-word; /* Alternative for better browser support */
+  white-space: normal; /* Allows text to wrap */
+}
+.lowercase-link {
+  text-transform: lowercase;
+}

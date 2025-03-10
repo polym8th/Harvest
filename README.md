@@ -131,14 +131,29 @@ Acceptance criteria:
       -  Database_URL
       -  DJANGO_SECRET_KEY
     - Add the Heroku/Python buildpack.
-  6. Connect to GitHub Repository.
+  6.  Install Whitenoise for Heroku to serve static files / images on Heroku.
+      - Setting Up Whitenoise for Static Files in Heroku
+
+    - pip install whitenoise
+
+    Add to settings.py: 
+
+    MIDDLEWARE = [
+         "whitenoise.middleware.WhiteNoiseMiddleware",
+    ]
+
+    STATIC_URL = "/static/"
+    STATIC_ROOT = BASE_DIR / "staticfiles"  # Heroku serves from this folder
+    STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+
+  7. Connect to GitHub Repository.
       -  In the Deploy tab, under Deployment Method, select GitHub.
       -  Follow the steps to authorize and connect your GitHub account.
       -  Search for the repository and click Connect.
-  7.  Deploy the Application.   
+  8.  Deploy the Application.   
       -  Select manual deployment
       -  In the Manual Deploys section, select a branch and click Deploy Branch.
-  8.  Access the Live Application.
+  9.  Access the Live Application.
       -  Once the deployment is complete an app link is generated. The live application can be accessed at <a href="https://harvest-main-55fca7957f91.herokuapp.com/" target="_blank">Harvest App</a>
   
 

@@ -77,7 +77,8 @@ def update_article(request, pk):
         'UpdateArticleForm': form,
         'article': article  # Pass the article to the template for displaying current image
     })
-
+    print(request.POST)  # Debugging: Check incoming data
+    print(request.FILES)  # Debugging: Check uploaded files
 @login_required(login_url='my-login')
 def delete_article(request, pk):
     article = get_object_or_404(Article, id=pk)

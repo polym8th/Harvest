@@ -27,7 +27,7 @@
             <div class="form-group">
                 <label for="id_image">Update Image</label>
                 <div id="drop-area">
-                    <p><strong>Upload a file</strong> or drag and drop</p>
+                    <p><strong>Upload a file</strong></p>
                     <p>PNG, JPG, GIF up to 10MB</p>
                     <input type="file" id="id_image" name="image" accept="image/*" style="display: none;">
                     <button type="button" onclick="document.getElementById('id_image').click();" class="btn btn-outline-primary">Browse Files</button>
@@ -39,6 +39,16 @@
             <input class="btn btn-success w-100" type="submit" value="Update article"/>
         </form>
     </div>
+    {% if UpdateArticleForm.errors %}
+    <div class="alert alert-danger">
+        <strong>Form Errors:</strong>
+        <ul>
+            {% for field, errors in UpdateArticleForm.errors.items %}
+                <li>{{ field }}: {{ errors }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+{% endif %}
 
     <script src="{% static 'js/image-upload.js' %}"></script>
 {% endblock %}

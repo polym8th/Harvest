@@ -1,6 +1,8 @@
 from pathlib import Path
 import os
 import dj_database_url
+import cloudinary
+
 if os.path.isfile('env.py'):
     import env
 
