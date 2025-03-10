@@ -1,0 +1,10 @@
+{% extends 'creator/navbar.html' %}
+
+{% block content %}
+<div class="container col-md-8 col-lg-6 bg-white shadow-md p-5 rounded-3 text-center header">
+    <h3 class="header text-success">Well Done!</h3>
+    <hr>
+    <p>Your article has been created successfully.</p>
+    <a href="{% url 'create-article' %}" class="btn btn-outline-warning">Create Another Article</a>
+</div>
+{% endblock %}

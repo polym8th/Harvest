@@ -9,12 +9,10 @@ def index(request):
     teaser_articles = Article.objects.filter(article_teaser=True, is_published=True)
     return render(request, 'accounts/index.html', {'teaser_articles': teaser_articles})
 
-
 @login_required(login_url='my-login')
 def creator_dashboard(request):
     user_articles = Article.objects.filter(user=request.user)
     return render(request, 'creator/creator-dashboard.html', {'articles': user_articles})
-
 
 @login_required(login_url='my-login')
 def create_article(request):
@@ -35,13 +33,15 @@ def create_article(request):
                 article.event_postcode = request.POST.get('event_postcode')
             
             article.save()
-            messages.success(request, 'Your article has been created successfully!')
-            return redirect('published')
+            return redirect('create-article-success')  # Redirect to the new success page
     else:
         form = ArticleForm()
 
     return render(request, 'creator/create-article.html', {'CreateArticleForm': form})
 
+@login_required(login_url='my-login')
+def create_article_success(request):
+    return render(request, 'creator/create-article-success.html')
 
 def article_guest(request, pk):
     article = get_object_or_404(Article, id=pk)
@@ -56,7 +56,6 @@ def published(request):
         'Events': events
     })
 
-
 @login_required(login_url='my-login')
 def update_article(request, pk):
     article = get_object_or_404(Article, id=pk)
@@ -68,7 +67,7 @@ def update_article(request, pk):
         form = ArticleForm(request.POST, request.FILES, instance=article)
         if form.is_valid():
             form.save()
-            messages.success(request, 'Your article has been updated successfully!')
+            messages.success(request, 'Your article has been updated successfully!', extra_tags='update')
             return redirect('update-success')
     else:
         form = ArticleForm(instance=article)
@@ -77,8 +76,7 @@ def update_article(request, pk):
         'UpdateArticleForm': form,
         'article': article  # Pass the article to the template for displaying current image
     })
-    print(request.POST)  # Debugging: Check incoming data
-    print(request.FILES)  # Debugging: Check uploaded files
+
 @login_required(login_url='my-login')
 def delete_article(request, pk):
     article = get_object_or_404(Article, id=pk)
@@ -92,7 +90,6 @@ def delete_article(request, pk):
         return redirect('delete-success')
 
     return render(request, 'creator/delete-article.html', {'article': article})
-
 
 @login_required(login_url='my-login')
 def manage_account(request):
@@ -110,7 +107,6 @@ def manage_account(request):
 @login_required(login_url='my-login')
 def delete_success(request):
     return render(request, 'creator/delete-success.html')
-
 
 @login_required(login_url='my-login')
 def update_success(request):

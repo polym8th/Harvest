@@ -9,6 +9,18 @@
         <h3 class="header">Create an article</h3>
         <hr>
         <br>
+
+        <!-- Success Message Display -->
+        {% if messages %}
+            {% for message in messages %}
+                {% if 'success' in message.tags %}  <!-- Updated to match the tag in views.py -->
+                    <div class="alert alert-success" role="alert">
+                        {{ message }}
+                    </div>
+                {% endif %}
+            {% endfor %}
+        {% endif %}
+
         <form method="POST" enctype="multipart/form-data" autocomplete="off">
             {% csrf_token %}
             {{ CreateArticleForm|crispy }}
