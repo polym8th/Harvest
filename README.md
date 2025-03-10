@@ -42,6 +42,29 @@ The development process incorporates deployment strategies and follows Agile met
      - Logout
         - The user can log out of the General Dashboard.    
 
+### UX WireFrames
+  
+   INDEX PAGE
+
+  ![Index Page](https://github.com/IsaHu-dev/Harvest/blob/main/media/readme/wireframe/indexpage_rm.png)
+
+  Registration Page
+
+  ![Register Page](https://github.com/IsaHu-dev/Harvest/blob/main/media/readme/wireframe/register_rm.png)
+
+
+  User (General) Dashboard
+  
+  ![User Dashboard](https://github.com/IsaHu-dev/Harvest/blob/main/media/readme/wireframe/generaluser_rm.png)
+
+  Creator Dashboard - Create Article Page 
+
+  ![Creator Dashboard](https://github.com/IsaHu-dev/Harvest/blob/main/media/readme/wireframe/generaluser_rm.png)
+
+  Creator Dashboard - Published Articles Page
+
+  ![Creator Dashboard](https://github.com/IsaHu-dev/Harvest/blob/main/media/readme/wireframe/publishedarticles_rm.png)
+
 ## Agile Framework and Project Management
 
   - To keep the project organized, I used an Agile workflow with GitHub Projects and Issues.
@@ -89,9 +112,6 @@ Acceptance criteria:
   This approach ensures a clean and modern aesthetic, enhancing accessibility and making the overall experience more calming for users, conveying the spirit of Brighton and it's relaxed environs,
 
    ![Image of UX Colour Palette](https://github.com/IsaHu-dev/Harvest/blob/main/media/readme/colorpalette.png)
-
-### UX WireFrames
-    
 
 ## Technologies Used
 
