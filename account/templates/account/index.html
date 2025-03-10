@@ -48,13 +48,13 @@
         {% for article in articles %}
             <div class="col-12 col-md-6 d-flex">
                 <div class="card w-100">
-                    <a href="{% url 'published' %}#article-{{ article.id }}">
-                        {% if article.image %}
-                            <img src="{{ article.image.url }}" class="w-100" style="height: 250px; object-fit: cover;" alt="{{ article.title }}">
-                        {% else %}
-                            <img src="{% static 'default.jpg' %}" class="w-100" style="height: 250px; object-fit: cover;" alt="Default Image">
-                        {% endif %}
-                    </a>
+                    
+                    <!-- ✅ Removed the <a> tag wrapping the image -->
+                    {% if article.image %}
+                        <img src="{{ article.image.url }}" class="w-100" style="height: 250px; object-fit: cover;" alt="{{ article.title }}">
+                    {% else %}
+                        <img src="{% static 'default.jpg' %}" class="w-100" style="height: 250px; object-fit: cover;" alt="Default Image">
+                    {% endif %}
 
                     <div class="card-body">
                         {% if article.category %}
