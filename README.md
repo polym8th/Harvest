@@ -109,6 +109,7 @@ Acceptance criteria:
   - It replaces the default user model and manages authentication and user attributes.
 
 - **Article Model** (`creator/models.py`)**
+ The creator app defines an `Article` model, which is therefore a custom model. It has custom fields like `article_teaser`, `is_event_related`, and `event_venue` are tailored for specific functionality.
   - Represents content created by the user.
   - Each article belongs to a specific user.
   - May include optional event details (time, date, venue, and address).

@@ -31,6 +31,11 @@ def create_article(request):
                 article.event_venue = request.POST.get('event_venue')
                 article.event_location = request.POST.get('event_location')
                 article.event_postcode = request.POST.get('event_postcode')
+            # Debug: Print image upload info
+            if 'image' in request.FILES:
+                uploaded_image = request.FILES['image']
+                print(f"✅ Image Uploaded: {uploaded_image.name} | Size: {uploaded_image.size} bytes | Type: {uploaded_image.content_type}")
+    
             
             article.save()
             return redirect('create-article-success')  # Redirect to the new success page
