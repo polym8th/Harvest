@@ -7,7 +7,7 @@
   <title>HARVEST</title>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link rel="stylesheet" href="https://bootswatch.com/5/lux/bootstrap.min.css"> <!-- Bootswatch Lux Theme -->
+  <link rel="stylesheet" href="https://bootswatch.com/5/lux/bootstrap.min.css">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   <style>
     .lowercase-link {
@@ -20,28 +20,20 @@
 
   {% include 'account/navbar.html' %}
 
-  <!-- Hero Section -->
-  <div class="text-center mt-5">
-    <h5 class="header">Discover Harvest... Subscribe to our local cultural hub!</h5>
-    <p class="header">Explore our selection of insights on Brighton's hidden gems in local and surrounding areas.</p>
-    <br>
-    <br>
-
-    {% if request.user.is_authenticated %}
-      <a class="btn btn-success" href="{% url 'client-dashboard' %}">
-        <i class="fa fa-angle-right" aria-hidden="true"></i>&nbsp;Go to Dashboard
-      </a>
-    {% else %}
+  <!-- Hero Section (Hidden for Logged-In Users) -->
+  {% if not request.user.is_authenticated %}
+    <div class="text-center mt-5">
+      <h5 class="header">Discover Harvest... Subscribe to our local cultural hub!</h5>
+      <p class="header">Explore our selection of insights on Brighton's hidden gems in local and surrounding areas.</p>
+      <br>
+      <br>
       <a class="btn btn-success" href="{% url 'register' %}">
         <i class="fa fa-angle-right" aria-hidden="true"></i>&nbsp;See what's happening near you!
       </a>
-    {% endif %}
+    </div>
+    <br><br><br>
+  {% endif %}
 
-  </div>
-
-  <br>
-  <br>
-  <br>
   <div class="container mt-5">
     <div class="row g-4">
         {% for article in articles %}
@@ -55,8 +47,8 @@
                     {% endif %}
 
                     <div class="card-body">
-                        {% if article.category %}
-                            <p class="text-muted text-uppercase mb-1">{{ article.category }}</p>
+                        {% if not request.user.is_authenticated and article.category %}
+                            <p class="text-muted text-uppercase mb-1">{{ article.category }}</p> <!-- Show abridged version for logged-out users -->
                         {% endif %}
 
                         <h5 class="card-title fw-bold">
@@ -66,11 +58,17 @@
                         </h5>
                         <p class="text-muted mb-0">By {{ article.user.first_name }} {{ article.user.last_name }}</p>
 
-                        <p class="mt-2">{{ article.content|truncatewords:30 }}...</p>
+                        {% if request.user.is_authenticated %}
+                            <p class="mt-2">{{ article.article_teaser }}</p> <!-- Show full article for logged-in users -->
+                        {% else %}
+                            <p class="mt-2">{{ article.content|truncatewords:30 }}...</p> <!-- Show abridged version for logged-out users -->
+                        {% endif %}
 
                         <div class="d-flex justify-content-center">
-                            {% if article.article_teaser %}
-                                <a href="{% url 'article-guest' article.id %}" class="btn btn-primary btn-sm">Read Full Article</a>
+                            {% if request.user.is_authenticated %}
+                                <a href="{% url 'article-guest' article.id %}" class="btn btn-outline-secondary">Read Full Article</a>
+                            {% elif article.article_teaser %}
+                                <a href="{% url 'article-guest' article.id %}" class="btn btn-outline-secondary">Read Full Article</a>
                             {% else %}
                                 <a href="{% url 'register' %}" class="btn btn-link">Read More... Subscribe Now</a>
                             {% endif %}

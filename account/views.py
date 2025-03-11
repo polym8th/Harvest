@@ -5,14 +5,12 @@ from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import authenticate, login, logout
 from creator.models import Article 
 
-
-
 def home(request):
-    # Fetch published articles
     if request.user.is_authenticated:
-        articles = Article.objects.filter(is_published=True).order_by('-pub_date')[:10]  # Latest 10 articles
+        # Logged-in users see all published articles
+        articles = Article.objects.filter(is_published=True).order_by('-pub_date')[:10]
     else:
-        # No filtering by `category`, just show latest 5 published articles
+        # Logged-out users see free teaser articles + published articles
         articles = Article.objects.filter(is_published=True).order_by('-pub_date')[:5]
 
     return render(request, 'account/index.html', {'articles': articles})
