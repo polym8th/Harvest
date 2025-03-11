@@ -18,7 +18,6 @@
 
 <body>
 
-  <!-- ✅ Use the Correct Navbar -->
   {% include 'account/navbar.html' %}
 
   <!-- Hero Section -->
@@ -49,7 +48,6 @@
             <div class="col-12 col-md-6 d-flex">
                 <div class="card w-100">
                     
-                    <!-- ✅ Removed the <a> tag wrapping the image -->
                     {% if article.image %}
                         <img src="{{ article.image.url }}" class="w-100" style="height: 250px; object-fit: cover;" alt="{{ article.title }}">
                     {% else %}

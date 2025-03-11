@@ -73,7 +73,7 @@ def update_article(request, pk):
         if form.is_valid():
             form.save()
             messages.success(request, 'Your article has been updated successfully!', extra_tags='update')
-            return redirect('update-success')
+            return redirect('update-article-success')
     else:
         form = ArticleForm(instance=article)
 
@@ -81,6 +81,10 @@ def update_article(request, pk):
         'UpdateArticleForm': form,
         'article': article  # Pass the article to the template for displaying current image
     })
+    
+@login_required(login_url='my-login')
+def update_article_success(request):
+    return render(request, 'creator/update-article-success.html')
 
 @login_required(login_url='my-login')
 def delete_article(request, pk):
@@ -111,16 +115,7 @@ def manage_account(request):
 
 @login_required(login_url='my-login')
 def delete_success(request):
-    return render(request, 'creator/delete-success.html')
-
-@login_required(login_url='my-login')
-def update_success(request):
-    return render(request, 'creator/update-success.html')
-
-@login_required(login_url='my-login')
-def article_detail(request, pk):
-    article = get_object_or_404(Article, id=pk)
-    return render(request, 'creator/article-detail.html', {'article': article})
+    return render(request, 'account/delete-success.html')
 
 @login_required(login_url='my-login')
 def delete_account(request):
@@ -129,7 +124,7 @@ def delete_account(request):
         user.delete()  
         return redirect("delete-account-success")  
 
-    return render(request, 'creator/delete-account.html')
+    return render(request, 'account/delete-account.html')
 
 def delete_account_success(request):
-    return render(request, 'creator/delete-account-success.html')
+    return render(request, 'account/delete-account-success.html')

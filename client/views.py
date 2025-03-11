@@ -41,15 +41,15 @@ def delete_account(request):
         user.delete()  
         return redirect("delete-account-success")  
 
-    return render(request, 'client/delete-account.html')
+    return render(request, 'account/delete-account.html')
 
 def delete_account_success(request):
-    return render(request, 'client/delete-account-success.html')
+    return render(request, 'account/delete-account-success.html')
 
 @login_required(login_url='my-login')
 def delete_success(request):
-    return render(request, 'creator/delete-success.html')
+    return render(request, 'account/delete-success.html')
 
 @login_required(login_url='my-login')
 def update_success(request):
-    return render(request, 'creator/update-success.html')
+    return render(request, 'account/update-success.html')

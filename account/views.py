@@ -9,9 +9,12 @@ from creator.models import Article
 
 def home(request):
     # Fetch published articles
-    articles = Article.objects.filter(is_published=True).order_by('-pub_date')[:5]  # Latest 5 articles
+    if request.user.is_authenticated:
+        articles = Article.objects.filter(is_published=True).order_by('-pub_date')[:10]  # Latest 10 articles
+    else:
+        # No filtering by `category`, just show latest 5 published articles
+        articles = Article.objects.filter(is_published=True).order_by('-pub_date')[:5]
 
-    # Pass articles to the template
     return render(request, 'account/index.html', {'articles': articles})
 
 def register(request):
@@ -59,5 +62,5 @@ def my_login(request):
 
 def user_logout(request):
     logout(request)
-    return redirect('my-login')
+    return redirect('home')  # Redirect to homepage where Register/Login will be shown
 
