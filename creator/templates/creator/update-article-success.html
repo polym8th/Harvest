@@ -10,7 +10,6 @@
 <div class="container d-flex justify-content-center align-items-center vh-100">
     <div class="success-container bg-white shadow-md p-4 col-md-6 col-lg-4 text-center rounded">
         
-        <!-- Display only 'update' tagged messages -->
         {% if messages %}
             {% for message in messages %}
                 {% if 'update' in message.tags %}
@@ -20,11 +19,12 @@
                 {% endif %}
             {% endfor %}
         {% endif %}
-        
-        <!-- Fallback Message if No Tagged Messages Exist -->
-        {% if not messages %}
-            <div class="alert alert-success" role="alert">
-                The article has been updated successfully.
+
+        {% if article.updated_by and article.updated_by != article.user %}
+            <div class="alert alert-info">
+                <strong>Last updated by:</strong> {{ article.updated_by.get_full_name|default:article.updated_by.username }}  
+                <br>
+                <strong>Updated at:</strong> {{ article.updated_at|date:"F d, Y H:i" }}
             </div>
         {% endif %}
         

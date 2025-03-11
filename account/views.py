@@ -60,5 +60,4 @@ def my_login(request):
 
 def user_logout(request):
     logout(request)
-    return redirect('home')  # Redirect to homepage where Register/Login will be shown
-
+    return redirect('home')  

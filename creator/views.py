@@ -4,6 +4,7 @@ from django.core.exceptions import PermissionDenied
 from django.contrib import messages
 from creator.forms import ArticleForm, UpdateUserForm
 from .models import Article
+from django.utils import timezone 
 
 def index(request):
     teaser_articles = Article.objects.filter(article_teaser=True, is_published=True)
@@ -65,21 +66,23 @@ def published(request):
 def update_article(request, pk):
     article = get_object_or_404(Article, id=pk)
 
-    if not (article.user == request.user or request.user.is_superuser or getattr(request.user, 'is_creator', False)):
-        raise PermissionDenied("You do not have permission to update this article.")
-
     if request.method == 'POST':
         form = ArticleForm(request.POST, request.FILES, instance=article)
         if form.is_valid():
-            form.save()
-            messages.success(request, 'Your article has been updated successfully!', extra_tags='update')
+            article = form.save(commit=False)
+
+            article.updated_by = request.user  # Store the user who updated it
+            article.updated_at = timezone.now()  # Store the update time
+
+            article.save()
+            messages.success(request, '✅ Your article has been updated successfully!', extra_tags='update')
             return redirect('update-article-success')
     else:
         form = ArticleForm(instance=article)
 
     return render(request, 'creator/update-article.html', {
         'UpdateArticleForm': form,
-        'article': article  # Pass the article to the template for displaying current image
+        'article': article
     })
     
 @login_required(login_url='my-login')
@@ -90,15 +93,17 @@ def update_article_success(request):
 def delete_article(request, pk):
     article = get_object_or_404(Article, id=pk)
 
-    if not (article.user == request.user or request.user.is_superuser or getattr(request.user, 'is_creator', False)):
-        raise PermissionDenied("You do not have permission to delete this article.")
+    # Allow only superusers to delete any article, while creators can delete their own
+    if not (request.user.is_superuser or (request.user.is_creator and article.user == request.user)):
+        messages.error(request, "❌ You cannot delete this article as you are not the creator of it.")
+        return redirect(request.META.get('HTTP_REFERER', 'creator-dashboard'))  # Redirect to the previous page
 
     if request.method == 'POST':
         article.delete()
-        messages.success(request, 'The article has been deleted successfully.')
+        messages.success(request, '✅ The article has been deleted successfully.')
         return redirect('delete-success')
 
-    return render(request, 'creator/delete-article.html', {'article': article})
+    return render(request, 'creator/delete-success.html', {'article': article})
 
 @login_required(login_url='my-login')
 def manage_account(request):
@@ -115,7 +120,7 @@ def manage_account(request):
 
 @login_required(login_url='my-login')
 def delete_success(request):
-    return render(request, 'account/delete-success.html')
+    return render(request, 'creator/delete-success.html')
 
 @login_required(login_url='my-login')
 def delete_account(request):

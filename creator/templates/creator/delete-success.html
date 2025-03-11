@@ -7,16 +7,23 @@
 </head>
 <body>
 
+<!-- Display Django Messages -->
+{% if messages %}
+    <div class="container mt-3">
+        {% for message in messages %}
+            <div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %} alert-dismissible fade show" role="alert">
+                {{ message }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        {% endfor %}
+    </div>
+{% endif %}
+
 <div class="container d-flex justify-content-center align-items-center vh-100">
     <div class="success-container bg-white shadow-md p-4 col-md-6 col-lg-4 text-center rounded">
-        
-        <!-- Display Delete Success Message -->
-    
-            
-            <div class="alert alert-success" role="alert">
-                The article has been deleted successfully.
- 
-        
+        <div class="alert alert-success" role="alert">
+            ✅ The article has been deleted successfully.
+        </div>
         <a href="{% url 'published' %}" class="btn btn-dark mt-3">Return to Published Articles</a>
     </div>
 </div>
