@@ -107,7 +107,7 @@ def manage_account(request):
             messages.success(request, 'Your account has been updated successfully!')
             return redirect('creator-dashboard')
 
-    return render(request, 'creator/manage-account.html', {'UpdateUserForm': form})
+    return render(request, 'account/manage-account.html', {'UpdateUserForm': form})
 
 @login_required(login_url='my-login')
 def delete_success(request):
