@@ -18,15 +18,25 @@
             {% csrf_token %}
 
             <div class="mb-3">
-                
-                {{ RegisterForm.is_creator|as_crispy_field }}
+                <label class="form-label fw-bold text-uppercase">Are you a content creator?</label>
+                {{ RegisterForm.is_creator }}
             </div>
 
-            {{ RegisterForm.email|as_crispy_field }}
-            {{ RegisterForm.first_name|as_crispy_field }}
-            {{ RegisterForm.last_name|as_crispy_field }}
-            {{ RegisterForm.password1|as_crispy_field }}
-            {{ RegisterForm.password2|as_crispy_field }}
+            <div class="mb-3">
+                {{ RegisterForm.email|as_crispy_field }}
+            </div>
+            <div class="mb-3">
+                {{ RegisterForm.first_name|as_crispy_field }}
+            </div>
+            <div class="mb-3">
+                {{ RegisterForm.last_name|as_crispy_field }}
+            </div>
+            <div class="mb-3">
+                {{ RegisterForm.password1|as_crispy_field }}
+            </div>
+            <div class="mb-3">
+                {{ RegisterForm.password2|as_crispy_field }}
+            </div>
 
             <input class="register-btn" type="submit" value="Submit" />
         </form>
@@ -34,4 +44,3 @@
 </body>
 
 </html>
-
