@@ -63,7 +63,12 @@ body {
   margin-top: 20px;
   margin-bottom: 40px;
 }
-
+.header h1 {
+  margin-top: 20px;
+  margin-bottom: 40px;
+  text-transform: uppercase;
+  font-weight: 700;
+}
 /* Form field spacing */
 form p:last-of-type {
   margin-bottom: 40px;

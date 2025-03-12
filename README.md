@@ -12,35 +12,37 @@ The development process incorporates deployment strategies and follows Agile met
 
 ### Features
 
-- Index page
-    -  The site visitor can read free articles from the front page, to sample the articles before registering to the Harvest Platform.
+- **Index Page**
+    - The site visitor can read articles in full with unrestricted guest access to sample content before registering on the Harvest Platform.
+    - There are articles whereby the content is abridged for registered users only. The visitor can click on the register button to sign up. 
+- **Register Page**
+    - Users must enter their email, first name, last name, and password for registration.
+    - Password validation is implemented to ensure security, integrated with Crispy Forms.
 
-- Register page
-    - An entry for your email, first name, last name and password is included for user registration.
-    - Password validation is utilised to ensure that the password is secure. This is integrated with Crispy forms.
+- **Creator Dashboard**
+    - Creators can create articles, add related events, view published articles, manage their accounts, and log out.
+    - **Navigation Menu:**
+        - **Dashboard** - The user arrives at the front page of the dashboard.
+        - **Create Article** - Allows authenticated users with the 'creator' role to create and publish an article by adding a title and content.
+        - **Add an Event** - Beneath the "Create Article" form, users can add an event related to the article.
+        - **Upload Image** - Supports PNG, JPEG, and WebP formats. The uploaded image will be displayed above the article text.
+        - **Published** - Allows creators to view their published articles. They can update or delete their own articles. 
+            - Articles are identified by the user who created them, giving them exclusive deletion rights.
+            - Superusers can update and delete all articles.
+        - **Manage Account**
+            - Users can update their first name, last name, and email.
+            - Users can delete their account or cancel their subscription.
+        - **Logout** - The creator (user) can log out of the Creator Dashboard.
 
-- Creator Dashboard
-    - Here you can create article, view published articles, manage your account and logout.
-    - In the navigation menu 
-    -  Dashboard - the user arrives at the front page of the dashboard.
-    -  Create article - allows creator (users) to create and publish and article. They can add the title and content.
-    -  Upload Image - Image png, jpegs and webp can be uploaded to be displayed in the article above the text.
-    -  Published - Allows creator (users) to see the article that has been published.  In addition, they can update and delete articles from the published page. The article is identified to the user who created it, so they have access privileges to delete the article they created only. A Superuser can delete and update all articles. 
-    -  Manage account 
-        - Users can update their account details; First Name, Last Name and Email.
-        - Users can delete their account / cancel their subscription.  
-    -  Logout
-        - The creator (user) can log out of the Creator Dashboard.
+- **General User Dashboard**
+    - **Navigation Menu:**
+        - **Dashboard** - The user arrives at the front page of the dashboard.
+        - **View Article** - Allows registered users to view published articles.
+        - **Manage Account**
+            - Users can update their first name, last name, and email.
+            - Users can delete their account or cancel their subscription.
+        - **Logout** - The user can log out of the General Dashboard.
 
-- General User Dashboard
-    - In the navigation menu
-    -  Dashboard - the user arrives at the front page of the dashboard.
-    -  View article - allows registered users to view published articles.
-    -  Manage account 
-        - Users can update their account details; first name, last name and email.
-        - Users can delete their account/cancel their subscription.  
-     - Logout
-        - The user can log out of the General Dashboard.    
 
 ### UX WireFrames
   
@@ -92,23 +94,30 @@ Acceptance criteria:
 - As a registered logged-in user, I want to access exclusive articles.
 
 #### Create an Article
-- Given that I am a Creator (registered user) and declared that I am a creator by checking the box.
+- Given that I am an authenticated user with the Creator role and that I declared that I am a content creator by checking the box.
 - When I provide a title and content.
 - Then I should be able to submit the article successfully, and it should be saved in the system with a date stamp.
 
 #### Delete an Article
-   - **As a Creator (registered user)**, I want to delete my own articles so that I can remove outdated or unnecessary content.
-   - **Given** that I have registered as a content creator user.
-   - **Given** that I am a Creator (registered user) – I have privileges to delete only the articles that I created.
+   - **As an authenticated user with the role of the Creator**, I want to delete my own articles so that I can remove outdated or unnecessary content.
+   - **Given** that I am an authenticated user/ Creator.
+   - **Given** that I am an authenticated user/ Creator – I have privileges to delete only the articles that I created.
 
    -  More User stories to be found directly on Github: 
     For detailed user stories, refer to the **[Harvest User Stories](https://github.com/IsaHu-dev/Harvest/issues)**.
 
-#### UX Design - Color Palette
+#### Update own Articles: 
+   - **Given** that I am an authenticated user with the 'creator' role, I want to update my own articles, so that i can keep my content relevant.
+   - I can Update all articles and keep the content relevant to the theme of Harvest
+   - I have privileges to delete any articles to keep the content relevant and to delete unnecessary content
+   - A date stamp is published under the article
+   - Then my name (as an authenticated user / creator) is displayed under the article as "Updated by: [Creator Name]".
+
+#### UX - Color Palette
 
   The Harvest platform has a calm and modern design with soft, muted colors that are easy on the eyes. Instead of using bright colors, the visual focus is on article images, content, and button styling to create a smooth and relaxing user experience.
 
-  This approach ensures a clean and modern aesthetic, enhancing accessibility and making the overall experience more calming for users, conveying the spirit of Brighton and it's relaxed environs,
+  This approach ensures a clean and modern aesthetic, enhancing accessibility and making the overall experience more calming for users, conveying the spirit of Brighton and it's relaxed environs.
 
    ![Image of UX Colour Palette](https://github.com/IsaHu-dev/Harvest/blob/main/media/readme/colorpalette.png)
 
