@@ -44,6 +44,70 @@ The development process incorporates deployment strategies and follows Agile met
         - **Logout** - The user can log out of the General Dashboard.
 
 
+
+### How to Use the Harvest Site
+
+### 1. Register an Account
+
+To register for an account, follow these steps:
+
+- Click on the **Register** button.
+- If you want to be a contributor to Harvest as a Content Creator, check the box labeled **"Are you a Content Creator"** for access to the Creator Dashboard.
+- Fill in your details:
+  - Name
+  - Email
+  - Password
+- Click **Submit**.
+
+### 2. Register as a General User
+
+If you are **not** a content creator:
+
+- Leave the **"Are you a Content Creator"** box unchecked.
+- Log in with your email and password.
+- You will be redirected to the general user's dashboard, where you can:
+ 
+  - View the dashboard. 
+  - Read articles.
+  - Manage your account.
+
+### 3. Login
+
+To log in:
+
+- Navigate to the **Login** page.
+- Enter your registered email and password.
+- Click **Login** to access the Creator Dashboard.
+
+### 4. Create an Article
+
+To create an article:
+
+- Fill in the **Title**, **Content**, and **Upload an Image**.
+- If the article is related to an event, select **"Is this article related to an event?"**
+  - Enter the **Event Date and Time**.
+  - Provide the **Event Name**.
+  - Enter the **Event Venue**, **Event Address**, and **Event Postcode**.
+
+### 5. Manage Account
+
+To update account details:
+
+- Navigate to **Account Settings** in the Creator Dashboard.
+- Update your:
+  - First Name
+  - Last Name
+  - Email
+- Click **Update Details**.
+
+### 6. Cancel Your Subscription
+
+If you wish to cancel your subscription:
+
+- Navigate to your account settings.
+- Delete your account.
+
+
 ### UX WireFrames
   
    Index Page
@@ -120,6 +184,7 @@ Acceptance criteria:
   This approach ensures a clean and modern aesthetic, enhancing accessibility and making the overall experience more calming for users, conveying the spirit of Brighton and it's relaxed environs.
 
    ![Image of UX Colour Palette](https://github.com/IsaHu-dev/Harvest/blob/main/media/readme/colorpalette.png)
+
 
 ## Technologies Used
 
