@@ -126,7 +126,7 @@ The Harvest wireframes, created in Figma, outline the platform's layout and func
 
   Creator Dashboard - Create Article Page 
 
-  ![Creator Dashboard](https://github.com/IsaHu-dev/Harvest/blob/main/media/readme/wireframes/generaluser_rm.png)
+  ![Creator Dashboard](https://github.com/IsaHu-dev/Harvest/blob/main/media/readme/wireframes/generaluser_dashboard_rm.png)
 
   Creator Dashboard - Published Articles Page
 
@@ -276,13 +276,13 @@ Acceptance criteria:
 
 ### B. Navigation & UI Testing
 
-| Test Case                   | Steps                                      | Expected Result                         | Pass/Fail |
-|-----------------------------|--------------------------------------------|-------------------------------------    |-----------|
-| Landing Page Loads          | Open the home page.                        | Page loads with navigation options.     | ✅ PASS   |
-| Navigation Menu Works       | Click on each menu option.                 | Menu redirects correctly.               | ✅ PASS   |
-| Button Interactivity        | Click on action buttons.                   | Buttons respond / hovers will change color. | ✅ PASS   |
-| Page Load Speed             | Test load time.                            | Page loads within 3 seconds.            | ✅ PASS   |
-| Mobile & Responsive Design  | Open site on mobile/tablet.                | UI adapts to screen size.               | ✅ PASS   |
+| Test Case                   | Steps                                      | Expected Result                            | Pass/Fail |
+|-----------------------------|--------------------------------------------|-------------------------------------       |-----------|
+| Landing Page Loads          | Open the home page.                        | Page loads with navigation options.        | ✅ PASS   |
+| Navigation Menu Works       | Click on each menu option.                 | Menu redirects correctly.                  | ✅ PASS   |
+| Button Interactivity        | Click on action buttons.                   | Buttons respond / hovers will change color.| ✅ PASS   |
+| Page Load Speed             | Test load time.                            | Page loads within 3 seconds.               | ✅ PASS   |
+| Mobile & Responsive Design  | Open site on mobile/tablet.                | UI adapts to screen size.                  | ✅ PASS   |
 
 ---
 
@@ -293,7 +293,7 @@ Acceptance criteria:
 | Access the Dashboard           | Log in as Content Creator.                                  | Dashboard loads successfully.        | ✅ PASS   |
 | Create an Article              | Fill in Title, Content, Upload an Image. Click 'Submit'.    | Article appears in the dashboard.    | ✅ PASS   |
 | Create Article (Invalid)       | Try submitting an article with missing fields.              | Error message is displayed.          | ✅ PASS   |
-| Edit an Article                | Modify an existing article and save changes.                | Changes are updated.                 | ✅ PASS   |
+| Edit /Update an Article        | Modify an existing article and save changes.                | Changes are updated.                 | ✅ PASS   |
 | Delete an Article              | Click 'Delete' on an article.                               | Article is removed.                  | ✅ PASS   |
 | Create an Event                | Enter Event details (name, venue, time, etc.). Click 'Submit'. | Event appears in dashboard.       | ✅ PASS   |
 | Edit an Event                  | Modify /update event details and save changes.              | Changes are updated.                 | ✅ PASS   |
