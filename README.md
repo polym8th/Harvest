@@ -43,8 +43,6 @@ The development process incorporates deployment strategies and follows Agile met
             - Users can delete their account or cancel their subscription.
         - **Logout** - The user can log out of the General Dashboard.
 
-
-
 ### How to Use the Harvest Site
 
 ### 1. Register an Account
@@ -109,6 +107,10 @@ If you wish to cancel your subscription:
 
 
 ### UX WireFrames
+
+The Harvest wireframes, created in Figma, outline the platform's layout and functionality, ensuring a user-friendly experience with intuitive navigation. They illustrate key pages, including the Landing Page, Registration, Login, Creator Dashboard, General User Dashboard, Article/Event Submission, and Account Settings, providing a clear structure for content creation and user interaction. 
+
+- See below a wireframe for each page:
   
    Index Page
 
@@ -141,7 +143,7 @@ If you wish to cancel your subscription:
     -  Done – Completed and verified tasks, ready for deployment.
 
 #### User Stories
-   The following sections outline user stories and their acceptance criterias. These demonstrate how the application fulfills user requirements and delivers front-end CRUD functionality.
+   The following sections outline user stories and their acceptance criterias. These demonstrate how the application fulfils user requirements and delivers front-end CRUD functionality.
 
 #### As a Visitor (Unregistered User)
 Acceptance criteria:
@@ -163,7 +165,7 @@ Acceptance criteria:
 - Then I should be able to submit the article successfully, and it should be saved in the system with a date stamp.
 
 #### Delete an Article
-   - **As an authenticated user with the role of the Creator**, I want to delete my own articles so that I can remove outdated or unnecessary content.
+   -  As an authenticated user with the role of the Creator, I want to delete my own articles so that I can remove outdated or unnecessary content.
    - **Given** that I am an authenticated user/ Creator.
    - **Given** that I am an authenticated user/ Creator – I have privileges to delete only the articles that I created.
 
@@ -259,19 +261,80 @@ Acceptance criteria:
 
 ## Manual Testing
 
-| Test Case                         | Expected Result                                                                     | Test Result |
-|-----------------------------------|-----------------------------------------------------------------------              |-------------|
-| Lorem                             |readable content of a page when looking at its layout. The point of using Lorem I    | ✅ PASS          |
-| Lorem                             | Prompt user to enter a food item.                                                   | ✅ PASS          |
-| Lorem                             | readable content of a page when looking at its layout. The point of using Lorem I   | ✅ PASS          |
-| Lorem                             | readable content of a page when looking at its layout. The point of using Lorem I   | ✅ PASS          |
-| Lorem                             | readable content of a page when looking at its layout. The point of using Lorem I   | ✅ PASS          |
-| Lorem                             | readable content of a page when looking at its layout. The point of using Lorem I   | ✅ PASS          |
-| Lorem                             | readable content of a page when looking at its layout. The point of using Lorem I   | ✅ PASS          |
-| Lorem                             | If the API does not recognize a food item, the app displays the message: 'Food item 
+### A. User Registration & Login
 
-   
-## Bugs/Updates after Testing
+| Test Case                        | Steps                                                                                                                               | Expected Result                                                                  | Pass/Fail |
+| -------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------| --------- |
+| Register as a General User       | 1. Navigate to the Register page.<br>2. Fill in required fields.<br>3. Leave 'Are you a Content Creator' unchecked.<br>4. Click 'Submit'. | User receives a success message and can log in to the User Dashboard.      | ✅ PASS   |
+| Register as a Content Creator    | 1. Navigate to the Register page.<br>2. Fill in required fields.<br>3. Check 'Are you a Content Creator'.<br>4. Click 'Submit'.  | User receives a success message and can log in with access to the Creator Dashboard.| ✅ PASS   |
+| Invalid Registration             | 1. Leave required fields empty.<br>2. Enter an incorrect email format.<br>3. Click 'Submit'.                                     | User is shown an error message.                                                     | ✅ PASS   |
+| Login with Valid Credentials     | 1. Navigate to Login page.<br>2. Enter valid email and password.<br>3. Click 'Login'.                                            | User is redirected to their relevant dashboard                                      | ✅ PASS   |
+| Login with Incorrect Credentials | 1. Navigate to Login page.<br>2. Enter incorrect email or password.<br>3. Click 'Login'.                                         | Error message is displayed.                                                         | ✅ PASS   |
+| Login with Unverified Email      | 1. Try logging in without verifying email.                                                                                       | Error message asking to verify email.                                               | ✅ PASS   |
+
+---
+
+### B. Navigation & UI Testing
+
+| Test Case                   | Steps                                      | Expected Result                         | Pass/Fail |
+|-----------------------------|--------------------------------------------|-------------------------------------    |-----------|
+| Landing Page Loads          | Open the home page.                        | Page loads with navigation options.     | ✅ PASS   |
+| Navigation Menu Works       | Click on each menu option.                 | Menu redirects correctly.               | ✅ PASS   |
+| Button Interactivity        | Click on action buttons.                   | Buttons respond / hovers will change color. | ✅ PASS   |
+| Page Load Speed             | Test load time.                            | Page loads within 3 seconds.            | ✅ PASS   |
+| Mobile & Responsive Design  | Open site on mobile/tablet.                | UI adapts to screen size.               | ✅ PASS   |
+
+---
+
+### C. Content Creation (For Content Creators)
+
+| Test Case                     | Steps                                                        | Expected Result                      | Pass/Fail |
+|--------------------------------|-------------------------------------------------------------|--------------------------------------|-----------|
+| Access the Dashboard           | Log in as Content Creator.                                  | Dashboard loads successfully.        | ✅ PASS   |
+| Create an Article              | Fill in Title, Content, Upload an Image. Click 'Submit'.    | Article appears in the dashboard.    | ✅ PASS   |
+| Create Article (Invalid)       | Try submitting an article with missing fields.              | Error message is displayed.          | ✅ PASS   |
+| Edit an Article                | Modify an existing article and save changes.                | Changes are updated.                 | ✅ PASS   |
+| Delete an Article              | Click 'Delete' on an article.                               | Article is removed.                  | ✅ PASS   |
+| Create an Event                | Enter Event details (name, venue, time, etc.). Click 'Submit'. | Event appears in dashboard.       | ✅ PASS   |
+| Edit an Event                  | Modify /update event details and save changes.              | Changes are updated.                 | ✅ PASS   |
+| Delete an Event                | Click 'Delete' on an event.                                 | Event is removed.                    | ✅ PASS   |
+
+---
+
+### D. General User Actions
+
+| Test Case             | Steps                                       | Expected Result                      | Pass/Fail |
+|-----------------------|---------------------------------------------|--------------------------------------|-----------|
+| View Dashboard        | Log in as a General User.                   | Dashboard loads correctly.           | ✅ PASS   |
+| Browse Articles       | Open and read articles.                     | Articles load correctly.             | ✅ PASS   |
+| Delete an Event       | Click 'Delete' on an event.                 | Event is removed.                    | ✅ PASS   |
+---
+
+### E. Account Management
+
+| Test Case           | Steps                                      | Expected Result                                  | Pass/Fail |
+|---------------------|--------------------------------------------|--------------------------------------------------|-----------|
+| Update Profile      | Navigate to Account Settings.<br>Edit Name, Email. Click 'Save'. | Changes are updated.       | ✅ PASS   |
+| Change Password     | Navigate to Account Settings.<br>Enter new password. Click 'Update'. | Password is changed.   | ✅ PASS   |
+| Cancel Subscription | Navigate to Account Settings.<br>Click 'Cancel Subscription'.  | Subscription is ended.       | ✅ PASS   |
+| Delete Account      | Navigate to Account Settings.<br>Click 'Delete Account'. | Account is permanently removed.    | ✅ PASS   |
+
+---
+
+### F. Mobile & Cross-Browser Testing
+
+| Test Case             | Steps                                          | Expected Result          | Pass/Fail |
+|----------------------|------------------------------------------------ |--------------------------|-----------|
+| Mobile Compatibility | Open site on mobile, tablet, and desktop.       | UI adapts correctly.     | ✅ PASS   |
+| Cross-Browser Test   | Test site on Chrome, Firefox, Safari, Edge.     | No layout issues.        | ✅ PASS   |
+
+---
+
+## Summary
+
+This **manual user testing** ensures **Harvest** functions as expected across different scenarios. Regular testing will improve **reliability, usability, and user experience**. 🚀
+
+### Bugs/Updates after Testing
 
 - Indentation Fixes: Corrected indentation issues.
 - A fix on the image uploader in the published section "Update Article" could not re-upload new images. 
