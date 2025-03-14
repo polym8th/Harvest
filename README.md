@@ -122,7 +122,7 @@ The Harvest wireframes, created in Figma, outline the platform's layout and func
 
   User (General) Dashboard
   
-  ![User Dashboard](https://github.com/IsaHu-dev/Harvest/blob/main/media/readme/wireframes/generaluser_rm.png)
+  ![User Dashboard](https://github.com/IsaHu-dev/Harvest/blob/main/media/readme/wireframes/generaluser_dashboard_rm.png)
 
   Creator Dashboard - Create Article Page 
 
