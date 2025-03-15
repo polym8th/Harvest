@@ -2,15 +2,17 @@
 
 ## About
 
- Harvest is a platform for content creators passionate about sharing the best local finds in Brighton and the surround areas.
+ Harvest is a platform for content creators passionate about sharing the best local finds in Brighton and the surrounding areas.
  It enables users to share local insights, discover unique experiences, and contribute to a growing community of culture enthusiasts.It provides features for users to sign up to the platform to add articles and related events that are happening in Brighton and parts of East Sussex.
 
 ### Target Users
 
-Harvest is designed for people of all ages who are passionate about exploring and sharing cultural experiences in the local area of Brighton. This project was developed as a Full Stack web application, utilizing Python, Django, HTML, CSS, and JavaScript to ensure scalability and maintainability. 
-The development process incorporates deployment strategies and follows Agile methodologies to enhance the web application's stability and performance.
+Harvest is designed for people of all ages who are passionate about exploring and sharing cultural experiences in the local area of Brighton. 
 
 ### Features
+
+This project was developed as a Full Stack web application, utilizing Python, Django, HTML, CSS, and JavaScript to ensure scalability and maintainability. 
+The development process incorporates deployment strategies and follows Agile methodologies to enhance the web application's stability and performance.
 
 - **Index Page**
     - The site visitor can read articles in full with unrestricted guest access to sample content before registering on the Harvest Platform.
@@ -43,7 +45,7 @@ The development process incorporates deployment strategies and follows Agile met
             - Users can delete their account or cancel their subscription.
         - **Logout** - The user can log out of the General Dashboard.
 
-### How to Use the Harvest Site
+## How to Use the Harvest Site
 
 ### 1. Register an Account
 
@@ -219,7 +221,7 @@ Acceptance criteria:
   4. Create a New Heroku App. 
     - Log in to the Heroku Dashboard.
     - Click New > Create New App.
-    - Enter a unique app name and select the desired region.
+    - Enter a unique app name.
     - Click Create App.
   5.  Configure Application Settings
     - Navigate to the Settings tab.
@@ -314,10 +316,10 @@ Acceptance criteria:
 
 | Test Case           | Steps                                      | Expected Result                                  | Pass/Fail |
 |---------------------|--------------------------------------------|--------------------------------------------------|-----------|
-| Update Profile      | Navigate to Account Settings.<br>Edit Name, Email. Click 'Save'. | Changes are updated.       | ✅ PASS   |
-| Change Password     | Navigate to Account Settings.<br>Enter new password. Click 'Update'. | Password is changed.   | ✅ PASS   |
-| Cancel Subscription | Navigate to Account Settings.<br>Click 'Cancel Subscription'.  | Subscription is ended.       | ✅ PASS   |
-| Delete Account      | Navigate to Account Settings.<br>Click 'Delete Account'. | Account is permanently removed.    | ✅ PASS   |
+| Update Profile      | Navigate to Manage Account  .<br>Edit Name, Email. Click 'Save'. | Changes are updated.       | ✅ PASS   |
+| Change Password     | Navigate to Manage Account .<br>Enter new password. Click 'Update'. | Password is changed.   | ✅ PASS   |
+| Cancel Subscription | Navigate to Manage Account .<br>Click 'Cancel Subscription'.  | Subscription is ended.       | ✅ PASS   |
+| Delete Account      | Navigate to Manage Account .<br>Click 'Delete Account'. | Account is permanently removed.    | ✅ PASS   |
 
 ---
 
