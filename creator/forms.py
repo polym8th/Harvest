@@ -1,9 +1,15 @@
+from django import forms  
 from .models import Article
 from account.models import CustomUser
 from django.forms import ModelForm
+from django_ckeditor_5.widgets import CKEditor5Widget  
 
 class ArticleForm(ModelForm):
-    
+    content = forms.CharField(
+        widget=CKEditor5Widget(config_name='default'),  # ✅ Use CKEditor5 widget
+        required=False  # ✅ Ensure content is not required
+    )
+
     class Meta:
         model = Article
         fields = ['title', 'content', 'image']
@@ -23,7 +29,6 @@ class ArticleForm(ModelForm):
         return article
         
 class UpdateUserForm(ModelForm):
-    
     password = None
 
     class Meta:

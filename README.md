@@ -379,7 +379,40 @@ Solution:
 
 - **Status:** Bug fixed.
 
-		 	
+### Fixing CKEditor 5 Form Submission in Django
+
+### 📌 Issue: Required Content Was Removed
+By default, Django **adds the `required` attribute** to form fields. However, CKEditor 5 **replaces the default `<textarea>`** with a custom rich text editor while **hiding the original field**.
+
+### The Issue
+1. Django renders the `<textarea>` with `required=True`:
+    ```html
+    <textarea name="content" required id="id_content"></textarea>
+    ```
+2. Once CKEditor loads, it **hides the textarea**:
+    ```html
+    <textarea name="content" required id="id_content" style="display: none;"></textarea>
+    ```
+3. Since the `<textarea>` is now **hidden**, the browser **cannot validate it**.
+4. This results in the error:
+    ```
+    An invalid form control with name='content' is not focusable.
+    ```
+5. The form fails to submit.
+
+---
+
+### Solution: Remove `required` from the Form Field
+Since CKEditor **handles input differently**, we **removed `required=True`** from the Django form field:
+
+### **Fixed `forms.py`**
+```python
+content = forms.CharField(
+    widget=CKEditor5Widget(config_name='default'),
+    required=False  # ✅ Allow empty field to prevent validation errors
+)
+```
+	 	
 ## Code Style and Readability
 
 - The code is formatted with the Black Python Formatter to maintain consistent code style and readability.

@@ -1,4 +1,4 @@
-from django.urls import path
+from django.urls import path, include
 from django.conf import settings  
 from django.conf.urls.static import static 
 
@@ -17,6 +17,7 @@ urlpatterns = [
     path('delete-account/', views.delete_account, name="delete-account"),  
     path('delete-account-success/', views.delete_account_success, name="delete-account-success"),  
     path('article-guest/<str:pk>/', views.article_guest, name="article-guest"),
+    path("ckeditor5/", include("django_ckeditor_5.urls")),  
 ]
 
 # ✅ Ensure media files are served correctly in development mode

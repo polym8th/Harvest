@@ -5,6 +5,8 @@ from django.contrib import messages
 from creator.forms import ArticleForm, UpdateUserForm
 from .models import Article
 from django.utils import timezone 
+from django_ckeditor_5.widgets import CKEditor5Widget
+
 
 def index(request):
     teaser_articles = Article.objects.filter(article_teaser=True, is_published=True)

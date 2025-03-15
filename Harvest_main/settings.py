@@ -36,7 +36,19 @@ INSTALLED_APPS = [
     'account',
     'client',
     'creator',
+    'django_ckeditor_5',
 ]
+CKEDITOR_5_CONFIGS = {
+    'default': {
+        'toolbar': [
+            'heading', '|', 'bold', 'italic', 'underline', '|', 
+            'bulletedList', 'numberedList', '|', 'blockQuote', 
+            'imageUpload', 'insertTable', 'undo', 'redo'
+        ],
+        'height': 300,
+        'width': '100%',
+    }
+}
 
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 CRISPY_TEMPLATE_PACK = "bootstrap5"
@@ -139,6 +151,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 STATIC_URL = '/static/'
 STATIC_ROOT = BASE_DIR / 'staticfiles'  
+CKEDITOR_BASEPATH = "/static/ckeditor/ckeditor/"
 
 STATICFILES_DIRS = [
     BASE_DIR / 'Harvest_main/static'  

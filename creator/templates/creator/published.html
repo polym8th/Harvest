@@ -15,7 +15,7 @@
             <img src="{{ article.image.url }}" alt="Article Image" class="img-fluid mb-3 header">
         {% endif %}
         
-        <p class="text-break header">{{ article.content }}</p>
+        <p class="text-break header">{{ article.content|safe }}</p>
         <p><strong>Published on:</strong> {{ article.pub_date|date:"F d, Y H:i" }}</p>
 
         <!-- Show Updated By and Timestamp If Different from Original Author -->

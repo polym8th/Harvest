@@ -5,7 +5,9 @@ from django.utils import timezone
 class Article(models.Model):
    
     title = models.CharField(max_length=255)
-    content = models.TextField(max_length=10000)
+    
+    from django_ckeditor_5.fields import CKEditor5Field
+    content = CKEditor5Field(config_name='default')
     pub_date = models.DateTimeField(auto_now_add=True)
     user = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name='creator_articles')
     image = models.ImageField(upload_to='article_images/', null=True, blank=True)  
