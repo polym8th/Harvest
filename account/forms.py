@@ -6,13 +6,23 @@ from django.forms import ModelForm
 
 
 class CreateUserForm(UserCreationForm):
-    is_creator = forms.BooleanField(required=False, label="Are you a content creator?")
+    is_creator = forms.BooleanField(
+        required=False, label="Are you a content creator?"
+    )
 
     class Meta:
         model = CustomUser
-        fields = ['email', 'first_name', 'last_name', 'password1', 'password2', 'is_creator']
-        
+        fields = [
+            "email",
+            "first_name",
+            "last_name",
+            "password1",
+            "password2",
+            "is_creator",
+        ]
+
+
 class ArticleForm(ModelForm):
     class Meta:
         model = Article
-        fields = ['title', 'content', 'image']  
+        fields = ["title", "content", "image"]

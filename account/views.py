@@ -8,15 +8,18 @@ from creator.models import Article
 
 def home(request):
     if request.user.is_authenticated:
-        articles = Article.objects.filter(is_published=True).order_by("-pub_date")[:10]
+        articles = Article.objects.filter(is_published=True).order_by(
+            "-pub_date"
+        )[:10]
     else:
-        articles = Article.objects.filter(is_published=True).order_by("-pub_date")[:5]
-
+        articles = Article.objects.filter(is_published=True).order_by(
+            "-pub_date"
+        )[:5]
     # Prevent boolean 'True' from appearing in the template
-    for article in articles:
-        if hasattr(article.user, "is_creator") and article.user.is_creator is True:
-            article.user.is_creator = ""  # Replace True with an empty string
 
+    for article in articles:
+        if hasattr(article.user, "is_creator") and article.user.is_creator:
+            article.user.is_creator = ""  # Replace True with empty string
     return render(request, "account/index.html", {"articles": articles})
 
 
@@ -73,3 +76,4 @@ def my_login(request):
 def user_logout(request):
     logout(request)
     return redirect("home")
+    

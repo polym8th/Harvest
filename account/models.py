@@ -1,5 +1,5 @@
 from django.db import models
-from . managers import CustomUserManager
+from .managers import CustomUserManager
 from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin
 from django.utils import timezone
 
@@ -16,11 +16,10 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
 
     is_creator = models.BooleanField(default=False)
 
-    USERNAME_FIELD = 'email'
+    USERNAME_FIELD = "email"
     REQUIRED_FIELDS = []
 
     objects = CustomUserManager()
-
 
     def __str__(self):
         return self.email

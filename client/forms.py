@@ -1,4 +1,4 @@
-from creator.models import Article  #Corrected import
+from creator.models import Article  # Corrected import
 from account.models import CustomUser
 from django.forms import ModelForm
 

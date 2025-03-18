@@ -9,14 +9,21 @@ from django_ckeditor_5.widgets import CKEditor5Widget
 
 
 def index(request):
-    teaser_articles = Article.objects.filter(article_teaser=True, is_published=True)
+    teaser_articles = Article.objects.filter(
+        article_teaser=True, is_published=True
+    )
 
     # Prevent boolean fields from rendering as 'True'
+
     for article in teaser_articles:
-        if hasattr(article, "article_teaser") and article.article_teaser is True:
+        if (
+            hasattr(article, "article_teaser")
+            and article.article_teaser is True
+        ):
             article.article_teaser = ""  # Replace True with empty string
-    
-    return render(request, "accounts/index.html", {"teaser_articles": teaser_articles})
+    return render(
+        request, "accounts/index.html", {"teaser_articles": teaser_articles}
+    )
 
 
 @login_required(login_url="my-login")
@@ -46,7 +53,6 @@ def create_article(request):
                 article.event_venue = request.POST.get("event_venue")
                 article.event_location = request.POST.get("event_location")
                 article.event_postcode = request.POST.get("event_postcode")
-
             if "image" in request.FILES:
                 uploaded_image = request.FILES["image"]
                 print(
@@ -74,16 +80,21 @@ def article_guest(request, pk):
 
 
 def published(request):
-    articles = Article.objects.filter(is_published=True) | Article.objects.filter(article_teaser=True)
+    articles = Article.objects.filter(
+        is_published=True
+    ) | Article.objects.filter(article_teaser=True)
     events = Article.objects.filter(is_event_related=True, is_published=True)
 
     # Prevent boolean fields from rendering as 'True'
+
     for article in articles:
         if hasattr(article.user, "is_creator") and article.user.is_creator:
             article.user.is_creator = ""  # Replace True with empty string
-
-    return render(request, "creator/published.html", {"AllArticles": articles, "Events": events})
-
+    return render(
+        request,
+        "creator/published.html",
+        {"AllArticles": articles, "Events": events},
+    )
 
 
 @login_required(login_url="my-login")
@@ -126,16 +137,13 @@ def delete_article(request, pk):
     ):
         messages.error(
             request,
-            "❌ You cannot delete this article if you did not create it."
+            "❌ You cannot delete this article if you did not create it.",
         )
-        return redirect(
-            request.META.get("HTTP_REFERER", "creator-dashboard")
-        )
+        return redirect(request.META.get("HTTP_REFERER", "creator-dashboard"))
     if request.method == "POST":
         article.delete()
         messages.success(
-            request,
-            "✅ The article has been deleted successfully."
+            request, "✅ The article has been deleted successfully."
         )
         return redirect("delete-success")
     return render(
@@ -153,8 +161,7 @@ def manage_account(request):
         if form.is_valid():
             form.save()
             messages.success(
-                request,
-                "Your account has been updated successfully!"
+                request, "Your account has been updated successfully!"
             )
             return redirect("creator-dashboard")
     return render(
