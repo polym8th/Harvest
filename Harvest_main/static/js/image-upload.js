@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", function() {
     const dropArea = document.getElementById("drop-area");
     const fileInput = document.getElementById("id_image");
     const preview = document.getElementById("preview");
@@ -22,22 +22,22 @@ document.addEventListener("DOMContentLoaded", function () {
         preview.innerHTML = `<img src="${URL.createObjectURL(file)}" style="max-width: 200px; margin-top: 10px;">`;
     }
 
-    fileInput.addEventListener("change", function (e) {
+    fileInput.addEventListener("change", function(e) {
         if (e.target.files.length > 0) {
             handleFile(e.target.files[0]);
         }
     });
 
-    dropArea.addEventListener("dragover", function (e) {
+    dropArea.addEventListener("dragover", function(e) {
         e.preventDefault();
         dropArea.style.borderColor = "blue"; // Highlight on drag
     });
 
-    dropArea.addEventListener("dragleave", function () {
+    dropArea.addEventListener("dragleave", function() {
         dropArea.style.borderColor = "#ccc"; // Reset border color
     });
 
-    dropArea.addEventListener("drop", function (e) {
+    dropArea.addEventListener("drop", function(e) {
         e.preventDefault();
         dropArea.style.borderColor = "#ccc";
         if (e.dataTransfer.files.length > 0) {

@@ -27,7 +27,7 @@
                 <label for="id_image">Update Image</label>
                 <div id="drop-area">
                     <p><strong>Upload a file</strong></p>
-                    <p>PNG, JPG, GIF up to 10MB</p>
+                    <p>PNG, JPG, GIF or WebP up to 10MB</p>
                     <input type="file" id="id_image" name="image" accept="image/*" style="display: none;">
                     <button type="button" onclick="document.getElementById('id_image').click();" class="btn btn-outline-primary">Browse Files</button>
                     <div id="preview"></div>
@@ -48,6 +48,7 @@
         </ul>
     </div>
 {% endif %}
+    <script src="https://cdn.ckeditor.com/ckeditor5/39.0.1/classic/ckeditor.js"></script>
     <script src="{% static 'js/richeditor.js' %}"></script>
     <script src="{% static 'js/image-upload.js' %}"></script>
 {% endblock %}

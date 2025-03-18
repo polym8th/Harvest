@@ -60,7 +60,7 @@
             {% if event.image %}
                 <img src="{{ event.image.url }}" alt="Event Image" class="img-fluid mb-3">
             {% endif %}
-            <p class="text-break">{{ event.content|truncatewords:50 }}</p>
+            <p class="text-break">{{ event.content|safe }}</p>
             <div class="event-details mt-3">
                 <p class="fw-bold"><strong>Date:</strong> {{ event.event_date|date:"F d, Y H:i" }}</p>
                 <p class="fw-bold"><strong>Event Name:</strong> {{ event.event_name }}</p>
@@ -109,12 +109,8 @@
 
 <!-- JavaScript to Trigger Modal Automatically -->
 {% if messages %}
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            var messageModal = new bootstrap.Modal(document.getElementById('messageModal'));
-            messageModal.show();
-        });
-    </script>
+
+<script src="{% static 'js/messagemodal.js' %}"></script>    
 {% endif %}
 
 {% endblock %}

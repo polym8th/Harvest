@@ -9,7 +9,7 @@
     {% if article.is_published %}
         <div class="container bg-white shadow-md p-5 form-layout">
             <h3>{{ article.title }}</h3>
-            <p>{{ article.content }}</p>
+            <p>{{ article.content|safe }}</p>
 
             {% if article.image %}
                 <img src="{{ article.image.url }}" alt="Article Image" style="max-width: 100%; height: auto;">

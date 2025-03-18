@@ -1,6 +1,11 @@
-console.log("CKEditor script loaded!");  // ✅ Check if script loads
+console.log("CKEditor script loaded!");  // ✅ Confirm script loads
 
 document.addEventListener("DOMContentLoaded", function () {
+    if (typeof ClassicEditor === "undefined") {
+        console.error("❌ CKEditor is not loaded! Check the script order.");
+        return;
+    }
+
     let editorElement = document.querySelector("#id_content");
     if (!editorElement) {
         console.error("❌ CKEditor: #id_content not found!");

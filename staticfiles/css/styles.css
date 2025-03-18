@@ -63,12 +63,14 @@ body {
   margin-top: 20px;
   margin-bottom: 40px;
 }
+
 .header h1 {
   margin-top: 20px;
   margin-bottom: 40px;
   text-transform: uppercase;
   font-weight: 700;
 }
+
 /* Form field spacing */
 form p:last-of-type {
   margin-bottom: 40px;
@@ -97,11 +99,20 @@ form p:last-of-type {
 .success-message span {
   font-weight: bold;
 }
+
 .text-wrap {
-  word-wrap: break-word; /* Ensures words break */
-  overflow-wrap: break-word; /* Alternative for better browser support */
-  white-space: normal; /* Allows text to wrap */
+  word-wrap: break-word;
+  /* Ensures words break */
+  overflow-wrap: break-word;
+  /* Alternative for better browser support */
+  white-space: normal;
+  /* Allows text to wrap */
 }
+
 .lowercase-link {
   text-transform: lowercase;
+}
+.article-content {
+  font-size: 1.25rem; /* Adjust size */
+  line-height: 1.6; /* Improve readability */
 }

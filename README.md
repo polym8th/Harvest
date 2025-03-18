@@ -110,29 +110,29 @@ If you wish to cancel your subscription:
 
 ### UX WireFrames
 
-The Harvest wireframes, created in Figma, outline the platform's layout and functionality, ensuring a user-friendly experience with intuitive navigation. They illustrate key pages, including the Landing Page, Registration, Login, Creator Dashboard, General User Dashboard, Article/Event Submission, and Account Settings, providing a clear structure for content creation and user interaction. 
+The Harvest wireframes, designed in Figma, served as my initial sketches to plan the platform's layout and functionality. They were significant in ensuring a user-friendly experience with intuitive navigation. These wireframes outline key pages, including the Landing Page, Registration, Login, Creator Dashboard, General User Dashboard, Article/Event Submission, and Account Settings. This mockup of the Harvest project helped me map out each page before I started coding it in Python.
 
 - See below a wireframe for each page:
   
    Index Page
 
-  ![Index Page](https://github.com/IsaHu-dev/Harvest/blob/main/media/readme/wireframes/indexpage_rm.png)
+  ![Index Page](https://github.com/IsaHu-dev/Harvest/blob/main/media/readme/wireframes/indexpage.webp)
 
   Registration Page
 
-  ![Register Page](https://github.com/IsaHu-dev/Harvest/blob/main/media/readme/wireframes/register_rm.png)
+  ![Register Page](https://github.com/IsaHu-dev/Harvest/blob/main/media/readme/wireframes/register.webp)
 
   User (General) Dashboard
   
-  ![User Dashboard](https://github.com/IsaHu-dev/Harvest/blob/main/media/readme/wireframes/generaluser_dashboard_rm.png)
+  ![User Dashboard](https://github.com/IsaHu-dev/Harvest/blob/main/media/readme/wireframes/generaluser.webp)
 
   Creator Dashboard - Create Article Page 
 
-  ![Creator Dashboard](https://github.com/IsaHu-dev/Harvest/blob/main/media/readme/wireframes/createarticle_rm.png)
+  ![Creator Dashboard](https://github.com/IsaHu-dev/Harvest/blob/main/media/readme/wireframes/createarticle.webp)
 
   Creator Dashboard - Published Articles Page
 
-  ![Creator Dashboard](https://github.com/IsaHu-dev/Harvest/blob/main/media/readme/wireframes/publishedarticles_rm.png)
+  ![Creator Dashboard](https://github.com/IsaHu-dev/Harvest/blob/main/media/readme/wireframes/publishedarticles.webp)
 
 ## Agile Framework and Project Management
 
@@ -253,11 +253,61 @@ Acceptance criteria:
       -  In the Manual Deploys section, select a branch and click Deploy Branch.
   9.  Access the Live Application.
       -  Once the deployment is complete an app link is generated. The live application can be accessed at <a href="https://harvest-main-55fca7957f91.herokuapp.com/" target="_blank">Harvest App</a>
-  
+
+## Installation of Harvest app 
+
+Follow these steps to set up and run the project locally:
+
+#### 1. Clone the Repository
+In Git Bash, clone the repository:
+```bash
+git clone https://github.com/IsaHu-dev/Harvest
+
+cd Harvest
+```
+
+#### 2. Create a Virtual Environment
+It’s recommended to use a virtual environment to manage dependencies.
+
+```bash
+python -m venv venv
+source venv/bin/activate  # On macOS/Linux
+venv\Scripts\activate     # On Windows
+```
+
+#### 3. Install Dependencies
+Use `pip` to install the required dependencies.
+
+```bash
+pip install -r requirements.txt
+```
+#### 4. Run Database Migrations
+Apply database migrations:
+
+```bash
+python manage.py migrate
+```
+
+#### 5. Create a Superuser (Optional)
+To access the Django admin panel, create a superuser:
+
+```bash
+python manage.py createsuperuser
+```
+
+#### 6. Run the Development Server
+Start the Django development server:
+
+```bash
+python manage.py runserver
+```
+
+Access the application at [http://127.0.0.1:8000](http://127.0.0.1:8000).
 
 ## Flowchart
 
-![Flowchart](https://)
+![Flowchart](https://github.com/IsaHu-dev/Harvest/blob/main/media/readme/Harvest_flowchart.webp)
+ [View PDF](https://github.com/IsaHu-dev/Harvest/blob/main/media/readme/Harvest_flowchart.pdf)
 
 # Testing
 
@@ -317,9 +367,9 @@ Acceptance criteria:
 | Test Case           | Steps                                      | Expected Result                                  | Pass/Fail |
 |---------------------|--------------------------------------------|--------------------------------------------------|-----------|
 | Update Profile      | Navigate to Manage Account  .<br>Edit Name, Email. Click 'Save'. | Changes are updated.       | ✅ PASS   |
-| Change Password     | Navigate to Manage Account .<br>Enter new password. Click 'Update'. | Password is changed.   | ✅ PASS   |
-| Cancel Subscription | Navigate to Manage Account .<br>Click 'Cancel Subscription'.  | Subscription is ended.       | ✅ PASS   |
-| Delete Account      | Navigate to Manage Account .<br>Click 'Delete Account'. | Account is permanently removed.    | ✅ PASS   |
+| Change Password     | Navigate to Manage Account .<br>Enter new password. Click 'Update'. | Password is changed.    | ✅ PASS   |
+| Cancel Subscription | Navigate to Manage Account .<br>Click 'Cancel Subscription'.  | Subscription is ended.        | ✅ PASS   |
+| Delete Account      | Navigate to Manage Account .<br>Click 'Delete Account'. | Account is permanently removed.     | ✅ PASS   |
 
 ---
 
@@ -330,28 +380,33 @@ Acceptance criteria:
 | Mobile Compatibility | Open site on mobile, tablet, and desktop.       | UI adapts correctly.     | ✅ PASS   |
 | Cross-Browser Test   | Test site on Chrome, Firefox, Safari, Edge.     | No layout issues.        | ✅ PASS   |
 
+
+### G. CKEditor Rich Text Editor Testing
+| Test Case                | Steps                                             | Expected Result                      | Pass/Fail |
+|-------------------------|--------------------------------------------------|--------------------------------------|-----------|
+| Load CKEditor on form   | Open article creation page (`/create-article/`).   | CKEditor loads without errors.      | ✅ PASS   |
+| Bold & Italic Text      | Type text, select it, click **B** or *I*.(Italics) | Text applies bold/italic formatting.| ✅ PASS   |
+| Line Breaks             | Press `Enter` for a new paragraph.                 | New paragraph created.              | ✅ PASS   |
+| Image Upload            | Click "Insert Image", select a file.               | Image is inserted in the editor.    | ✅ PASS   |
+| Save & Render HTML      | Submit article and view published page.            | HTML tags render properly (`<p>`, `<strong>`). | ✅ PASS   |
 ---
 
 ## Summary
 
-This **manual user testing** ensures **Harvest** functions as expected across different scenarios. Regular testing will improve **reliability, usability, and user experience**. 🚀
+This **manual user testing** ensures **Harvest** functions as expected across different scenarios. Regular testing will improve **reliability, usability, and user experience**. 
 
 ### Bugs/Updates after Testing
-
-- Indentation Fixes: Corrected indentation issues.
-- A fix on the image uploader in the published section "Update Article" could not re-upload new images. 
+1. 📌Issue: The image uploader in the published section "Update Article" could not re-upload new images. 
   - Update: `update-article.html`
 
-Changes Made:
-
-1. **Form Update:**
+ 🛠 Solution: 
+ Form Update:
    - Added `enctype="multipart/form-data"` to the `<form>` tag (required for file uploads).
 
    ```html
    <form method="POST" enctype="multipart/form-data">
    ```
-
-2. **View Update:**
+ 🛠 Changes made **View Update:**
    - Updated the `render` function to pass the `article` object to the template, ensuring the current image is displayed.
 
    ```python
@@ -360,45 +415,37 @@ Changes Made:
        'article': article  # Pass the article to the template for displaying current image
    })
    ```
-	
----
 
-Bug Fix: `Value Too Long` Error
+2.📌 Issue: `Value Too Long` Error
+   `DataError at /creator/create-article` – Value too long for type character varying(10).
 
-Issue:
-- **BUG:** `DataError at /creator/create-article` – Value too long for type character varying(10).
-
-Solution:
-- Increased the `CharField` length for the `title` field from 10 to 255 characters.
+ 🛠 Solution:
+  - Increased the `CharField` length for the `title` field from 10 to 255 characters.
 
   ```python
   class Article(models.Model):
       title = models.CharField(max_length=255)  # Increased max_length to 255
       event_date = models.CharField(max_length=10)
   ```
+3. Fixing CKEditor 5 Form Submission in Django
 
-- **Status:** Bug fixed.
+  📌 Issue: ``Required`` Content Was Removed
+  By default, Django **adds the `required` attribute** to form fields. However, CKEditor 5 **replaces the default `<textarea>`** with a custom rich text editor while hiding the original field.
 
-### Fixing CKEditor 5 Form Submission in Django
-
-### 📌 Issue: Required Content Was Removed
-By default, Django **adds the `required` attribute** to form fields. However, CKEditor 5 **replaces the default `<textarea>`** with a custom rich text editor while **hiding the original field**.
-
-### The Issue
-1. Django renders the `<textarea>` with `required=True`:
+-  Django renders the `<textarea>` with `required=True`:
     ```html
     <textarea name="content" required id="id_content"></textarea>
     ```
-2. Once CKEditor loads, it **hides the textarea**:
+-  Once CKEditor loads, it hides the textarea:
     ```html
     <textarea name="content" required id="id_content" style="display: none;"></textarea>
     ```
-3. Since the `<textarea>` is now **hidden**, the browser **cannot validate it**.
-4. This results in the error:
+-  Since the `<textarea>` is now hidden, the browser cannot validate it.
+-  This results in the error:
     ```
-    An invalid form control with name='content' is not focusable.
+    An invalid form control with name='content' throws an error in the javascript console.
     ```
-5. The form fails to submit.
+-  The form fails to submit.
 
 ---
 
@@ -409,10 +456,12 @@ Since CKEditor **handles input differently**, we **removed `required=True`** fro
 ```python
 content = forms.CharField(
     widget=CKEditor5Widget(config_name='default'),
-    required=False  # ✅ Allow empty field to prevent validation errors
+    required=False  
 )
 ```
-	 	
+### **Status:** All Bugs are fixed.
+
+
 ## Code Style and Readability
 
 - The code is formatted with the Black Python Formatter to maintain consistent code style and readability.
@@ -427,6 +476,9 @@ content = forms.CharField(
   - [Real Python](https://realpython.com/.com/)
   - [Stack Overflow](https://stackoverflow.com/questions/10004850/python-classes-and-oop-basics)
   - [w3schools - Python](https://www.w3schools.com/python/ref_string_isdigit.asp)
-
+  - Wire Frames and Diagram Basics Templates adapted from [Figma](https://www.figma.com/)
+  - All Photos are Royalty Free Images from [Envato](https://elements.envato.com/) 
+  - Writing and Content adapted from [Wikipedia](https://en.wikipedia.org/wiki/Brighton_Palace_Pier) and online resources. Content is also rewritten by myself.
+  
   ## Acknowledgements
  
