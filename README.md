@@ -3,11 +3,11 @@
 ## About
 
  Harvest is a platform for content creators passionate about sharing the best local finds in Brighton and the surrounding areas.
- It enables users to share local insights, discover unique experiences, and contribute to a growing community of culture enthusiasts.It provides features for users to sign up to the platform to add articles and related events that are happening in Brighton and parts of East Sussex.
+ It enables users to share local insights, discover unique experiences, and contribute to a growing community of culture enthusiasts. It provides features for users to sign up to the platform to add articles and related events that are happening in Brighton and parts of East Sussex.
 
 ### Target Users
 
-Harvest is designed for people of all ages who are passionate about exploring and sharing cultural experiences in the local area of Brighton. 
+Harvest is designed for people of all ages, both residents and locals, who want to explore the local area of Brighton. 
 
 ### Features
 
