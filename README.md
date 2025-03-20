@@ -23,6 +23,8 @@ The development process incorporates deployment strategies and follows Agile met
 
 - **Creator Dashboard**
     - Creators can create articles, add related events, view published articles, manage their accounts, and log out.
+  **Super Users** can create articles, add related events and have the privilege to update and delete ALL articles. 
+
     - **Navigation Menu:**
         - **Dashboard** - The user arrives at the front page of the dashboard.
         - **Create Article** - Allows authenticated users with the 'creator' role to create and publish an article by adding a title and content.
