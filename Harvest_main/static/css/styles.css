@@ -116,3 +116,6 @@ form p:last-of-type {
   font-size: 3rem; /* Adjust size */
   line-height: 1.6; /* Improve readability */
 }
+.lowercase-link {
+  text-transform: lowercase;
+}
