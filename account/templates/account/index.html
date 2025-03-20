@@ -1,13 +1,17 @@
-{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
+  <meta charset="utf-8">
+  {% load static %}
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
   <title>HARVEST</title>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  
   <link rel="stylesheet" href="https://bootswatch.com/5/lux/bootstrap.min.css">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  
   <style>
     .lowercase-link {
       text-transform: lowercase;
@@ -19,6 +23,8 @@
 
   {% include 'account/navbar.html' %}
 
+  {% block content %}
+  
   <!-- Hero Section (Hidden for Logged-In Users) -->
   {% if not request.user.is_authenticated %}
     <div class="text-center mt-5">
@@ -47,11 +53,10 @@
                             <p class="text-muted text-uppercase mb-1">{{ article.category }}</p> 
                         {% endif %}
 
-                        <h3 class="card-title fw-bold">
-                            <p class="text-dark text-decoration-none">
-                                {{ article.title }}
-                            </p>
+                        <h3 class="card-title fw-bold text-dark text-decoration-none">
+                            {{ article.title }}
                         </h3>
+
                         <p class="text-muted mb-0">
                             By {{ article.user.first_name }} {{ article.user.last_name }}
                         </p>
@@ -83,6 +88,8 @@
         {% endfor %}
     </div>
   </div>
+
+  {% endblock %}  
 
   <!-- Footer -->
   <footer class="text-center mt-5 mb-3">
