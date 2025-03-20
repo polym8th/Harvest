@@ -324,7 +324,8 @@ Access the application at [http://127.0.0.1:8000](http://127.0.0.1:8000).
 | Invalid Registration             | 1. Leave required fields empty.<br>2. Enter an incorrect email format.<br>3. Click 'Submit'.                                     | User is shown an error message.                                                     | ✅ PASS   |
 | Login with Valid Credentials     | 1. Navigate to Login page.<br>2. Enter valid email and password.<br>3. Click 'Login'.                                            | User is redirected to their relevant dashboard                                      | ✅ PASS   |
 | Login with Incorrect Credentials | 1. Navigate to Login page.<br>2. Enter incorrect email or password.<br>3. Click 'Login'.                                         | Error message is displayed.                                                         | ✅ PASS   |
-| Login with Unverified Email      | 1. Try logging in without verifying email.                                                                                       | Error message asking to verify email.                                               | ✅ PASS   |
+| Login with Unverified Email      |  Try logging in without verifying email.                                                                                         | Error message asking to verify email.                                               | ✅ PASS   |
+| Enter password twice             |  Login with mismatched passwords                                                                                                 | Error message displays: 'The two password fields didn't match.                                         | ✅ PASS   |
 
 ---
 
