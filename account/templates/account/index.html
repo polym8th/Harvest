@@ -1,5 +1,4 @@
 {% load static %}
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -55,18 +54,16 @@
                         </h3>
                         <p class="text-muted mb-0">
                             By {{ article.user.first_name }} {{ article.user.last_name }}
-                          
-                        </p> <!-- Ensured {{ article.user.is_creator }} does not display 'True' -->
+                        </p>
                         
                         {% if request.user.is_authenticated %}
                             {% if article.article_teaser and article.article_teaser is not True %}
                                 <p class="mt-2 article-content">{{ article.article_teaser|safe }}</p>
                             {% else %}
                                 <p class="mt-2 article-content">{{ article.content|safe|truncatechars_html:200 }}</p>
-                                {% endif %}
-                            {%else%}
-                                <!-- Truncate content to 200 words for unauthenticated users -->
-                                <p class="mt-2 article-content">{{ article.content|safe|truncatechars_html:200 }}</p>  
+                            {% endif %}
+                        {% else %}
+                            <p class="mt-2 article-content">{{ article.content|safe|truncatechars_html:200 }}</p>  
                         {% endif %}
 
                         <div class="d-flex justify-content-center">
