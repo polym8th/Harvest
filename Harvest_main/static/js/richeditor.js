@@ -1,3 +1,6 @@
+// jshint esversion: 8
+/* global ClassicEditor */
+
 console.log("CKEditor script loaded!");  // ✅ Confirm script loads
 
 document.addEventListener("DOMContentLoaded", function () {

@@ -1,3 +1,6 @@
+// jshint esversion: 8
+/* global DataTransfer */
+
 document.addEventListener("DOMContentLoaded", function() {
     const dropArea = document.getElementById("drop-area");
     const fileInput = document.getElementById("id_image");
