@@ -119,3 +119,13 @@ form p:last-of-type {
 .lowercase-link {
   text-transform: lowercase;
 }
+.card-body.no-image {
+  padding-top: 0 !important;
+  margin-top: 0 !important;
+}
+
+.card-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}

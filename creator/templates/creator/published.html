@@ -1,4 +1,4 @@
-{% extends 'account/navbar.html' %}
+{% extends 'account/base.html' %}
 
 {% load static %}
 
@@ -8,7 +8,7 @@
 <h2 class="text-center mb-4 header">Published Articles</h2>
 
 {% for article in AllArticles %}
-   <div id="article-{{ article.id }}" class="container col-md-6 col-lg-5 bg-white shadow-md p-5 rounded-3 mb-5">
+   <div id="article-{{ article.id }}" class="container bg-white shadow-md p-5 rounded-3 mb-5" style="max-width: 900px;">
         <h3 class="header">{{ article.title }}</h3>
 
         {% if article.image %}
@@ -55,7 +55,7 @@
 {% if Events %}
     <h2 class="text-center mb-4 header">Upcoming Events</h2>
     {% for event in Events %}
-        <div id="event-{{ event.id }}" class="container col-md-6 col-lg-5 bg-white shadow-md p-5 rounded-3">
+        <div id="event-{{ event.id }}" class="container bg-white shadow-md p-5 rounded-3 mb-5" style="max-width: 900px;">
             <h3 class="header">{{ event.title }}</h3>
             {% if event.image %}
                 <img src="{{ event.image.url }}" alt="Event Image" class="img-fluid mb-3">
@@ -79,7 +79,7 @@
                     </form>
                 </div>
             {% endif %}
-        </div>a
+        </div>
     {% empty %}
         <p>No events available.</p>
     {% endfor %}
@@ -109,8 +109,7 @@
 
 <!-- JavaScript to Trigger Modal Automatically -->
 {% if messages %}
-
-<script src="{% static 'js/messagemodal.js' %}"></script>    
+<script src="{% static 'js/messagemodal.js' %}"></script>
 {% endif %}
 
 {% endblock %}
