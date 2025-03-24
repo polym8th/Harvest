@@ -15,8 +15,8 @@
             <img src="{{ article.image.url }}" alt="Article Image" class="img-fluid mb-3 header">
         {% endif %}
         
-        <p class="text-break header">{{ article.content|safe }}</p>
-        <p><strong>Published on:</strong> {{ article.pub_date|date:"F d, Y H:i" }}</p>
+        <div class="text-break header">{{ article.content|safe }}</div>
+        <div><strong>Published on:</strong> {{ article.pub_date|date:"F d, Y H:i" }}</div>
 
         <!-- Show Updated By and Timestamp If Different from Original Author -->
         <p class="text-muted">
@@ -60,13 +60,13 @@
             {% if event.image %}
                 <img src="{{ event.image.url }}" alt="Event Image" class="img-fluid mb-3">
             {% endif %}
-            <p class="text-break">{{ event.content|safe }}</p>
+            <div class="text-break">{{ event.content|safe }}</div>
             <div class="event-details mt-3">
-                <p class="fw-bold"><strong>Date:</strong> {{ event.event_date|date:"F d, Y H:i" }}</p>
-                <p class="fw-bold"><strong>Event Name:</strong> {{ event.event_name }}</p>
-                <p class="fw-bold"><strong>Venue:</strong> {{ event.event_venue }}</p>
-                <p class="fw-bold"><strong>Location:</strong> {{ event.event_location }}</p>
-                <p class="fw-bold"><strong>Postcode:</strong> {{ event.event_postcode }}</p>
+                <div class="fw-bold"><strong>Date:</strong> {{ event.event_date|date:"F d, Y H:i" }}</div>
+                <div class="fw-bold"><strong>Event Name:</strong> {{ event.event_name }}</div>
+                <div class="fw-bold"><strong>Venue:</strong> {{ event.event_venue }}</div>
+                <div class="fw-bold"><strong>Location:</strong> {{ event.event_location }}</div>
+                <div class="fw-bold"><strong>Postcode:</strong> {{ event.event_postcode }}</div>
             </div>
             {% if event.is_published %}
                 <div class="d-flex gap-2 justify-content-start mt-3">
@@ -79,7 +79,7 @@
                     </form>
                 </div>
             {% endif %}
-        </div>
+        </div>a
     {% empty %}
         <p>No events available.</p>
     {% endfor %}

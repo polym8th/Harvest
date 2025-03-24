@@ -9,7 +9,7 @@
     <div class="text-center"> <!-- Center the image -->
         <img src="{{ article.image.url }}" alt="{{ article.title }}" class="img-fluid w-80 rounded mb-3">
     </div>
-    <p class="header fs-4">{{ article.content|safe }}</p>
+    <div class="header fs-4">{{ article.content|safe }}</div>
     {% if article.is_event_related and article.event_date %}
         <div class="event-info bg-light p-4 rounded mb-4 fs-4">
             <h3 class="mb-3">Event Details</h3>

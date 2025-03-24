@@ -1,46 +1,36 @@
+{% extends 'account/navbar.html' %}
+
 {% load static %}
 {% load crispy_forms_tags %}
 
-<html>
+{% block content %}
+<div class="container bg-white shadow-md p-5 form-layout">
+    <h1 class="header">Register</h1>
+    <form method="POST" autocomplete="off">
+        {% csrf_token %}
 
-<head>
-    <title> Register </title>
-    <link rel="stylesheet" type="text/css" href="https://bootswatch.com/5/lux/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
-</head>
+        <div class="mb-3">
+            <label class="form-label fw-bold text-uppercase">Are you a content creator?</label>
+            {{ RegisterForm.is_creator }}
+        </div>
 
-<body>
-    {% include 'account/navbar.html' with hide_register=True %}
+        <div class="mb-3">
+            {{ RegisterForm.email|as_crispy_field }}
+        </div>
+        <div class="mb-3">
+            {{ RegisterForm.first_name|as_crispy_field }}
+        </div>
+        <div class="mb-3">
+            {{ RegisterForm.last_name|as_crispy_field }}
+        </div>
+        <div class="mb-3">
+            {{ RegisterForm.password1|as_crispy_field }}
+        </div>
+        <div class="mb-3">
+            {{ RegisterForm.password2|as_crispy_field }}
+        </div>
 
-    <div class="container bg-white shadow-md p-5 form-layout">
-        <h1 class="header">Register</h1>
-        <form method="POST" autocomplete="off">
-            {% csrf_token %}
-
-            <div class="mb-3">
-                <label class="form-label fw-bold text-uppercase">Are you a content creator?</label>
-                {{ RegisterForm.is_creator }}
-            </div>
-
-            <div class="mb-3">
-                {{ RegisterForm.email|as_crispy_field }}
-            </div>
-            <div class="mb-3">
-                {{ RegisterForm.first_name|as_crispy_field }}
-            </div>
-            <div class="mb-3">
-                {{ RegisterForm.last_name|as_crispy_field }}
-            </div>
-            <div class="mb-3">
-                {{ RegisterForm.password1|as_crispy_field }}
-            </div>
-            <div class="mb-3">
-                {{ RegisterForm.password2|as_crispy_field }}
-            </div>
-
-            <input class="register-btn" type="submit" value="Submit" />
-        </form>
-    </div>
-</body>
-
-</html>
+        <input class="register-btn" type="submit" value="Submit">
+    </form>
+</div>
+{% endblock %}

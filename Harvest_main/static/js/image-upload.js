@@ -3,7 +3,7 @@
 
 document.addEventListener("DOMContentLoaded", function() {
     const dropArea = document.getElementById("drop-area");
-    const fileInput = document.getElementById("id_image");
+    const fileInput = document.getElementById("id_image_uploader");  // updated ID
     const preview = document.getElementById("preview");
 
     function handleFile(file) {

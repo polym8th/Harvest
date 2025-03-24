@@ -3,19 +3,19 @@
 {% block content %}
 
 
-<p>Total articles fetched: {{ AllArticles|length }}</p>
+<div>Total articles fetched: {{ AllArticles|length }}</div>
 
 {% for article in AllArticles %}
     {% if article.is_published %}
         <div class="container bg-white shadow-md p-5 form-layout">
-            <h3>{{ article.title }}</h3>
-            <p>{{ article.content|safe }}</p>
+            <h3 class="header">{{ article.title }}</h3>
+            <div class="header">{{ article.content|safe }}</div>
 
             {% if article.image %}
                 <img src="{{ article.image.url }}" alt="Article Image" style="max-width: 100%; height: auto;">
             {% endif %}
 
-            <p>{{ article.pub_date|date:"F d, Y H:i" }}</p>
+            <div class="header">{{ article.pub_date|date:"F d, Y H:i" }}</div>
         </div>
         <br>
     {% endif %}
