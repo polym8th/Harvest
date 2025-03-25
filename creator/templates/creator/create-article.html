@@ -4,7 +4,7 @@
 {% load crispy_forms_tags %}
 
 {% block content %}
-<div class="container col-md-8 col-lg-6 bg-white shadow-md p-5 rounded-3 mt-4">
+<div class="container col-md-8 col-lg-6 bg-white shadow-md p-5 rounded-3">
     <div class="row justify-content-center">
         <h3 class="header">Create an article</h3>
         <hr>
@@ -21,6 +21,20 @@
             {% endfor %}
         {% endif %}
 
+        <!-- Error Message Display -->
+        {% if CreateArticleForm.errors %}
+        <div class="alert alert-danger">
+            <strong>Form Errors:</strong>
+            <ul>
+            {% for field in CreateArticleForm %}
+                {% for error in field.errors %}
+                    <li>{{ field.label }}: {{ error }}</li>
+                {% endfor %}
+            {% endfor %}
+            </ul>
+        </div>
+        {% endif %}
+
         <form method="POST" enctype="multipart/form-data" autocomplete="off">
             {% csrf_token %}
             {{ CreateArticleForm|crispy }}
@@ -31,8 +45,8 @@
                 <div id="drop-area" style="border: 2px dashed #ccc; padding: 20px; text-align: center;">
                     <p><strong>Upload a file</strong> or drag and drop</p>
                     <p>PNG, JPG, GIF or WebP up to 10MB</p>
-                    <input type="file" id="id_image_uploader" name="image" accept="image/*" style="display: none;">
-                    <button type="button" onclick="document.getElementById('id_image_uploader').click();" class="btn btn-outline-primary">Browse Files</button>
+                    <input type="file" id="id_image" name="image" accept="image/*" style="display: none;">
+                    <button type="button" onclick="document.getElementById('id_image').click();" class="btn btn-outline-primary">Browse Files</button>
                     <div id="preview" style="margin-top: 10px;"></div>
                 </div>
             </div>
@@ -79,11 +93,9 @@
         </form>
     </div>
 </div>
-{% endblock %}
-
-{% block extra_js %}
 <script src="https://cdn.ckeditor.com/ckeditor5/39.0.1/classic/ckeditor.js"></script>
 <script src="{% static 'js/richeditor.js' %}"></script>
 <script src="{% static 'js/event_toggle.js' %}"></script>
 <script src="{% static 'js/image-upload.js' %}"></script>
+
 {% endblock %}
