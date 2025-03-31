@@ -1,4 +1,7 @@
-console.log("CKEditor script loaded!");  // ✅ Confirm script loads
+// jshint esversion: 8
+/* global ClassicEditor */
+
+console.log("CKEditor script loaded!");
 
 document.addEventListener("DOMContentLoaded", function () {
     if (typeof ClassicEditor === "undefined") {
@@ -18,6 +21,25 @@ document.addEventListener("DOMContentLoaded", function () {
             'bulletedList', 'numberedList', '|', 'blockQuote',
             'insertTable', 'undo', 'redo', '|', 'imageUpload'
         ]
+    }).then(editor => {
+        editorElement.ckeditorInstance = editor;
+
+        const form = editorElement.closest("form");
+        if (form) {
+            form.addEventListener("submit", function (e) {
+                const content = editor.getData().trim();
+
+                // Block form submission if content is empty
+                if (!content) {
+                    e.preventDefault();
+                    alert("❌ The article content is required.");
+                    return false;
+                }
+
+                // Push editor content back into the hidden textarea
+                editorElement.value = content;
+            });
+        }
     }).catch(error => {
         console.error("CKEditor initialization error:", error);
     });

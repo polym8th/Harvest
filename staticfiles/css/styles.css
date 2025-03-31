@@ -1,10 +1,12 @@
+
 /* General body styles */
+
 body {
+
   background-color: #e1eeeb;
+
   overflow-x: hidden;
 }
-
-/* Form Layout */
 .form-layout {
   width: 90%;
   max-width: 800px;
@@ -13,32 +15,7 @@ body {
   border: 1px solid #ddd;
   background-color: #ffffff;
   padding: 20px;
-}
-
-/* Login Button */
-.login-btn {
-  background-color: #fff;
-  color: #000;
-  text-transform: uppercase;
-  padding: 10px 15px;
-  font-size: 12px;
-  font-weight: bold;
-  border-radius: 4px;
-  text-decoration: none;
-  display: inline-block;
-  text-align: center;
-  margin: 5px;
-  border: 2px solid #333;
-  margin-top: 20px;
-}
-
-.login-btn:hover {
-  background-color: #b1e2e0;
-  color: #000;
-}
-
-/* Register Button */
-.register-btn {
+}.register-btn {
   background-color: #008b8b;
   color: #fff;
   text-transform: uppercase;
@@ -51,68 +28,33 @@ body {
   text-align: center;
   margin: 5px;
   margin-top: 20px;
-}
-
-.register-btn:hover {
+}.register-btn:hover {
   background-color: #005f5f;
   color: #fff;
-}
-
-/* Header */
-.header {
+}.header {
   margin-top: 20px;
   margin-bottom: 40px;
-}
-
-.header h1 {
+}.header h1 {
   margin-top: 20px;
   margin-bottom: 40px;
   text-transform: uppercase;
   font-weight: 700;
-}
-
-/* Form field spacing */
-form p:last-of-type {
-  margin-bottom: 40px;
-}
-
-/* Success Container */
-.success-container {
+}.success-container {
   background-color: #fff;
   padding: 30px 40px;
   border-radius: 10px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   text-align: center;
-}
-
-.success-container h1 {
+}.success-container h1 {
   color: #4CAF50;
   margin-bottom: 20px;
-}
-
-.success-message {
+}.success-message {
   font-size: 1.2em;
   margin-bottom: 15px;
   text-transform: uppercase;
-}
-
-.success-message span {
+}.success-message span {
   font-weight: bold;
-}
-
-.text-wrap {
-  word-wrap: break-word;
-  /* Ensures words break */
-  overflow-wrap: break-word;
-  /* Alternative for better browser support */
-  white-space: normal;
-  /* Allows text to wrap */
-}
-
-.lowercase-link {
-  text-transform: lowercase;
-}
-.article-content {
-  font-size: 1.25rem; /* Adjust size */
-  line-height: 1.6; /* Improve readability */
+}.article-content {
+  font-size: 3rem; 
+  line-height: 1.6; 
 }
