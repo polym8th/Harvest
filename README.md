@@ -321,7 +321,7 @@ Access the application at [http://127.0.0.1:8000](http://127.0.0.1:8000).
 | -------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------| --------- |
 | Register as a General User       | 1. Navigate to the Register page.<br>2. Fill in required fields.<br>3. Leave 'Are you a Content Creator' unchecked.<br>4. Click 'Submit'. | User receives a success message and can log in to the User Dashboard.      | ✅ PASS   |
 | Register as a Content Creator    | 1. Navigate to the Register page.<br>2. Fill in required fields.<br>3. Check 'Are you a Content Creator'.<br>4. Click 'Submit'.  | User receives a success message and can log in with access to the Creator Dashboard.| ✅ PASS   |
-| Invalid Registration             | 1. Leave required fields empty.<br>2. Enter an incorrect email format.<br>3. Click 'Submit'.                                     | User is shown an error message.                                                     | ✅ PASS   |
+| Invalid Registration             | 1. Leave required fields empty.<br>2. Enter an incorrect email format. 3. Enter an email already registered<br>4. Click 'Submit'.| User is shown an error message.                                                     | ✅ PASS   |
 | Login with Valid Credentials     | 1. Navigate to Login page.<br>2. Enter valid email and password.<br>3. Click 'Login'.                                            | User is redirected to their relevant dashboard                                      | ✅ PASS   |
 | Login with Incorrect Credentials | 1. Navigate to Login page.<br>2. Enter incorrect email or password.<br>3. Click 'Login'.                                         | Error message is displayed.                                                         | ✅ PASS   |
 | Login with Unverified Email      |  Try logging in without verifying email.                                                                                         | Error message asking to verify email.                                               | ✅ PASS   |
@@ -343,11 +343,11 @@ Access the application at [http://127.0.0.1:8000](http://127.0.0.1:8000).
 
 ### C. Content Creation (For Content Creators)
 
-| Test Case                     | Steps                                                        | Expected Result                      | Pass/Fail |
+| Test Case                      | Steps                                                       | Expected Result                      | Pass/Fail |
 |--------------------------------|-------------------------------------------------------------|--------------------------------------|-----------|
 | Access the Dashboard           | Log in as Content Creator.                                  | Dashboard loads successfully.        | ✅ PASS   |
 | Create an Article              | Fill in Title, Content, Upload an Image. Click 'Submit'.    | Article appears in the dashboard.    | ✅ PASS   |
-| Create Article (Invalid)       | Try submitting an article with missing fields.              | Error message is displayed.          | ✅ PASS   |
+| Create Article (Invalid)       | Try submitting an article with missing fields.              | An Error message or Instruction is displayed. | ✅ PASS   |
 | Edit /Update an Article        | Modify an existing article and save changes.                | Changes are updated.                 | ✅ PASS   |
 | Delete an Article              | Click 'Delete' on an article.                               | Article is removed.                  | ✅ PASS   |
 | Create an Event                | Enter Event details (name, venue, time, etc.). Click 'Submit'. | Event appears in dashboard.       | ✅ PASS   |
