@@ -13,14 +13,12 @@ def index(request):
         article_teaser=True, is_published=True
     )
 
-    # Prevent boolean fields from rendering as 'True'
-
     for article in teaser_articles:
         if (
             hasattr(article, "article_teaser")
             and article.article_teaser is True
         ):
-            article.article_teaser = ""  # Replace True with empty string
+            article.article_teaser = ""
     return render(
         request, "accounts/index.html", {"teaser_articles": teaser_articles}
     )
@@ -28,6 +26,9 @@ def index(request):
 
 @login_required(login_url="my-login")
 def creator_dashboard(request):
+    if not (request.user.is_creator or request.user.is_superuser):
+        messages.error(request, "❌ Access denied. Creator or superuser permissions required.")
+        return redirect("client-dashboard")
     user_articles = Article.objects.filter(user=request.user)
     return render(
         request, "creator/creator-dashboard.html", {"articles": user_articles}
@@ -36,6 +37,10 @@ def creator_dashboard(request):
 
 @login_required(login_url="my-login")
 def create_article(request):
+    if not (request.user.is_creator or request.user.is_superuser):
+        messages.error(request, "❌ You are not allowed to create articles.")
+        return redirect("client-dashboard")
+
     if request.method == "POST":
         form = ArticleForm(request.POST, request.FILES)
         if form.is_valid():
@@ -85,11 +90,9 @@ def published(request):
     ) | Article.objects.filter(article_teaser=True)
     events = Article.objects.filter(is_event_related=True, is_published=True)
 
-    # Prevent boolean fields from rendering as 'True'
-
     for article in articles:
         if hasattr(article.user, "is_creator") and article.user.is_creator:
-            article.user.is_creator = ""  # Replace True with empty string
+            article.user.is_creator = ""
     return render(
         request,
         "creator/published.html",
@@ -100,6 +103,16 @@ def published(request):
 @login_required(login_url="my-login")
 def update_article(request, pk):
     article = get_object_or_404(Article, id=pk)
+
+    if not (
+        request.user.is_superuser
+        or (request.user.is_creator and article.user == request.user)
+    ):
+        messages.error(
+            request,
+            "❌ You cannot update this article if you did not create it.",
+        )
+        return redirect("client-dashboard")
 
     if request.method == "POST":
         form = ArticleForm(request.POST, request.FILES, instance=article)
