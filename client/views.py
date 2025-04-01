@@ -10,11 +10,14 @@ from .forms import UpdateUserForm
 
 @login_required(login_url="my-login")
 def client_dashboard(request):
+    if request.user.is_creator or request.user.is_superuser:
+        messages.error(request, "❌ Access denied. Only clients are allowed here.")
+        return redirect("index")
+
     user_articles = Article.objects.filter(user=request.user)
     return render(
         request, "client/client-dashboard.html", {"articles": user_articles}
     )
-
 
 @login_required(login_url="my-login")
 def regular_articles(request):

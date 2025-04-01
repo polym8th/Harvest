@@ -4,6 +4,25 @@
 {% load static %}
 
 {% block content %}
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const input = document.getElementById('id_image');
+        if (input) {
+            input.addEventListener('change', function (event) {
+                const preview = document.getElementById('preview');
+                preview.innerHTML = '';
+                const file = event.target.files[0];
+                if (file) {
+                    const img = document.createElement('img');
+                    img.src = URL.createObjectURL(file);
+                    img.style.maxWidth = '200px';
+                    img.style.marginTop = '10px';
+                    preview.appendChild(img);
+                }
+            });
+        }
+    });
+</script>
     <div class="container col-md-8 col-lg-6 bg-white shadow-md p-5 rounded-3">
         <h3>Update article</h3>
         <hr>

@@ -85,6 +85,9 @@ def article_guest(request, pk):
 
 
 def published(request):
+    if not (request.user.is_creator or request.user.is_superuser):
+        messages.error(request, "❌ Access denied. Creator or superuser permissions required.")
+        return redirect("client-dashboard")
     articles = Article.objects.filter(
         is_published=True
     ) | Article.objects.filter(article_teaser=True)
