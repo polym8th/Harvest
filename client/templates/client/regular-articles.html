@@ -7,7 +7,7 @@
 
 {% for article in AllArticles %}
     {% if article.is_published %}
-        <div class="container bg-white shadow-md p-5 form-layout">
+    <div class="container mt-3 bg-white shadow p-5 mb-3" style="max-width: 80%;">
             <h3 class="header">{{ article.title }}</h3>
             <div class="header">{{ article.content|safe }}</div>
 
