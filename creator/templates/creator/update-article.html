@@ -52,11 +52,16 @@
                     <div id="preview"></div>
                 </div>
             </div>
-
+            <br>
+            <div class="form-check mb-3">
+                <input type="checkbox" class="form-check-input header" id="article_teaser" name="article_teaser" value="1">
+                <label class="form-check-label header" for="article_teaser">Make this article a teaser for guest visitors</label>
+            </div>
             <br>
             <input class="btn btn-success w-100" type="submit" value="Update article"/>
         </form>
     </div>
+   
     {% if UpdateArticleForm.errors %}
     <div class="alert alert-danger">
         <strong>Form Errors:</strong>

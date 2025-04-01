@@ -121,6 +121,10 @@ def update_article(request, pk):
         form = ArticleForm(request.POST, request.FILES, instance=article)
         if form.is_valid():
             article = form.save(commit=False)
+            
+            # Handle checkbox value - article_teaser
+            article.article_teaser = request.POST.get("article_teaser") == "1"
+
             article.updated_by = request.user
             article.updated_at = timezone.now()
             article.save()
@@ -132,11 +136,13 @@ def update_article(request, pk):
             return redirect("update-article-success")
     else:
         form = ArticleForm(instance=article)
+
     return render(
         request,
         "creator/update-article.html",
         {"UpdateArticleForm": form, "article": article},
     )
+
 
 
 @login_required(login_url="my-login")
