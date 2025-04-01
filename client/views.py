@@ -18,8 +18,9 @@ def client_dashboard(request):
     
 @login_required(login_url="my-login")
 def regular_articles(request):
+    if request.user.is_creator or request.user.is_superuser:
+        raise PermissionDenied
     # Fetch only published articles
-
     articles = Article.objects.filter(is_published=True)
 
     return render(
@@ -29,6 +30,9 @@ def regular_articles(request):
 
 @login_required(login_url="my-login")
 def manage_account(request):
+    if request.user.is_creator or request.user.is_superuser:
+        raise PermissionDenied
+    
     form = UpdateUserForm(instance=request.user)
 
     if request.method == "POST":
