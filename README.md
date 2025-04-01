@@ -308,8 +308,8 @@ Access the application at [http://127.0.0.1:8000](http://127.0.0.1:8000).
 
 ## Flowchart
 
-![Flowchart](https://github.com/IsaHu-dev/Harvest/blob/main/media/readme/Harvest_flowchart.webp)
- [View PDF](https://github.com/IsaHu-dev/Harvest/blob/main/media/readme/Harvest_flowchart.pdf)
+![Flowchart](https://github.com/IsaHu-dev/Harvest/blob/main/media/readme/flowchart.webp)
+ [View PDF](https://github.com/IsaHu-dev/Harvest/blob/main/media/readme/flowchart.pdf)
 
 # Testing
 
@@ -348,6 +348,7 @@ Access the application at [http://127.0.0.1:8000](http://127.0.0.1:8000).
 | Access the Dashboard           | Log in as Content Creator.                                  | Dashboard loads successfully.        | ✅ PASS   |
 | Create an Article              | Fill in Title, Content, Upload an Image. Click 'Submit'.    | Article appears in the dashboard.    | ✅ PASS   |
 | Create Article (Invalid)       | Try submitting an article with missing fields.              | An Error message or Instruction is displayed. | ✅ PASS   |
+| Enable "Teaser" mode for article | User selects the "Teaser" checkbox.                       | Article is displayed as a teaser for guest (unauthenticated) visitors | ✅ PASS   |
 | Edit /Update an Article        | Modify an existing article and save changes.                | Changes are updated.                 | ✅ PASS   |
 | Delete an Article              | Click 'Delete' on an article.                               | Article is removed.                  | ✅ PASS   |
 | Create an Event                | Enter Event details (name, venue, time, etc.). Click 'Submit'. | Event appears in dashboard.       | ✅ PASS   |
@@ -473,7 +474,7 @@ content = forms.CharField(
 
 - Passed the CI Python Linter. "All clear no errors found"
 - ![W3 HTML Validator](https://github.com/IsaHu-dev/Harvest/blob/main/media/readme/testing/w3html.webp)
-- ![W3 CSS Validator](https://github.com/IsaHu-dev/Harvest/blob/main/media/readme/testing/css_w3.webp)
+- ![W3 CSS Validator](https://github.com/IsaHu-dev/Harvest/blob/main/media/readme/testing/cssw3.webp)
 
 
 ## Credits 
