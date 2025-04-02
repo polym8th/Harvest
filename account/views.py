@@ -4,6 +4,7 @@ from django.http import HttpResponse
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import authenticate, login, logout
 from creator.models import Article
+from django.db import OperationalError
 
 
 def home(request):
@@ -15,7 +16,7 @@ def home(request):
         articles = Article.objects.filter(is_published=True).order_by(
             "-pub_date"
         )[:5]
-    # Prevent boolean 'True' from appearing in the template
+    # Prevent boolean 'True' from appearing in the template 
 
     for article in articles:
         if hasattr(article.user, "is_creator") and article.user.is_creator:
@@ -49,29 +50,40 @@ def register(request):
         form = CreateUserForm()
     return render(request, "account/register.html", {"RegisterForm": form})
 
-
 def my_login(request):
+    error_message = None
+
     if request.method == "POST":
         form = AuthenticationForm(request, data=request.POST)
-        if form.is_valid():
-            username = form.cleaned_data.get("username")
-            password = form.cleaned_data.get("password")
-            user = authenticate(request, username=username, password=password)
+        try:
+            if form.is_valid():
+                username = form.cleaned_data.get("username")
+                password = form.cleaned_data.get("password")
+                user = authenticate(request, username=username, password=password)
 
-            if user is not None:
-                login(request, user)
-                # Redirect logic based on user roles
-
-                if user.is_superuser or user.is_staff:
-                    return redirect("creator-dashboard")
-                elif hasattr(user, "is_creator") and user.is_creator:
-                    return redirect("creator-dashboard")
+                if user is not None:
+                    login(request, user)
+                    if user.is_superuser or user.is_staff:
+                        return redirect("creator-dashboard")
+                    elif hasattr(user, "is_creator") and user.is_creator:
+                        return redirect("creator-dashboard")
+                    else:
+                        return redirect("client-dashboard")
                 else:
-                    return redirect("client-dashboard")
+                    error_message = "Invalid username or password."
+        except OperationalError:
+            error_message = (
+                "⚠️ Sorry, we're having trouble connecting to the database."   
+                   "Please check your internet connection and try again."
+            )
     else:
         form = AuthenticationForm()
-    return render(request, "account/my-login.html", {"LoginForm": form})
 
+    return render(
+        request,
+        "account/my-login.html",
+        {"LoginForm": form, "error_message": error_message},
+    )
 
 def user_logout(request):
     logout(request)

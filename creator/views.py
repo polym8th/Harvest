@@ -84,24 +84,27 @@ def article_guest(request, pk):
     return render(request, "account/article-guest.html", {"article": article})
 
 
+@login_required(login_url="my-login")
 def published(request):
     if not (request.user.is_creator or request.user.is_superuser):
         messages.error(request, "❌ Access denied. Creator or superuser permissions required.")
         return redirect("client-dashboard")
+
     articles = Article.objects.filter(
         is_published=True
     ) | Article.objects.filter(article_teaser=True)
+
     events = Article.objects.filter(is_event_related=True, is_published=True)
 
     for article in articles:
         if hasattr(article.user, "is_creator") and article.user.is_creator:
             article.user.is_creator = ""
+
     return render(
         request,
         "creator/published.html",
         {"AllArticles": articles, "Events": events},
     )
-
 
 @login_required(login_url="my-login")
 def update_article(request, pk):

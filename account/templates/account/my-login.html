@@ -13,4 +13,9 @@
       <input class="register-btn" type="submit" value="Login">
     </form>
   </div>
+  {% if error_message %}
+  <div class="error" style="text-align: center; color: red; margin-top: 1rem;">
+    {{ error_message }}
+  </div>
+{% endif %}
 {% endblock %}

@@ -1,5 +1,7 @@
 # Harvest
 
+![Index Page](https://github.com/IsaHu-dev/Harvest/blob/main/media/readme/screensresponsive.webp)
+
 ## About
 
  Harvest is a platform for content creators passionate about sharing the best local finds in Brighton and the surrounding areas.
@@ -20,9 +22,16 @@ The development process incorporates deployment strategies and follows Agile met
 - **Register Page**
     - Users must enter their email, first name, last name, and password for registration.
     - Password validation is implemented to ensure security, integrated with Crispy Forms.
+     See Figure 1
+
+     - **Login Page**
+    - The user can login their email and password to login into the Creator Dashboard or the Client Dashboard.
+     See Figure 2
 
 - **Creator Dashboard**
     - Creators can create articles, add related events, view published articles, manage their accounts, and log out.
+    See Figure 3, 4 & 5
+
   **Super Users** can create articles, add related events and have the privilege to update and delete ALL articles. 
 
     - **Navigation Menu:**
@@ -46,6 +55,22 @@ The development process incorporates deployment strategies and follows Agile met
             - Users can update their first name, last name, and email.
             - Users can delete their account or cancel their subscription.
         - **Logout** - The user can log out of the General Dashboard.
+
+
+![Register](https://github.com/IsaHu-dev/Harvest/blob/main/media/readme/screens/register.webp)
+Figure 1 - Registration Form 
+
+![Login](https://github.com/IsaHu-dev/Harvest/blob/main/media/readme/screens/login.webp)
+Figure 2 - Login form
+
+![Create Article](https://github.com/IsaHu-dev/Harvest/blob/main/media/readme/screens/createarticle.webp)
+Figure 3 - Create Article
+
+![Events](https://github.com/IsaHu-dev/Harvest/blob/main/media/readme/screens/events.webp)
+Figure 4 - Create an Event
+
+![Published](https://github.com/IsaHu-dev/Harvest/blob/main/media/readme/screens/published.webp)
+Figure 5 - Published Articles
 
 ## How to Use the Harvest Site
 
