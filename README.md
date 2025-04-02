@@ -4,8 +4,8 @@
 
 ## About
 
- Harvest is a platform for content creators passionate about sharing the best local finds in Brighton and the surrounding areas.
- It enables users to share local insights, discover unique experiences, and contribute to a growing community of culture enthusiasts. It provides features for users to sign up to the platform to add articles and related events that are happening in Brighton and parts of East Sussex.
+Harvest is a platform for content creators who are passionate about sharing the best local finds in Brighton and the surrounding areas.
+It enables users to share local insights, discover unique experiences, and contribute to a growing community of culture enthusiasts. It provides features for users to sign up to the platform to add articles and related events that are happening in Brighton and parts of East Sussex.
 
 ### Target Users
 
@@ -13,7 +13,7 @@ Harvest is designed for people of all ages, both residents and locals, who want 
 
 ### Features
 
-This project was developed as a Full Stack web application, utilizing Python, Django, HTML, CSS, and JavaScript to ensure scalability and maintainability. 
+This project was developed as a full stack web application, utilizing Python, Django, HTML, CSS, and JavaScript to ensure scalability and maintainability. 
 The development process incorporates deployment strategies and follows Agile methodologies to enhance the web application's stability and performance.
 
 - **Index Page**
@@ -24,8 +24,8 @@ The development process incorporates deployment strategies and follows Agile met
     - Password validation is implemented to ensure security, integrated with Crispy Forms.
      See Figure 1
 
-     - **Login Page**
-    - The user can login their email and password to login into the Creator Dashboard or the Client Dashboard.
+    - **Login Page**
+    - The user can log in with their email and password to log into the Creator Dashboard or the Client Dashboard.
      See Figure 2
 
 - **Creator Dashboard**
@@ -62,9 +62,11 @@ The development process incorporates deployment strategies and follows Agile met
 Figure 1 - Registration Form 
 
 
+
 ![Login](https://github.com/IsaHu-dev/Harvest/blob/main/media/readme/screens/login.webp)
 
 Figure 2 - Login form
+
 
 
 ![Create Article](https://github.com/IsaHu-dev/Harvest/blob/main/media/readme/screens/createarticle.webp)
@@ -72,14 +74,17 @@ Figure 2 - Login form
 Figure 3 - Create an Article
 
 
+
 ![Events](https://github.com/IsaHu-dev/Harvest/blob/main/media/readme/screens/events.webp)
 
 Figure 4 - Create an Event
 
 
+
 ![Published](https://github.com/IsaHu-dev/Harvest/blob/main/media/readme/screens/published.webp)
 
 Figure 5 - View Published Articles
+
 
 
 ## How to Use the Harvest Site
@@ -89,7 +94,7 @@ Figure 5 - View Published Articles
 To register for an account, follow these steps:
 
 - Click on the **Register** button.
-- If you want to be a contributor to Harvest as a Content Creator, check the box labeled **"Are you a Content Creator"** for access to the Creator Dashboard.
+- If you want to be a contributor to Harvest as a Content Creator, check the box labelled **"Are you a Content Creator"** for access to the Creator Dashboard.
 - Fill in your details:
   - Name
   - Email
@@ -173,7 +178,7 @@ The Harvest wireframes, designed in Figma, served as my initial sketches to plan
 
 ## Agile Framework and Project Management
 
-  - To keep the project organized, I used an Agile workflow with GitHub Projects and Issues.
+  - I used an Agile workflow with GitHub Projects and Issues to keep the project organised.
   - User Stories & Acceptance Criteria - Each feature was decomposed into User Stories with clearly defined Acceptance Criteria, maintaining the main objectives and usability.
   - Task Prioritization:  Issues were categorized using labels to establish development priorities; such as Must-Have, User Story or Implementing a new user authentication system.
   - Kanban Workflow - A three-stage Kanban board was utilized for task management: 
@@ -511,15 +516,16 @@ content = forms.CharField(
 - ![W3 HTML Validator](https://github.com/IsaHu-dev/Harvest/blob/main/media/readme/testing/w3html.webp)
 - ![W3 CSS Validator](https://github.com/IsaHu-dev/Harvest/blob/main/media/readme/testing/cssw3.webp)
 
-
 ## Credits 
 
   - [Real Python](https://realpython.com/.com/)
   - [Stack Overflow](https://stackoverflow.com/questions/10004850/python-classes-and-oop-basics)
   - [w3schools - Python](https://www.w3schools.com/python/ref_string_isdigit.asp)
+  - [Codemy.com -a code snippet adapted from this tutorial -YouTube](https://www.youtube.com/watch?v=O5YkEFLXcRg&t=617s)
   - Wire Frames and Diagram Basics Templates adapted from [Figma](https://www.figma.com/)
   - All Photos are Royalty Free Images from [Envato](https://elements.envato.com/) 
   - Writing and Content adapted from [Wikipedia](https://en.wikipedia.org/wiki/Brighton_Palace_Pier) and online resources. Content is also rewritten by myself.
   
 ## Acknowledgements
  
+ - Overall support from Code Institute and the mentor programme.

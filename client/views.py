@@ -9,18 +9,23 @@ from .forms import UpdateUserForm
 
 
 login_required(login_url="my-login")
+
+
 def client_dashboard(request):
     if request.user.is_creator or request.user.is_superuser:
         raise PermissionDenied
-
     user_articles = Article.objects.filter(user=request.user)
-    return render(request, "client/client-dashboard.html", {"articles": user_articles})
-    
+    return render(
+        request, "client/client-dashboard.html", {"articles": user_articles}
+    )
+
+
 @login_required(login_url="my-login")
 def regular_articles(request):
     if request.user.is_creator or request.user.is_superuser:
         raise PermissionDenied
     # Fetch only published articles
+
     articles = Article.objects.filter(is_published=True)
 
     return render(
@@ -32,7 +37,6 @@ def regular_articles(request):
 def manage_account(request):
     if request.user.is_creator or request.user.is_superuser:
         raise PermissionDenied
-    
     form = UpdateUserForm(instance=request.user)
 
     if request.method == "POST":

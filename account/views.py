@@ -16,7 +16,7 @@ def home(request):
         articles = Article.objects.filter(is_published=True).order_by(
             "-pub_date"
         )[:5]
-    # Prevent boolean 'True' from appearing in the template 
+    # Prevent boolean 'True' from appearing in the template
 
     for article in articles:
         if hasattr(article.user, "is_creator") and article.user.is_creator:
@@ -50,6 +50,7 @@ def register(request):
         form = CreateUserForm()
     return render(request, "account/register.html", {"RegisterForm": form})
 
+
 def my_login(request):
     error_message = None
 
@@ -59,7 +60,9 @@ def my_login(request):
             if form.is_valid():
                 username = form.cleaned_data.get("username")
                 password = form.cleaned_data.get("password")
-                user = authenticate(request, username=username, password=password)
+                user = authenticate(
+                    request, username=username, password=password
+                )
 
                 if user is not None:
                     login(request, user)
@@ -73,19 +76,18 @@ def my_login(request):
                     error_message = "Invalid username or password."
         except OperationalError:
             error_message = (
-                "⚠️ Sorry, we're having trouble connecting to the database."   
-                   "Please check your internet connection and try again."
+                "⚠️ Sorry, we're having trouble connecting to the database."
+                "Please check your internet connection and try again."
             )
     else:
         form = AuthenticationForm()
-
     return render(
         request,
         "account/my-login.html",
         {"LoginForm": form, "error_message": error_message},
     )
 
+
 def user_logout(request):
     logout(request)
     return redirect("home")
-    
