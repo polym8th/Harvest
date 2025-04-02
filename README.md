@@ -58,19 +58,29 @@ The development process incorporates deployment strategies and follows Agile met
 
 
 ![Register](https://github.com/IsaHu-dev/Harvest/blob/main/media/readme/screens/register.webp)
+
 Figure 1 - Registration Form 
 
+
 ![Login](https://github.com/IsaHu-dev/Harvest/blob/main/media/readme/screens/login.webp)
+
 Figure 2 - Login form
 
+
 ![Create Article](https://github.com/IsaHu-dev/Harvest/blob/main/media/readme/screens/createarticle.webp)
-Figure 3 - Create Article
+
+Figure 3 - Create an Article
+
 
 ![Events](https://github.com/IsaHu-dev/Harvest/blob/main/media/readme/screens/events.webp)
+
 Figure 4 - Create an Event
 
+
 ![Published](https://github.com/IsaHu-dev/Harvest/blob/main/media/readme/screens/published.webp)
-Figure 5 - Published Articles
+
+Figure 5 - View Published Articles
+
 
 ## How to Use the Harvest Site
 
