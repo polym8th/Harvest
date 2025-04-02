@@ -39,7 +39,7 @@ The development process incorporates deployment strategies and follows Agile met
         - **Create Article** - Allows authenticated users with the 'creator' role to create and publish an article by adding a title and content.
         - **Add an Event** - Beneath the "Create Article" form, users can add an event related to the article.
         - **Upload Image** - Supports PNG, JPEG, and WebP formats. The uploaded image will be displayed above the article text.
-        - **Published** - Allows creators to view their published articles. They can update or delete their own articles. 
+        - **Published** - Allows creators to view and edit their published articles. They can edit, update or delete their own articles. 
             - Articles are identified by the user who created them, giving them exclusive deletion rights.
             - Superusers can update and delete all articles.
         - **Manage Account**
