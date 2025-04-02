@@ -54,6 +54,9 @@ def manage_account(request):
 
 @login_required(login_url="my-login")
 def delete_account(request):
+    if request.user.is_creator or request.user.is_superuser:
+        raise PermissionDenied
+    form = UpdateUserForm(instance=request.user)
     if request.method == "POST":
         user = request.user
         user.delete()
@@ -62,6 +65,9 @@ def delete_account(request):
 
 
 def delete_account_success(request):
+    if request.user.is_creator or request.user.is_superuser:
+        raise PermissionDenied
+    form = UpdateUserForm(instance=request.user)
     return render(request, "account/delete-account-success.html")
 
 

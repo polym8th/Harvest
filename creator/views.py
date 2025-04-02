@@ -110,15 +110,13 @@ def published(request):
 def update_article(request, pk):
     article = get_object_or_404(Article, id=pk)
 
-    if not (
-        request.user.is_superuser
-        or (request.user.is_creator and article.user == request.user)
-    ):
-        messages.error(
-            request,
-            "❌ You cannot update this article if you did not create it.",
-        )
-        return redirect("client-dashboard")
+    if not request.user.is_authenticated:
+        messages.error(request, "❌ You don't have permission to update this article.")
+        return redirect("my-login")
+
+    if request.user.is_creator and article.user != request.user:
+        messages.error(request, "❌ You cannot update this article if you did not create it.")
+        return redirect("published")
 
     if request.method == "POST":
         form = ArticleForm(request.POST, request.FILES, instance=article)
@@ -156,6 +154,15 @@ def update_article_success(request):
 @login_required(login_url="my-login")
 def delete_article(request, pk):
     article = get_object_or_404(Article, id=pk)
+
+    if not request.user.is_authenticated:
+        messages.error(request, "❌ You don't have permission to delete this article.")
+        return redirect("my-login")
+
+    if request.user.is_creator and article.user != request.user:
+        messages.error(request, "❌ You cannot delete this article if you did not create it.")
+        return redirect("published")
+
     if not (
         request.user.is_superuser
         or (request.user.is_creator and article.user == request.user)
@@ -164,7 +171,8 @@ def delete_article(request, pk):
             request,
             "❌ You cannot delete this article if you did not create it.",
         )
-        return redirect(request.META.get("HTTP_REFERER", "creator-dashboard"))
+        return redirect("client-dashboard")
+
     if request.method == "POST":
         article.delete()
         messages.success(
