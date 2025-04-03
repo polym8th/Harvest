@@ -515,9 +515,9 @@ content = forms.CharField(
 ## Validator Testing
 
 - Passed the CI Python Linter. "All clear no errors found"
-- ![W3 HTML Validator](https://github.com/IsaHu-dev/Harvest/blob/main/media/readme/testing/w3html.webp)
-- ![W3 CSS Validator](https://github.com/IsaHu-dev/Harvest/blob/main/media/readme/testing/cssw3.webp)
-- ![LightHouse](https://github.com/IsaHu-dev/Harvest/blob/main/media/readme/testing/lighthouse.webp)
+ ![W3 HTML Validator](https://github.com/IsaHu-dev/Harvest/blob/main/media/readme/testing/w3html.webp)
+ ![W3 CSS Validator](https://github.com/IsaHu-dev/Harvest/blob/main/media/readme/testing/cssw3.webp)
+ ![LightHouse](https://github.com/IsaHu-dev/Harvest/blob/main/media/readme/testing/lighthouse.webp)
 
 ## Credits 
 
