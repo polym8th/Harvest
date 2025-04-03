@@ -42,6 +42,7 @@ The development process incorporates deployment strategies and follows Agile met
         - **Published** - Allows creators to view and edit their published articles. They can edit, update or delete their own articles. 
             - Articles are identified by the user who created them, giving them exclusive deletion rights.
             - Superusers can update and delete all articles.
+            - Authenticated users can use the search bar for articles by entering a partial title (e.g., one keyword).
         - **Manage Account**
             - Users can update their first name, last name, and email.
             - Users can delete their account or cancel their subscription.
@@ -400,11 +401,11 @@ Access the application at [http://127.0.0.1:8000](http://127.0.0.1:8000).
 
 ### D. General User Actions
 
-| Test Case             | Steps                                       | Expected Result                      | Pass/Fail |
-|-----------------------|---------------------------------------------|--------------------------------------|-----------|
-| View Dashboard        | Log in as a General User.                   | Dashboard loads correctly.           | ✅ PASS   |
-| Browse Articles       | Open and read articles.                     | Articles load correctly.             | ✅ PASS   |
-| Delete an Event       | Click 'Delete' on an event.                 | Event is removed.                    | ✅ PASS   |
+| Test Case                          | Steps                                        | Expected Result                              | Pass/Fail |
+|------------------------------------|--------------------------------------------- |--------------------------------------        |-----------|
+| View Dashboard                     | Log in as a General User.                    | Dashboard loads correctly.                   | ✅ PASS   |
+| Browse Articles                    | Open and read articles.                      | Articles load correctly.                     | ✅ PASS   |
+| Search bar - Search for Articles   | User enters partial title (e.g., one keyword)| Matching articles are found.                 | ✅ PASS   |
 ---
 
 ### E. Account Management
@@ -529,4 +530,4 @@ content = forms.CharField(
   
 ## Acknowledgements
  
- - Overall support from Code Institute and the mentor programme.
+ - Thanks to mentor Moritz Wach for PP4 guidance.
