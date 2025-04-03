@@ -123,12 +123,11 @@ def published(request):
             return redirect("published")
     else:
         # Show all published or teaser articles
-
         articles = Article.objects.filter(
             is_published=True
         ) | Article.objects.filter(article_teaser=True)
+        
     # Fetch published events
-
     events = Article.objects.filter(is_event_related=True, is_published=True)
 
     # Clear is_creator flag for template logic
@@ -185,6 +184,10 @@ def update_article(request, pk):
 # Success page after updating article
 @login_required(login_url="my-login")
 def update_article_success(request):
+    if request.user.is_authenticated:
+        if request.user.is_superuser or request.user.is_creator:
+            return redirect("creator-dashboard")
+        return redirect("client-dashboard")
     return render(request, "creator/update-article-success.html")
 
 
@@ -243,6 +246,10 @@ def manage_account(request):
 # Confirmation page after deleting an article
 @login_required(login_url="my-login")
 def delete_success(request):
+    if request.user.is_authenticated:
+        if request.user.is_superuser or request.user.is_creator:
+            return redirect("creator-dashboard")
+        return redirect("client-dashboard")
     return render(request, "creator/delete-success.html")
 
 
@@ -258,4 +265,7 @@ def delete_account(request):
 
 # Confirmation page after deleting user account
 def delete_account_success(request):
+    if request.user.is_authenticated:
+        if request.user.is_superuser or request.user.is_creator:
+            return redirect("creator-dashboard")
     return render(request, "account/delete-account-success.html")

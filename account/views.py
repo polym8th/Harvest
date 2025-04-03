@@ -9,42 +9,36 @@ from django.db import OperationalError
 
 def home(request):
     if request.user.is_authenticated:
-        articles = Article.objects.filter(is_published=True).order_by(
-            "-pub_date"
-        )[:10]
+        articles = Article.objects.filter(is_published=True).order_by("-pub_date")[:10]
     else:
-        articles = Article.objects.filter(is_published=True).order_by(
-            "-pub_date"
-        )[:10]
-    # Prevent boolean 'True' from appearing in the template
+        articles = Article.objects.filter(is_published=True).order_by("-pub_date")[:10]
 
     for article in articles:
         if hasattr(article.user, "is_creator") and article.user.is_creator:
-            article.user.is_creator = ""  # Replace True with empty string
+            article.user.is_creator = ""
     return render(request, "account/index.html", {"articles": articles})
 
 
 def register(request):
+    # Redirect logged-in users away from the register page
+    if request.user.is_authenticated:
+        if request.user.is_superuser or request.user.is_creator:
+            return redirect("creator-dashboard")
+        return redirect("client-dashboard")
+
     if request.method == "POST":
         form = CreateUserForm(request.POST)
         if form.is_valid():
             user = form.save(commit=False)
-
             is_creator = form.cleaned_data.get("is_creator")
             user.is_creator = is_creator
             user.save()
 
-            # Prepare messages based on user selections
-
-            messages = [
-                "Well done, your account has been created successfully!"
-            ]
+            messages = ["Well done, your account has been created successfully!"]
             if is_creator:
                 messages.append("You are now a content creator!")
             return render(
-                request,
-                "account/registration_success.html",
-                {"messages": messages},
+                request, "account/registration_success.html", {"messages": messages}
             )
     else:
         form = CreateUserForm()
@@ -52,6 +46,12 @@ def register(request):
 
 
 def my_login(request):
+    # Redirect logged-in users away from the login page
+    if request.user.is_authenticated:
+        if request.user.is_superuser or request.user.is_creator:
+            return redirect("creator-dashboard")
+        return redirect("client-dashboard")
+
     error_message = None
 
     if request.method == "POST":
@@ -60,15 +60,11 @@ def my_login(request):
             if form.is_valid():
                 username = form.cleaned_data.get("username")
                 password = form.cleaned_data.get("password")
-                user = authenticate(
-                    request, username=username, password=password
-                )
+                user = authenticate(request, username=username, password=password)
 
                 if user is not None:
                     login(request, user)
-                    if user.is_superuser or user.is_staff:
-                        return redirect("creator-dashboard")
-                    elif hasattr(user, "is_creator") and user.is_creator:
+                    if user.is_superuser or user.is_staff or user.is_creator:
                         return redirect("creator-dashboard")
                     else:
                         return redirect("client-dashboard")
@@ -82,9 +78,7 @@ def my_login(request):
     else:
         form = AuthenticationForm()
     return render(
-        request,
-        "account/my-login.html",
-        {"LoginForm": form, "error_message": error_message},
+        request, "account/my-login.html", {"LoginForm": form, "error_message": error_message}
     )
 
 
