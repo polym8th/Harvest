@@ -11,12 +11,15 @@ from django_ckeditor_5.widgets import CKEditor5Widget
 from django.db.models import Q
 
 # Public home page showing teaser articles
+
+
 def index(request):
     teaser_articles = Article.objects.filter(
         article_teaser=True, is_published=True
     )
 
     # Clear teaser label if present (likely used in templates)
+
     for article in teaser_articles:
         if (
             hasattr(article, "article_teaser")
@@ -29,6 +32,8 @@ def index(request):
 
 
 # Creator dashboard showing user's own articles
+
+
 @login_required(login_url="my-login")
 def creator_dashboard(request):
     if not (request.user.is_creator or request.user.is_superuser):
@@ -44,6 +49,8 @@ def creator_dashboard(request):
 
 
 # Create a new article (creators only)
+
+
 @login_required(login_url="my-login")
 def create_article(request):
     if not (request.user.is_creator or request.user.is_superuser):
@@ -62,14 +69,15 @@ def create_article(request):
             )
 
             # Save event fields if event checkbox is checked
+
             if article.is_event_related:
                 article.event_date = request.POST.get("event_date")
                 article.event_name = request.POST.get("event_name")
                 article.event_venue = request.POST.get("event_venue")
                 article.event_location = request.POST.get("event_location")
                 article.event_postcode = request.POST.get("event_postcode")
-                
             # Print info about uploaded image
+
             if "image" in request.FILES:
                 uploaded_image = request.FILES["image"]
                 print(
@@ -85,19 +93,26 @@ def create_article(request):
         request, "creator/create-article.html", {"CreateArticleForm": form}
     )
 
+
 # Success page after creating an article
+
+
 @login_required(login_url="my-login")
 def create_article_success(request):
     return render(request, "creator/create-article-success.html")
 
 
 # Public view for a single article
+
+
 def article_guest(request, pk):
     article = get_object_or_404(Article, id=pk)
     return render(request, "account/article-guest.html", {"article": article})
 
 
 # View published articles, with optional title search
+
+
 @login_required(login_url="my-login")
 def published(request):
     if not (request.user.is_creator or request.user.is_superuser):
@@ -110,11 +125,13 @@ def published(request):
 
     if article_title:
         # Filter by title (case-insensitive, partial match)
+
         articles = Article.objects.filter(
             Q(title__icontains=article_title),
             Q(is_published=True) | Q(article_teaser=True),
         )
         # Redirect back if no matching articles found
+
         if not articles.exists():
             messages.warning(
                 request,
@@ -123,14 +140,16 @@ def published(request):
             return redirect("published")
     else:
         # Show all published or teaser articles
+
         articles = Article.objects.filter(
             is_published=True
         ) | Article.objects.filter(article_teaser=True)
-        
     # Fetch published events
+
     events = Article.objects.filter(is_event_related=True, is_published=True)
 
     # Clear is_creator flag for template logic
+
     for article in articles:
         if hasattr(article.user, "is_creator") and article.user.is_creator:
             article.user.is_creator = ""
@@ -142,6 +161,8 @@ def published(request):
 
 
 # Update an article (if owner or superuser)
+
+
 @login_required(login_url="my-login")
 def update_article(request, pk):
     article = get_object_or_404(Article, id=pk)
@@ -182,6 +203,8 @@ def update_article(request, pk):
 
 
 # Success page after updating article
+
+
 @login_required(login_url="my-login")
 def update_article_success(request):
     if request.user.is_authenticated:
@@ -192,6 +215,8 @@ def update_article_success(request):
 
 
 # Delete article (with permission checks)
+
+
 @login_required(login_url="my-login")
 def delete_article(request, pk):
     article = get_object_or_404(Article, id=pk)
@@ -226,6 +251,8 @@ def delete_article(request, pk):
 
 
 # Manage (edit) logged-in user's account
+
+
 @login_required(login_url="my-login")
 def manage_account(request):
     form = UpdateUserForm(instance=request.user)
@@ -244,6 +271,8 @@ def manage_account(request):
 
 
 # Confirmation page after deleting an article
+
+
 @login_required(login_url="my-login")
 def delete_success(request):
     if request.user.is_authenticated:
@@ -254,6 +283,8 @@ def delete_success(request):
 
 
 # Delete user account
+
+
 @login_required(login_url="my-login")
 def delete_account(request):
     if request.method == "POST":
@@ -264,6 +295,8 @@ def delete_account(request):
 
 
 # Confirmation page after deleting user account
+
+
 def delete_account_success(request):
     if request.user.is_authenticated:
         if request.user.is_superuser or request.user.is_creator:

@@ -1,5 +1,4 @@
 {% extends 'account/base.html' %}
-
 {% load static %}
 
 {% block content %}
@@ -7,25 +6,26 @@
 <!-- Regular Articles Section -->
 <h2 class="text-center mb-4 header">Published Articles</h2>
 
+<!-- Search Bar Container Aligned with Articles -->
+<div class="container mb-4" style="max-width: 900px;">
+    <form method="GET" action="{% url 'published' %}" class="row g-2 align-items-center">
+        <div class="col-auto">
+            <input type="text" name="article_title" class="form-control" placeholder="Search by Article Title" style="width: 250px;">
+        </div>
+        <div class="col-auto">
+            <button class="btn btn-primary" type="submit">Search</button>
+        </div>
+    </form>
+</div>
 
 {% for article in AllArticles %}
    <div id="article-{{ article.id }}" class="container bg-white shadow-md p-5 rounded-3 mb-5" style="max-width: 900px;">
         <h3 class="header">{{ article.title }}</h3>
-        <p class="container mb-4" style="max-width: 900px;">
-            <form method="GET" action="{% url 'published' %}" class="row g-2 align-items-center">
-                <div class="col-auto">
-                    <input type="text" name="article_title" class="form-control" placeholder="Search by Article Title" style="width: 250px;">
-                </div>
-                <div class="col-auto">
-                    <button class="btn btn-primary" type="submit">Search</button>
-                </div>
-            </form>
-        </p>
-        
+
         {% if article.image %}
             <img src="{{ article.image.url }}" alt="Article Image" class="img-fluid mb-3 header">
         {% endif %}
-        
+
         <div class="text-break header">{{ article.content|safe }}</div>
         <div><strong>Published on:</strong> {{ article.pub_date|date:"F d, Y H:i" }}</div>
 
@@ -33,7 +33,7 @@
         <p class="text-muted">
             <strong>Updated by:</strong> 
             {% if article.updated_by %}
-            By {{ article.user.first_name }} {{ article.user.last_name }}
+                By {{ article.user.first_name }} {{ article.user.last_name }}
             {% else %}
                 Original Author
             {% endif %}
@@ -106,9 +106,7 @@
             </div>
             <div class="modal-body">
                 {% for message in messages %}
-                    <p class="{% if message.tags %}text-{{ message.tags }}{% endif %}">
-                        {{ message }}
-                    </p>
+                    <p class="{% if message.tags %}text-{{ message.tags }}{% endif %}">{{ message }}</p>
                 {% endfor %}
             </div>
             <div class="modal-footer">
@@ -120,7 +118,7 @@
 
 <!-- JavaScript to Trigger Modal Automatically -->
 {% if messages %}
-<script src="{% static 'js/messagemodal.js' %}"></script>
+    <script src="{% static 'js/messagemodal.js' %}"></script>
 {% endif %}
 
 {% endblock %}
