@@ -35,7 +35,7 @@ The development process incorporates deployment strategies and follows Agile met
   **Super Users** can create articles, add related events and have the privilege to update and delete ALL articles. 
 
     - **Navigation Menu:**
-        - **Dashboard** - The user arrives at the front page of the dashboard.
+        - **Dashboard** - The user arrives at the front page of the dashboard. The Dashboard shows the articles that have created by the authenticated user.
         - **Create Article** - Allows authenticated users with the 'creator' role to create and publish an article by adding a title and content.
         - **Add an Event** - Beneath the "Create Article" form, users can add an event related to the article.
         - **Upload Image** - Supports PNG, JPEG, and WebP formats. The uploaded image will be displayed above the article text.
@@ -226,7 +226,7 @@ Acceptance criteria:
 
 #### UX - Color Palette
 
-  The Harvest platform has a calm and modern design with soft, muted colors that are easy on the eyes. Instead of using bright colors, the visual focus is on article images, content, and button styling to create a smooth and relaxing user experience.
+  The Harvest platform has a calm and modern design with soft, muted colors that are easy on the eyes. Instead of using bright colors, the visual focus is on article images, content, and button styling to create a smooth user experience.
 
   This approach ensures a clean and modern aesthetic, enhancing accessibility and making the overall experience more calming for users, conveying the spirit of Brighton and it's relaxed environs.
 
@@ -345,7 +345,7 @@ Start the Django development server:
 python manage.py runserver
 ```
 
-Access the application at [http://127.0.0.1:8000](http://127.0.0.1:8000).
+Local access to the application is at [http://127.0.0.1:8000](http://127.0.0.1:8000).
 
 ## Flowchart
 
