@@ -15,7 +15,7 @@ def home(request):
     else:
         articles = Article.objects.filter(is_published=True).order_by(
             "-pub_date"
-        )[:5]
+        )[:10]
     # Prevent boolean 'True' from appearing in the template
 
     for article in articles:
