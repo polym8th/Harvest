@@ -7,10 +7,21 @@
 <!-- Regular Articles Section -->
 <h2 class="text-center mb-4 header">Published Articles</h2>
 
+
 {% for article in AllArticles %}
    <div id="article-{{ article.id }}" class="container bg-white shadow-md p-5 rounded-3 mb-5" style="max-width: 900px;">
         <h3 class="header">{{ article.title }}</h3>
-
+        <p class="container mb-4" style="max-width: 900px;">
+            <form method="GET" action="{% url 'published' %}" class="row g-2 align-items-center">
+                <div class="col-auto">
+                    <input type="text" name="article_title" class="form-control" placeholder="Search by Article Title" style="width: 250px;">
+                </div>
+                <div class="col-auto">
+                    <button class="btn btn-primary" type="submit">Search</button>
+                </div>
+            </form>
+        </p>
+        
         {% if article.image %}
             <img src="{{ article.image.url }}" alt="Article Image" class="img-fluid mb-3 header">
         {% endif %}
