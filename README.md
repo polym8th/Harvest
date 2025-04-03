@@ -517,6 +517,7 @@ content = forms.CharField(
 - Passed the CI Python Linter. "All clear no errors found"
 - ![W3 HTML Validator](https://github.com/IsaHu-dev/Harvest/blob/main/media/readme/testing/w3html.webp)
 - ![W3 CSS Validator](https://github.com/IsaHu-dev/Harvest/blob/main/media/readme/testing/cssw3.webp)
+- ![LightHouse](https://github.com/IsaHu-dev/Harvest/blob/main/media/readme/testing/lighthouse.webp)
 
 ## Credits 
 
@@ -530,4 +531,4 @@ content = forms.CharField(
   
 ## Acknowledgements
  
- - Thanks to mentor Moritz Wach for PP4 guidance.
+ - Thanks to the mentor programme at Code Institute with Moritz Wach.
