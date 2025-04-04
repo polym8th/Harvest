@@ -2,7 +2,7 @@
 
 ![Index Page](https://github.com/IsaHu-dev/Harvest/blob/main/media/readme/screensresponsive.webp)
 
-[Live Page](https://harvest-main-55fca7957f91.herokuapp.com)
+[HARVEST Live Page](https://harvest-main-55fca7957f91.herokuapp.com)
 
 ## About
 
