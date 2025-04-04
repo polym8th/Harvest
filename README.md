@@ -404,8 +404,9 @@ Local access to the application is at [http://127.0.0.1:8000](http://127.0.0.1:8
 
 | Test Case                          | Steps                                        | Expected Result                              | Pass/Fail |
 |------------------------------------|--------------------------------------------- |--------------------------------------        |-----------|
-| View Dashboard                     | Log in as a General User.                    | Dashboard loads correctly.                   | ✅ PASS   |
+| View Client Dashboard              | Log in as a General User.                    | Dashboard loads correctly.                   | ✅ PASS   |
 | Browse Articles                    | Open and read articles.                      | Articles load correctly.                     | ✅ PASS   |
+| View Article Counter               | A counter fetches the number of articles     | Counter displays the number of articles.     | ✅ PASS   |
 | Search bar - Search for Articles   | User enters partial title (e.g., one keyword)| Matching articles are found.                 | ✅ PASS   |
 ---
 
