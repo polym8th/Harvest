@@ -303,6 +303,12 @@ def delete_account(request):
 # Confirmation page after deleting user account
 
 def delete_account_success(request):
+    if not (request.user.is_creator or request.user.is_superuser):
+        messages.error(
+            request,
+            "Access denied. Creator or superuser permissions required.",
+        )
+        return redirect("client-dashboard")
     if request.user.is_authenticated:
         if request.user.is_superuser or request.user.is_creator:
             return redirect("creator-dashboard")
