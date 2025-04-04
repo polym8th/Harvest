@@ -9,7 +9,7 @@ It enables users to share local insights, discover unique experiences, and contr
 
 ### Target Users
 
-Harvest is designed for people of all ages, both residents and locals, who want to explore the local area of Brighton. 
+Harvest is designed for people of all ages, both residents and locals, who want to explore the local area of Brighton and surrounding areas. 
 
 ### Features
 
@@ -40,9 +40,9 @@ The development process incorporates deployment strategies and follows Agile met
         - **Add an Event** - Beneath the "Create Article" form, users can add an event related to the article.
         - **Upload Image** - Supports PNG, JPEG, and WebP formats. The uploaded image will be displayed above the article text.
         - **Published** - Allows creators to view and edit their published articles. They can edit, update or delete their own articles. 
-            - Articles are identified by the user who created them, giving them exclusive deletion rights.
+            - Articles are identified by the user who created them with an id number.
             - Superusers can update and delete all articles.
-            - Authenticated users can use the search bar for articles by entering a partial title (e.g., one keyword).
+            - Authenticated users can use the search bar for articles by entering a part of the title or keyword. 
         - **Manage Account**
             - Users can update their first name, last name, and email.
             - Users can delete their account or cancel their subscription.
@@ -85,8 +85,6 @@ Figure 4 - Create an Event
 ![Published](https://github.com/IsaHu-dev/Harvest/blob/main/media/readme/screens/published.webp)
 
 Figure 5 - View Published Articles
-
-
 
 ## How to Use the Harvest Site
 
