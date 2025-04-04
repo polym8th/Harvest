@@ -246,7 +246,7 @@ def delete_article(request, pk):
         messages.success(
             request, "✅ The article has been deleted successfully."
         )
-        return redirect("delete-success")
+        return redirect("published")
     return render(request, "creator/delete-success.html", {"article": article})
 
 
