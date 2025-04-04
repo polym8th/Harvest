@@ -432,7 +432,6 @@ Local access to the application is at [http://127.0.0.1:8000](http://127.0.0.1:8
 | Load CKEditor on form   | Open article creation page (`/create-article/`).   | CKEditor loads without errors.      | ✅ PASS   |
 | Bold & Italic Text      | Type text, select it, click **B** or *I*.(Italics) | Text applies bold/italic formatting.| ✅ PASS   |
 | Line Breaks             | Press `Enter` for a new paragraph.                 | New paragraph created.              | ✅ PASS   |
-| Image Upload            | Click "Insert Image", select a file.               | Image is inserted in the editor.    | ✅ PASS   |
 | Save & Render HTML      | Submit article and view published page.            | HTML tags render properly (`<p>`, `<strong>`). | ✅ PASS   |
 ---
 
