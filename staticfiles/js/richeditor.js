@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", function () {
         toolbar: [
             'heading', '|', 'bold', 'italic', 'underline', '|',
             'bulletedList', 'numberedList', '|', 'blockQuote',
-            'insertTable', 'undo', 'redo' // removed 'imageUpload'
+            'insertTable', 'undo', 'redo' 
         ]
     }).then(editor => {
         editorElement.ckeditorInstance = editor;
