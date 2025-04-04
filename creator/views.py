@@ -98,7 +98,7 @@ def create_article_success(request):
     if not (request.user.is_creator or request.user.is_superuser):
         messages.error(
             request,
-            "❌ Access denied. Creator or superuser permissions required.",
+            "Access denied. Creator or superuser permissions required.",
         )
         return redirect("client-dashboard")
     return render(request, "creator/create-article-success.html")
@@ -287,6 +287,12 @@ def delete_success(request):
 
 @login_required(login_url="my-login")
 def delete_account(request):
+    if not (request.user.is_creator or request.user.is_superuser):
+        messages.error(
+            request,
+            "Access denied. Creator or superuser permissions required.",
+        )
+        return redirect("client-dashboard")
     if request.method == "POST":
         user = request.user
         user.delete()
