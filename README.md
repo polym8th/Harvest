@@ -197,7 +197,7 @@ Acceptance criteria:
 
 #### As a User (Logged-in User)
 - As a registered user, I want to access exclusive articles.
-- As a registered user, I want the option to pay for a premium account with access to exclusive articles and events.
+- As a registered user, I want to access the platform and view events that are scheduled.
 
 #### Access the Dashboard to Manage User Account
 - As a registered logged-in user, I want to access the dashboard and manage my account.
@@ -214,7 +214,7 @@ Acceptance criteria:
    - **Given** that I am an authenticated user/ Creator – I have privileges to delete only the articles that I created.
 
    -  More User stories to be found directly on Github: 
-    For detailed user stories, refer to the **[Harvest User Stories](https://github.com/IsaHu-dev/Harvest/issues)**.
+    For detailed user stories, refer to the **[Harvest User Stories](https://github.com/users/IsaHu-dev/projects/10)**.
 
 #### Update own Articles: 
    - **Given** that I am an authenticated user with the 'creator' role, I want to update my own articles, so that i can keep my content relevant.
