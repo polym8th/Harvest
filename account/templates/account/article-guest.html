@@ -1,7 +1,7 @@
 {% extends 'account/base.html' %}
 {% block content %}
 
-<div class="container mt-2 bg-white shadow p-5 mb-6" style="max-width: 90%;">
+<div class="container mt-2 bg-white shadow p-5 mb-6" style="max-width: 75%;">
 
   <h1 class="fw-bold">{{ article.title }}</h1>
   <span class="text-muted header">Published on {{ article.pub_date|date:"F j, Y" }}</span>
@@ -14,7 +14,7 @@
     {% endif %}
   </div>
 
-  <div class="header fs-4" style="word-wrap: break-word; overflow-wrap: break-word; max-width: 100%;">
+  <div class="header fs-4" style="word-wrap: break-word; overflow-wrap: break-word; max-width: %;">
     {{ article.content|safe }}
   </div>
 
