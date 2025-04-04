@@ -99,6 +99,12 @@ def create_article(request):
 
 @login_required(login_url="my-login")
 def create_article_success(request):
+    if not (request.user.is_creator or request.user.is_superuser):
+        messages.error(
+            request,
+            "❌ Access denied. Creator or superuser permissions required.",
+        )
+        return redirect("client-dashboard")
     return render(request, "creator/create-article-success.html")
 
 
@@ -255,6 +261,12 @@ def delete_article(request, pk):
 
 @login_required(login_url="my-login")
 def manage_account(request):
+    if not (request.user.is_creator or request.user.is_superuser):
+        messages.error(
+            request,
+            "❌ Access denied. Creator or superuser permissions required.",
+        )
+        return redirect("client-dashboard")
     form = UpdateUserForm(instance=request.user)
 
     if request.method == "POST":
