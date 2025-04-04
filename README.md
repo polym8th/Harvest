@@ -527,7 +527,7 @@ content = forms.CharField(
   - [w3schools - Python](https://www.w3schools.com/python/ref_string_isdigit.asp)
   - [Codemy.com -a code snippet adapted from this tutorial -YouTube](https://www.youtube.com/watch?v=O5YkEFLXcRg&t=617s)
   - Wire Frames and Diagram Basics Templates adapted from [Figma](https://www.figma.com/)
-  - All Photos are Royalty Free Images from [Envato](https://elements.envato.com/) 
+  - Several photos on the web app are Royalty Free Images from [Envato](https://elements.envato.com/). A couple of the photos are my own, taken in Brighton.
   - Writing and Content adapted from [Wikipedia](https://en.wikipedia.org/wiki/Brighton_Palace_Pier) and online resources. Content is also rewritten by myself.
   - Richtext Editor - Javascript adapted from [CKEditor 5](https://cdn.ckeditor.com/)
   
