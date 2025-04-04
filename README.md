@@ -19,12 +19,13 @@ The development process incorporates deployment strategies and follows Agile met
 - **Index Page**
     - The site visitor can read articles in full with unrestricted guest access to sample content before registering on the Harvest Platform.
     - There are articles whereby the content is abridged for registered users only. The visitor can click on the register button to sign up. 
+
 - **Register Page**
     - Users must enter their email, first name, last name, and password for registration.
     - Password validation is implemented to ensure security, integrated with Crispy Forms.
      See Figure 1
 
-    - **Login Page**
+- **Login Page**
     - The user can log in with their email and password to log into the Creator Dashboard or the Client Dashboard.
      See Figure 2
 
@@ -36,7 +37,7 @@ The development process incorporates deployment strategies and follows Agile met
 
     - **Navigation Menu:**
         - **Dashboard** - The user arrives at the front page of the dashboard. The Dashboard shows the articles that have created by the authenticated user.
-        - **Create Article** - Allows authenticated users with the 'creator' role to create and publish an article by adding a title and content.
+        - **Create Article** - Allows authenticated users with the 'creator' role to create and publish an article by adding a title and content. A Rich Text Editor allows users to format text using paragraphs, bold, italics, and more.
         - **Add an Event** - Beneath the "Create Article" form, users can add an event related to the article.
         - **Upload Image** - Supports PNG, JPEG, and WebP formats. The uploaded image will be displayed above the article text.
         - **Published** - Allows creators to view and edit their published articles. They can edit, update or delete their own articles. 
@@ -526,6 +527,7 @@ content = forms.CharField(
   - Wire Frames and Diagram Basics Templates adapted from [Figma](https://www.figma.com/)
   - All Photos are Royalty Free Images from [Envato](https://elements.envato.com/) 
   - Writing and Content adapted from [Wikipedia](https://en.wikipedia.org/wiki/Brighton_Palace_Pier) and online resources. Content is also rewritten by myself.
+  - Richtext Editor - Javascript adapted from [CKEditor 5](https://cdn.ckeditor.com/)
   
 ## Acknowledgements
  

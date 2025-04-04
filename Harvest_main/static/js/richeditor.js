@@ -5,13 +5,13 @@ console.log("CKEditor script loaded!");
 
 document.addEventListener("DOMContentLoaded", function () {
     if (typeof ClassicEditor === "undefined") {
-        console.error("❌ CKEditor is not loaded! Check the script order.");
+        console.error("CKEditor is not loaded! Check the script order.");
         return;
     }
 
     let editorElement = document.querySelector("#id_content");
     if (!editorElement) {
-        console.error("❌ CKEditor: #id_content not found!");
+        console.error("CKEditor: #id_content not found!");
         return;
     }
 
@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", function () {
         toolbar: [
             'heading', '|', 'bold', 'italic', 'underline', '|',
             'bulletedList', 'numberedList', '|', 'blockQuote',
-            'insertTable', 'undo', 'redo', '|', 'imageUpload'
+            'insertTable', 'undo', 'redo' 
         ]
     }).then(editor => {
         editorElement.ckeditorInstance = editor;
@@ -32,7 +32,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 // Block form submission if content is empty
                 if (!content) {
                     e.preventDefault();
-                    alert("❌ The article content is required.");
+                    alert("The article content is required.");
                     return false;
                 }
 
