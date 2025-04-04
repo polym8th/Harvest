@@ -12,7 +12,6 @@ from django.db.models import Q
 
 # Public home page showing teaser articles
 
-
 def index(request):
     teaser_articles = Article.objects.filter(
         article_teaser=True, is_published=True
@@ -33,7 +32,6 @@ def index(request):
 
 # Creator dashboard showing user's own articles
 
-
 @login_required(login_url="my-login")
 def creator_dashboard(request):
     if not (request.user.is_creator or request.user.is_superuser):
@@ -49,7 +47,6 @@ def creator_dashboard(request):
 
 
 # Create a new article (creators only)
-
 
 @login_required(login_url="my-login")
 def create_article(request):
@@ -96,7 +93,6 @@ def create_article(request):
 
 # Success page after creating an article
 
-
 @login_required(login_url="my-login")
 def create_article_success(request):
     if not (request.user.is_creator or request.user.is_superuser):
@@ -110,14 +106,12 @@ def create_article_success(request):
 
 # Public view for a single article
 
-
 def article_guest(request, pk):
     article = get_object_or_404(Article, id=pk)
     return render(request, "account/article-guest.html", {"article": article})
 
 
 # View published articles, with optional title search
-
 
 @login_required(login_url="my-login")
 def published(request):
@@ -168,7 +162,6 @@ def published(request):
 
 # Update an article (if owner or superuser)
 
-
 @login_required(login_url="my-login")
 def update_article(request, pk):
     article = get_object_or_404(Article, id=pk)
@@ -210,7 +203,6 @@ def update_article(request, pk):
 
 # Success page after updating article
 
-
 @login_required(login_url="my-login")
 def update_article_success(request):
     if request.user.is_authenticated:
@@ -221,7 +213,6 @@ def update_article_success(request):
 
 
 # Delete article (with permission checks)
-
 
 @login_required(login_url="my-login")
 def delete_article(request, pk):
@@ -258,13 +249,12 @@ def delete_article(request, pk):
 
 # Manage (edit) logged-in user's account
 
-
 @login_required(login_url="my-login")
 def manage_account(request):
     if not (request.user.is_creator or request.user.is_superuser):
         messages.error(
             request,
-            "❌ Access denied. Creator or superuser permissions required.",
+            "Access denied. Creator or superuser permissions required.",
         )
         return redirect("client-dashboard")
     form = UpdateUserForm(instance=request.user)
@@ -284,7 +274,6 @@ def manage_account(request):
 
 # Confirmation page after deleting an article
 
-
 @login_required(login_url="my-login")
 def delete_success(request):
     if request.user.is_authenticated:
@@ -296,7 +285,6 @@ def delete_success(request):
 
 # Delete user account
 
-
 @login_required(login_url="my-login")
 def delete_account(request):
     if request.method == "POST":
@@ -307,7 +295,6 @@ def delete_account(request):
 
 
 # Confirmation page after deleting user account
-
 
 def delete_account_success(request):
     if request.user.is_authenticated:
