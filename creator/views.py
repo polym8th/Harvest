@@ -83,7 +83,7 @@ def create_article(request):
                     f"Type: {uploaded_image.content_type}"
                 )
             article.save()
-            return redirect("create-article-success")
+            return redirect("published")
     else:
         form = ArticleForm()
     return render(

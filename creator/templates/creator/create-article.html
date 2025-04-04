@@ -1,5 +1,4 @@
 {% extends 'account/base.html' %}
-
 {% load static %}
 {% load crispy_forms_tags %}
 
@@ -7,53 +6,50 @@
 <div class="container bg-white shadow-md p-5 rounded-3 mb-5" style="max-width: 900px;">
     <div class="row justify-content-center">
         <h3 class="header">Create an article</h3>
-        <hr>
-        <br>
+        <hr><br>
 
-        <!-- Success Message Display -->
+        <!-- Display Success Messages -->
         {% if messages %}
             {% for message in messages %}
                 {% if 'success' in message.tags %}
-                    <div class="alert alert-success" role="alert">
-                        {{ message }}
-                    </div>
+                    <div class="alert alert-success" role="alert">{{ message }}</div>
                 {% endif %}
             {% endfor %}
         {% endif %}
 
-        <!-- Error Message Display -->
+        <!-- Display Form Errors -->
         {% if CreateArticleForm.errors %}
-        <div class="alert alert-danger">
-            <strong>Form Errors:</strong>
-            <ul>
-            {% for field in CreateArticleForm %}
-                {% for error in field.errors %}
-                    <li>{{ field.label }}: {{ error }}</li>
-                {% endfor %}
-            {% endfor %}
-            </ul>
-        </div>
+            <div class="alert alert-danger">
+                <strong>Form Errors:</strong>
+                <ul>
+                    {% for field in CreateArticleForm %}
+                        {% for error in field.errors %}
+                            <li>{{ field.label }}: {{ error }}</li>
+                        {% endfor %}
+                    {% endfor %}
+                </ul>
+            </div>
         {% endif %}
 
         <form method="POST" enctype="multipart/form-data" autocomplete="off">
             {% csrf_token %}
             {{ CreateArticleForm|crispy }}
 
-            <!-- Image Uploader -->
+            <!-- Image Upload -->
             <div class="form-group">
                 <label for="id_image">Image Upload</label>
-                <div id="drop-area" style="border: 2px dashed #ccc; padding: 20px; text-align: center;">
+                <div id="drop-area" class="text-center border border-2 border-secondary p-4">
                     <p><strong>Upload a file</strong> or drag and drop</p>
                     <p>PNG, JPG, GIF or WebP up to 10MB</p>
                     <input type="file" id="id_image" name="image" accept="image/*" style="display: none;">
                     <button type="button" onclick="document.getElementById('id_image').click();" class="btn btn-outline-primary">Browse Files</button>
-                    <div id="preview" style="margin-top: 10px;"></div>
+                    <div id="preview" class="mt-2"></div>
                 </div>
             </div>
 
-            <!-- Event Information -->
+            <!-- Event Section -->
             <div class="form-group mt-4">
-                <h4>Create an event</h4>
+                <h4>Create an Event</h4>
                 <div class="form-check mb-3">
                     <input type="checkbox" class="form-check-input" id="is_event_related" name="is_event_related">
                     <label class="form-check-label" for="is_event_related">Is this article related to an event?</label>
@@ -78,25 +74,34 @@
                     </div>
                     <div class="form-group mb-3">
                         <label for="event_postcode">Event Postcode</label>
-                        <input type="text" class="form-control" id="event_postcode" name="event_postcode">
+                        <input
+                            type="text"
+                            class="form-control"
+                            id="event_postcode"
+                            name="event_postcode"
+                            maxlength="10"
+                            placeholder="e.g. SW1A 1AA"
+                            pattern="[A-Za-z0-9 ]{1,10}"
+                            title="Postcode must be 10 characters or fewer">
                     </div>
                 </div>
             </div>
 
-            <div class="form-check mb-3">
+            <!-- Article Teaser Checkbox -->
+            <div class="form-check mb-4">
                 <input type="checkbox" class="form-check-input" id="article_teaser" name="article_teaser" value="1">
                 <label class="form-check-label" for="article_teaser">Make this article a teaser for guest visitors</label>
             </div>
 
-            <br>
-            <input class="btn btn-success w-100" type="submit" value="Create article">
+            <input class="btn btn-success w-100" type="submit" value="Create Article">
         </form>
     </div>
 </div>
+
+<!-- Scripts -->
 <script src="{% static 'js/ckeditor.js' %}"></script>
 <script src="{% static 'js/richeditor.js' %}"></script>
 <script src="{% static 'js/event_toggle.js' %}"></script>
 <script src="{% static 'js/event_date.js' %}"></script>
 <script src="{% static 'js/image-upload.js' %}"></script>
-
 {% endblock %}
