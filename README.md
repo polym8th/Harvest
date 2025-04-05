@@ -43,7 +43,7 @@ The development process incorporates deployment strategies and follows Agile met
         - **Add an Event** - Beneath the "Create Article" form, users can add an event related to the article.
         - **Upload Image** - Supports PNG, JPEG, and WebP formats. The uploaded image will be displayed above the article text.
         - **Published** - Allows creators to view and edit their published articles. They can edit, update or delete their own articles. 
-            - Articles are identified by the user who created them with an id number.
+            - Articles are identified by the user who created them with an ID number.
             - Superusers can update and delete all articles.
             - Authenticated users can use the search bar for articles by entering a part of the title or keyword. 
         - **Manage Account**
@@ -189,7 +189,7 @@ The Harvest wireframes, designed in Figma, served as my initial sketches to plan
     -  Done – Completed and verified tasks, ready for deployment.
 
 #### User Stories
-   The following sections outline user stories and their acceptance criterias. These demonstrate how the application fulfils user requirements and delivers front-end CRUD functionality.
+   The following sections outline user stories and their acceptance criterias. These demonstrate how the application fulfils user requirements and delivers frontend CRUD functionality.
 
 #### As a Visitor (Unregistered User)
 Acceptance criteria:
@@ -213,7 +213,7 @@ Acceptance criteria:
 #### Delete an Article
    -  As an authenticated user with the role of the Creator, I want to delete my own articles so that I can remove outdated or unnecessary content.
    - **Given** that I am an authenticated user/ Creator.
-   - **Given** that I am an authenticated user/ Creator – I have privileges to delete only the articles that I created.
+   - **Given** that I am an authenticated user/ Creator – I have the privileges to delete only the articles that I created.
 
    -  More User stories to be found directly on Github: 
     For detailed user stories, refer to the **[Harvest User Stories](https://github.com/users/IsaHu-dev/projects/10)**.
@@ -225,11 +225,11 @@ Acceptance criteria:
    - A date stamp is published under the article
    - Then my name (as an authenticated user / creator) is displayed under the article as "Updated by: [Creator Name]".
 
-#### UX - Color Palette
+#### UX - Colour Palette
 
-  The Harvest platform has a calm and modern design with soft, muted colors that are easy on the eyes. Instead of using bright colors, the visual focus is on article images, content, and button styling to create a smooth user experience.
+  The Harvest platform has a calm and modern design with soft, muted colours that are easy on the eyes. Instead of using bright colours, the visual focus is on article images, content, and button styling to create a smooth user experience.
 
-  This approach ensures a clean and modern aesthetic, enhancing accessibility and making the overall experience more calming for users, conveying the spirit of Brighton and it's relaxed environs.
+  This approach ensures a clean and modern aesthetic, enhancing accessibility and making the overall experience more calming for users, conveying the spirit of Brighton.
 
    ![Image of UX Colour Palette](https://github.com/IsaHu-dev/Harvest/blob/main/media/readme/colorpalette.png)
 
@@ -250,7 +250,7 @@ Acceptance criteria:
   - It replaces the default user model and manages authentication and user attributes.
 
 - **Article Model** (`creator/models.py`)**
- The creator app defines an `Article` model, which is therefore a custom model. It has custom fields like `article_teaser`, `is_event_related`, and `event_venue` are tailored for specific functionality.
+ The creator app defines an `Article` model, which is therefore, a custom model. It has custom fields like `article_teaser`, `is_event_related`, and `event_venue` are tailored for specific functionality.
   - Represents content created by the user.
   - Each article belongs to a specific user.
   - May include optional event details (time, date, venue, and address).
@@ -395,12 +395,12 @@ Local access to the application is at [http://127.0.0.1:8000](http://127.0.0.1:8
 | Delete an Article                  | Click 'Delete' on an article.                                              | Article is removed.                                               | ✅ PASS   |
 | Create an Event                    | Enter event details (name, venue, time, etc.). Click 'Submit'.             | Event appears in dashboard.                                       | ✅ PASS   |
 | Select Calendar Date & Time        | Date selection cannot be in the past.                                      | Future date is successfully saved.                                | ✅ PASS   |
+| Add Postcode                       | Add postcode in correct format. 10 characters or fewer.                    | Error message appears if incorrect format is typed by the user.   | ✅ PASS   |
 | Edit an Event                      | Modify/update event details and save changes.                              | Changes are updated.                                              | ✅ PASS   |
 | Delete an Event                    | Click 'Delete' on an event.                                                | Event is removed.                                                 | ✅ PASS   |
 | Restrict Update (Article Ownership)| Log in as Creator B. Attempt to update an article created by Creator A.    | Error shown or redirect. Article not updated.                     | ✅ PASS   |
 | Restrict Delete (Article Ownership)| Log in as Creator B. Attempt to delete an article created by Creator A.    | Error shown or redirect. Article not deleted.                     | ✅ PASS   |
 | Restrict Event (Event Ownership)   | Log in as Creator B. Attempt to delete an event created by Creator A.      | Error shown or redirect. Event not deleted.                       | ✅ PASS   |
-
 
 ---
 
