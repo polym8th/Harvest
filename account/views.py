@@ -1,5 +1,10 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth import authenticate, login, logout, update_session_auth_hash
+from django.contrib.auth import (
+    authenticate,
+    login,
+    logout,
+    update_session_auth_hash,
+)
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib import messages
@@ -101,6 +106,7 @@ def my_login(request):
         {"LoginForm": form, "error_message": error_message},
     )
 
+
 @login_required(login_url="my-login")
 def manage_account(request):
     user = request.user
@@ -111,7 +117,9 @@ def manage_account(request):
         if form.is_valid():
             form.save()
             update_session_auth_hash(request, user)
-            messages.success(request, "✅ Your account details have been updated.")
+            messages.success(
+                request, "✅ Your account details have been updated."
+            )
 
             if user.is_superuser:
                 return redirect("creator-dashboard")
@@ -121,8 +129,9 @@ def manage_account(request):
                 return redirect("client-dashboard")
         else:
             messages.error(request, "Please correct the errors below.")
-
-    return render(request, "account/manage-account.html", {"UpdateUserForm": form})
+    return render(
+        request, "account/manage-account.html", {"UpdateUserForm": form}
+    )
 
 
 def user_logout(request):
@@ -131,16 +140,15 @@ def user_logout(request):
     logout(request)
     return redirect("home")
 
+
 @login_required(login_url="my-login")
 def delete_account(request):
     if request.method == "POST":
         user = request.user  # capture the user object BEFORE logout
-        user.delete()        # delete user first
-        logout(request)      # logout after
+        user.delete()  # delete user first
+        logout(request)  # logout after
         return redirect("delete-account-success")
-
     return render(request, "account/delete-account.html")
-
 
 
 def delete_account_success(request):

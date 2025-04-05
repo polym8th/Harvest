@@ -62,6 +62,7 @@ def delete_account(request):
         return redirect("delete-account-success")
     return render(request, "account/delete-account.html")
 
+
 def delete_account_success(request):
     if request.user.is_creator or request.user.is_superuser:
         raise PermissionDenied

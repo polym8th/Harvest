@@ -243,7 +243,6 @@ def delete_article(request, pk):
         return redirect("published")
     return render(request, "creator/delete-success.html", {"article": article})
 
-# Confirmation page after deleting an article
 
 @login_required(login_url="my-login")
 def delete_success(request):
