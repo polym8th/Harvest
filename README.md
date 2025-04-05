@@ -516,6 +516,8 @@ content = forms.CharField(
 ## Validator Testing
 
 - Passed the CI Python Linter. "All clear no errors found"
+- Passed JShint validator. 
+
  ![W3 HTML Validator](https://github.com/IsaHu-dev/Harvest/blob/main/media/readme/testing/w3html.webp)
  ![W3 CSS Validator](https://github.com/IsaHu-dev/Harvest/blob/main/media/readme/testing/cssw3.webp)
  ![LightHouse](https://github.com/IsaHu-dev/Harvest/blob/main/media/readme/testing/lighthouse.webp)
@@ -529,7 +531,7 @@ content = forms.CharField(
   - Wire Frames and Diagram Basics Templates adapted from [Figma](https://www.figma.com/)
   - Several photos on the web app are Royalty Free Images from [Envato](https://elements.envato.com/). A couple of the photos are my own, taken in Brighton.
   - Writing and Content adapted from [Wikipedia](https://en.wikipedia.org/wiki/Brighton_Palace_Pier) and online resources. Content is also rewritten by myself.
-  - Richtext Editor - Javascript adapted from [CKEditor 5](https://cdn.ckeditor.com/)
+  - Richtext Editor on the Create Article page (ckeditor.js) Javascript adapted from [CKEditor 5](https://cdn.ckeditor.com/)
   
 ## Acknowledgements
  
