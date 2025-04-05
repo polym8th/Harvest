@@ -22,7 +22,7 @@
           {% else %}
             <li class="nav-item"><a class="btn btn-outline-primary" href="{% url 'client-dashboard' %}">Dashboard</a></li>
             <li class="nav-item"><a class="btn btn-outline-primary" href="{% url 'regular-articles' %}">View Articles</a></li>
-            <li class="nav-item"><a class="btn btn-outline-primary" href="{% url 'manage-account-client' %}">Manage Account</a></li>
+            <li class="nav-item"><a class="btn btn-outline-primary" href="{% url 'manage-account' %}">Manage Account</a></li>
           {% endif %}
           <li class="nav-item"><a class="btn btn-secondary" href="{% url 'user-logout' %}">Logout</a></li>
         {% else %}

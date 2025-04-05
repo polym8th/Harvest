@@ -1,10 +1,9 @@
-from django.shortcuts import render, redirect, get_object_or_404
-from django.contrib.auth import logout
+from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.core.exceptions import PermissionDenied
 from django.contrib import messages
+
 from creator.models import Article
-from django.contrib.auth.models import User
 from .forms import UpdateUserForm
 
 
@@ -62,7 +61,6 @@ def delete_account(request):
         user.delete()
         return redirect("delete-account-success")
     return render(request, "account/delete-account.html")
-
 
 def delete_account_success(request):
     if request.user.is_creator or request.user.is_superuser:

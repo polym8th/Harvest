@@ -19,19 +19,12 @@ urlpatterns = [
     path(
         "delete-article/<str:pk>/", views.delete_article, name="delete-article"
     ),
-    path("manage-account/", views.manage_account, name="manage-account"),
     path(
         "update-article-success/",
         views.update_article_success,
         name="update-article-success",
     ),
     path("delete-success/", views.delete_success, name="delete-success"),
-    path("delete-account/", views.delete_account, name="delete-account"),
-    path(
-        "delete-account-success/",
-        views.delete_account_success,
-        name="delete-account-success",
-    ),
     path("article-guest/<str:pk>/", views.article_guest, name="article-guest"),
     path("ckeditor5/", include("django_ckeditor_5.urls")),
 ]

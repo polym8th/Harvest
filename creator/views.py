@@ -1,14 +1,12 @@
-# Imports for views, login, messages, models, and utilities
-
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.core.exceptions import PermissionDenied
 from django.contrib import messages
+from django.utils import timezone
+from django.db.models import Q
+
 from creator.forms import ArticleForm, UpdateUserForm
 from .models import Article
-from django.utils import timezone
-from django_ckeditor_5.widgets import CKEditor5Widget
-from django.db.models import Q
 
 
 def index(request):
@@ -82,7 +80,7 @@ def create_article(request):
                     f"Type: {uploaded_image.content_type}"
                 )
             article.save()
-            return redirect("published")
+            return redirect("create-article-success")
     else:
         form = ArticleForm()
     return render(
@@ -190,7 +188,7 @@ def update_article(request, pk):
                 "✅ Your article has been updated successfully!",
                 extra_tags="update",
             )
-            return redirect("update-article-success")
+            return redirect("published")
     else:
         form = ArticleForm(instance=article)
     return render(
@@ -240,36 +238,10 @@ def delete_article(request, pk):
     if request.method == "POST":
         article.delete()
         messages.success(
-            request, "✅ The article has been deleted successfully."
+            request, "The article has been deleted successfully."
         )
         return redirect("published")
     return render(request, "creator/delete-success.html", {"article": article})
-
-
-# Manage (edit) logged-in user's account
-
-@login_required(login_url="my-login")
-def manage_account(request):
-    if not (request.user.is_creator or request.user.is_superuser):
-        messages.error(
-            request,
-            "Access denied. Creator or superuser permissions required.",
-        )
-        return redirect("client-dashboard")
-    form = UpdateUserForm(instance=request.user)
-
-    if request.method == "POST":
-        form = UpdateUserForm(request.POST, instance=request.user)
-        if form.is_valid():
-            form.save()
-            messages.success(
-                request, "Your account has been updated successfully!"
-            )
-            return redirect("creator-dashboard")
-    return render(
-        request, "account/manage-account.html", {"UpdateUserForm": form}
-    )
-
 
 # Confirmation page after deleting an article
 
@@ -278,37 +250,3 @@ def delete_success(request):
     if request.user.is_authenticated:
         if request.user.is_superuser or request.user.is_creator:
             return redirect("creator-dashboard")
-        return redirect("client-dashboard")
-    return render(request, "creator/delete-success.html")
-
-
-# Delete user account
-
-@login_required(login_url="my-login")
-def delete_account(request):
-    if not (request.user.is_creator or request.user.is_superuser):
-        messages.error(
-            request,
-            "Access denied. Creator or superuser permissions required.",
-        )
-        return redirect("client-dashboard")
-    if request.method == "POST":
-        user = request.user
-        user.delete()
-        return redirect("delete-account-success")
-    return render(request, "account/delete-account.html")
-
-
-# Confirmation page after deleting user account
-
-def delete_account_success(request):
-    if not (request.user.is_creator or request.user.is_superuser):
-        messages.error(
-            request,
-            "Access denied. Creator or superuser permissions required.",
-        )
-        return redirect("client-dashboard")
-    if request.user.is_authenticated:
-        if request.user.is_superuser or request.user.is_creator:
-            return redirect("creator-dashboard")
-    return render(request, "account/delete-account-success.html")

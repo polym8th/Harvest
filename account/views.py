@@ -1,10 +1,13 @@
 from django.shortcuts import render, redirect
-from .forms import CreateUserForm
-from django.http import HttpResponse
+from django.contrib.auth import authenticate, login, logout, update_session_auth_hash
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import AuthenticationForm
-from django.contrib.auth import authenticate, login, logout
-from creator.models import Article
+from django.contrib import messages
 from django.db import OperationalError
+
+from .forms import CreateUserForm
+from creator.forms import UpdateUserForm
+from creator.models import Article
 
 
 def home(request):
@@ -98,9 +101,47 @@ def my_login(request):
         {"LoginForm": form, "error_message": error_message},
     )
 
+@login_required(login_url="my-login")
+def manage_account(request):
+    user = request.user
+    form = UpdateUserForm(instance=user)
+
+    if request.method == "POST":
+        form = UpdateUserForm(request.POST, instance=user)
+        if form.is_valid():
+            form.save()
+            update_session_auth_hash(request, user)
+            messages.success(request, "✅ Your account details have been updated.")
+
+            if user.is_superuser:
+                return redirect("creator-dashboard")
+            elif getattr(user, "is_creator", False):
+                return redirect("creator-dashboard")
+            else:
+                return redirect("client-dashboard")
+        else:
+            messages.error(request, "Please correct the errors below.")
+
+    return render(request, "account/manage-account.html", {"UpdateUserForm": form})
+
 
 def user_logout(request):
     # Log user out and redirect to home
 
     logout(request)
     return redirect("home")
+
+@login_required(login_url="my-login")
+def delete_account(request):
+    if request.method == "POST":
+        user = request.user  # capture the user object BEFORE logout
+        user.delete()        # delete user first
+        logout(request)      # logout after
+        return redirect("delete-account-success")
+
+    return render(request, "account/delete-account.html")
+
+
+
+def delete_account_success(request):
+    return render(request, "account/delete-account-success.html")

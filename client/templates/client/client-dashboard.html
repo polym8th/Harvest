@@ -1,6 +1,13 @@
 {% extends 'account/base.html' %}
 
 {% block content %}
+
+{% if messages %}
+  {% for message in messages %}
+    <div class="alert alert-success">{{ message }}</div>
+  {% endfor %}
+{% endif %}
+
 <br>
 
 <div class="container bg-white shadow-md p-5 form-layout header">
