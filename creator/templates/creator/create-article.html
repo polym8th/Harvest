@@ -8,7 +8,6 @@
         <h3 class="header">Create an article</h3>
         <hr><br>
 
-        <!-- Display Success Messages -->
         {% if messages %}
             {% for message in messages %}
                 {% if 'success' in message.tags %}
@@ -17,7 +16,7 @@
             {% endfor %}
         {% endif %}
 
-        <!-- Display Form Errors -->
+        <!-- Show form validation errors -->
         {% if CreateArticleForm.errors %}
             <div class="alert alert-danger">
                 <strong>Form Errors:</strong>
@@ -31,11 +30,12 @@
             </div>
         {% endif %}
 
+        <!-- Article creation form -->
         <form method="POST" enctype="multipart/form-data" autocomplete="off">
             {% csrf_token %}
-            {{ CreateArticleForm|crispy }}
+            {{ CreateArticleForm|crispy }}  <!-- Render form using crispy forms -->
 
-            <!-- Image Upload -->
+            <!-- Image Upload Section -->
             <div class="form-group">
                 <label for="id_image">Image Upload</label>
                 <div id="drop-area" class="text-center border border-2 border-secondary p-4">
@@ -47,14 +47,16 @@
                 </div>
             </div>
 
-            <!-- Event Section -->
+            <!-- Optional Event-related Fields -->
             <div class="form-group mt-4">
                 <h4>Create an Event</h4>
+                <!-- Checkbox to toggle event fields -->
                 <div class="form-check mb-3">
                     <input type="checkbox" class="form-check-input" id="is_event_related" name="is_event_related">
                     <label class="form-check-label" for="is_event_related">Is this article related to an event?</label>
                 </div>
 
+                <!-- Event details, hidden by default -->
                 <div id="event-fields" style="display: none;">
                     <div class="form-group mb-3">
                         <label for="event_date">Event Date and Time</label>
@@ -80,14 +82,14 @@
                             id="event_postcode"
                             name="event_postcode"
                             maxlength="10"
-                            placeholder="e.g. SW1A 1AA"
-                            pattern="[A-Za-z0-9 ]{1,10}"
+                            placeholder="e.g. BN1 2AU"
+                            pattern="([A-Z]{1,2}[0-9][0-9A-Z]?\s?[0-9][A-Z]{2})"
                             title="Postcode must be 10 characters or fewer">
                     </div>
                 </div>
             </div>
 
-            <!-- Article Teaser Checkbox -->
+            <!-- Teaser Article Checkbox -->
             <div class="form-check mb-4">
                 <input type="checkbox" class="form-check-input" id="article_teaser" name="article_teaser" value="1">
                 <label class="form-check-label" for="article_teaser">Make this article a teaser for guest visitors</label>
@@ -98,10 +100,9 @@
     </div>
 </div>
 
-<!-- Scripts -->
 <script src="{% static 'js/ckeditor.js' %}"></script>
 <script src="{% static 'js/richeditor.js' %}"></script>
-<script src="{% static 'js/event_toggle.js' %}"></script>
-<script src="{% static 'js/event_date.js' %}"></script>
-<script src="{% static 'js/image-upload.js' %}"></script>
+<script src="{% static 'js/event_toggle.js' %}"></script> <!-- likely toggles visibility of event fields -->
+<script src="{% static 'js/event_date.js' %}"></script>   <!-- possibly date formatting -->
+<script src="{% static 'js/image-upload.js' %}"></script> <!-- handles image preview/upload -->
 {% endblock %}

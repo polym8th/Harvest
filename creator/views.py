@@ -10,7 +10,6 @@ from django.utils import timezone
 from django_ckeditor_5.widgets import CKEditor5Widget
 from django.db.models import Q
 
-# Public home page showing teaser articles
 
 def index(request):
     teaser_articles = Article.objects.filter(

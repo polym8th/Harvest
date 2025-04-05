@@ -8,6 +8,8 @@ from django.db import OperationalError
 
 
 def home(request):
+    # Show latest 10 published articles on homepage
+
     if request.user.is_authenticated:
         articles = Article.objects.filter(is_published=True).order_by(
             "-pub_date"
@@ -16,6 +18,8 @@ def home(request):
         articles = Article.objects.filter(is_published=True).order_by(
             "-pub_date"
         )[:10]
+    # Clear 'is_creator' flag from user object (likely for display logic)
+
     for article in articles:
         if hasattr(article.user, "is_creator") and article.user.is_creator:
             article.user.is_creator = ""
@@ -23,7 +27,7 @@ def home(request):
 
 
 def register(request):
-    # Redirect logged-in users away from the register page
+    # Prevent access to registration if already logged in
 
     if request.user.is_authenticated:
         if request.user.is_superuser or request.user.is_creator:
@@ -53,7 +57,7 @@ def register(request):
 
 
 def my_login(request):
-    # Redirect logged-in users away from the login page
+    # Prevent logged-in users from accessing login page
 
     if request.user.is_authenticated:
         if request.user.is_superuser or request.user.is_creator:
@@ -80,9 +84,11 @@ def my_login(request):
                 else:
                     error_message = "Invalid username or password."
         except OperationalError:
+            # Handle potential DB or connection issues
+
             error_message = (
                 "⚠️ Sorry, we're having trouble connecting to the database."
-                "Please check your internet connection and try again."
+                " Please check your internet connection and try again."
             )
     else:
         form = AuthenticationForm()
@@ -94,5 +100,7 @@ def my_login(request):
 
 
 def user_logout(request):
+    # Log user out and redirect to home
+
     logout(request)
     return redirect("home")
