@@ -399,6 +399,7 @@ Local access to the application is at [http://127.0.0.1:8000](http://127.0.0.1:8
 | Delete an Event                    | Click 'Delete' on an event.                                                | Event is removed.                                                 | ✅ PASS   |
 | Restrict Update (Article Ownership)| Log in as Creator B. Attempt to update an article created by Creator A.    | Error shown or redirect. Article not updated.                     | ✅ PASS   |
 | Restrict Delete (Article Ownership)| Log in as Creator B. Attempt to delete an article created by Creator A.    | Error shown or redirect. Article not deleted.                     | ✅ PASS   |
+| Restrict Event (Event Ownership)   | Log in as Creator B. Attempt to delete an event created by Creator A.      | Error shown or redirect. Event not deleted.                       | ✅ PASS   |
 
 
 ---
