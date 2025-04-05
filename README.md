@@ -385,18 +385,21 @@ Local access to the application is at [http://127.0.0.1:8000](http://127.0.0.1:8
 
 ### C. Content Creation (For Content Creators)
 
-| Test Case                      | Steps                                                       | Expected Result                      | Pass/Fail |
-|--------------------------------|-------------------------------------------------------------|--------------------------------------|-----------|
-| Access the Dashboard           | Log in as Content Creator.                                  | Dashboard loads successfully.        | ✅ PASS   |
-| Create an Article              | Fill in Title, Content, Upload an Image. Click 'Submit'.    | Article appears in the dashboard.    | ✅ PASS   |
-| Create Article (Invalid)       | Try submitting an article with missing fields.              | An Error message or Instruction is displayed. | ✅ PASS   |
-| Enable "Teaser" mode for article | User selects the "Teaser" checkbox.                       | Article is displayed as a teaser for guest (unauthenticated) visitors | ✅ PASS   |
-| Edit / Update an Article       | Modify an existing article and save changes.                | Changes are updated.                 | ✅ PASS   |
-| Delete an Article              | Click 'Delete' on an article.                               | Article is removed.                  | ✅ PASS   |
-| Create an Event                | Enter Event details (name, venue, time, etc.). Click 'Submit'. | Event appears in dashboard.       | ✅ PASS   |
-| Select Calendar Date & Time    | Date selection cannot be in the past.                       | Future date is successfully saved.   | ✅ PASS   |
-| Edit an Event                  | Modify /update event details and save changes.              | Changes are updated.                 | ✅ PASS   |
-| Delete an Event                | Click 'Delete' on an event.                                 | Event is removed.                    | ✅ PASS   |
+| Test Case                           | Steps                                                                      | Expected Result                                                    | Pass/Fail |
+|------------------------------------|----------------------------------------------------------------------------|--------------------------------------------------------------------|-----------|
+| Access the Dashboard               | Log in as Content Creator.                                                 | Dashboard loads successfully.                                     | ✅ PASS   |
+| Create an Article                  | Fill in Title, Content, Upload an Image. Click 'Submit'.                   | Article appears in the dashboard.                                 | ✅ PASS   |
+| Create Article (Invalid)           | Try submitting an article with missing fields.                             | An error message or instruction is displayed.                     | ✅ PASS   |
+| Enable "Teaser" Mode for Article   | User selects the "Teaser" checkbox.                                        | Article is displayed as a teaser for guest (unauthenticated) visitors. | ✅ PASS   |
+| Edit / Update an Article           | Modify an existing article and save changes.                               | Changes are updated.                                              | ✅ PASS   |
+| Delete an Article                  | Click 'Delete' on an article.                                              | Article is removed.                                               | ✅ PASS   |
+| Create an Event                    | Enter event details (name, venue, time, etc.). Click 'Submit'.             | Event appears in dashboard.                                       | ✅ PASS   |
+| Select Calendar Date & Time        | Date selection cannot be in the past.                                      | Future date is successfully saved.                                | ✅ PASS   |
+| Edit an Event                      | Modify/update event details and save changes.                              | Changes are updated.                                              | ✅ PASS   |
+| Delete an Event                    | Click 'Delete' on an event.                                                | Event is removed.                                                 | ✅ PASS   |
+| Restrict Update (Article Ownership)| Log in as Creator B. Attempt to update an article created by Creator A.    | Error shown or redirect. Article not updated.                     | ✅ PASS   |
+| Restrict Delete (Article Ownership)| Log in as Creator B. Attempt to delete an article created by Creator A.    | Error shown or redirect. Article not deleted.                     | ✅ PASS   |
+
 
 ---
 
