@@ -125,7 +125,7 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 SESSION_ENGINE = "django.contrib.sessions.backends.db"
-SESSION_COOKIE_AGE = 31536000  # 1 year in seconds
+SESSION_COOKIE_AGE = 31536000 
 SESSION_EXPIRE_AT_BROWSER_CLOSE = False
 SESSION_SAVE_EVERY_REQUEST = True
 
@@ -133,7 +133,7 @@ AUTHENTICATION_BACKENDS = [
     "django.contrib.auth.backends.ModelBackend",
 ]
 
-SESSION_COOKIE_SECURE = False  # Set to True if using HTTPS
+SESSION_COOKIE_SECURE = False 
 
 CSRF_TRUSTED_ORIGINS = [
     "https://localhost",
