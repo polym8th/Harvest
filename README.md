@@ -536,6 +536,7 @@ content = forms.CharField(
   - Several photos on the web app are Royalty Free Images from [Envato](https://elements.envato.com/). A couple of the photos are my own, taken in Brighton.
   - Writing and Content adapted from [Wikipedia](https://en.wikipedia.org/wiki/Brighton_Palace_Pier) and online resources. Content is also rewritten by myself.
   - Richtext Editor on the Create Article page (ckeditor.js) Javascript adapted from [CKEditor 5](https://cdn.ckeditor.com/)
+  - The Harvest Logo is my original design.
   
 ## Acknowledgements
  
