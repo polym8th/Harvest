@@ -1,3 +1,4 @@
+// jshint esversion: 8
 document.addEventListener("DOMContentLoaded", function() {
     const eventDateInput = document.getElementById("event_date");
     if (eventDateInput) {

@@ -470,7 +470,7 @@ Local access to the application is at [http://127.0.0.1:8000](http://127.0.0.1:8
 | Load CKEditor on Form     | Open the article creation page (`/create-article/`).         | CKEditor loads without issues.                             | ✅ PASS      |
 | Bold & Italic Text        | Type text, select it, and apply bold or italic formatting.   | Formatting is applied as expected.                         | ✅ PASS      |
 | Line Breaks               | Press `Enter` while typing.                                  | A new paragraph is created.                                | ✅ PASS      |
-| Save & Render HTML        | Submit an article and view the published page.               | HTML tags (`<p>`, `<strong>`, etc.) render correctly.       | ✅ PASS      |
+| Save & Render HTML        | Submit an article and view the published page.               | HTML tags (`<p>`, `<strong>`, etc.) render correctly.      | ✅ PASS      |
 
 ---
 
