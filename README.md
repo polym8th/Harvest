@@ -393,6 +393,7 @@ Local access to the application is at [http://127.0.0.1:8000](http://127.0.0.1:8
 | Enable "Teaser" Mode for Article   | User selects the "Teaser" checkbox.                                        | Article is displayed as a teaser for guest (unauthenticated) visitors. | ✅ PASS   |
 | Edit / Update an Article           | Modify an existing article and save changes.                               | Changes are updated.                                              | ✅ PASS   |
 | Delete an Article                  | Click 'Delete' on an article.                                              | Article is removed.                                               | ✅ PASS   |
+| Enable Guest Visibility            | Tick the checkbox to allow guest visitors to view the article.             | Update form is submitted. The article becomes visible to users without logging in. | ✅ PASS   |
 | Create an Event                    | Enter event details (name, venue, time, etc.). Click 'Submit'.             | Event appears in dashboard.                                       | ✅ PASS   |
 | Select Calendar Date & Time        | Date selection cannot be in the past.                                      | Future date is successfully saved.                                | ✅ PASS   |
 | Add Postcode                       | Add postcode in correct format. 10 characters or fewer.                    | Error message appears if incorrect format is typed by the user.   | ✅ PASS   |
