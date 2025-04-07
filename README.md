@@ -133,7 +133,25 @@ To create an article:
   - Provide the **Event Name**.
   - Enter the **Event Venue**, **Event Address**, and **Event Postcode**.
 
-### 5. Manage Account
+### 5. Update or Delete Your Articles
+
+As a content creator, you can manage your published articles:
+
+#### To update an article:
+- Go to the **Published** section of the Creator Dashboard.
+- Click **Update Article** next to the article you want to update.
+- Make the necessary changes to the **Title**, **Content**, or **Image**.
+- If the article is not currently viewable by guest visitors, you can make it public by checking the box labelled **"Make this article a teaser for guest visitors"**.
+- Click **Update** to save your changes.
+- Please note you can only update the article you have created.
+
+#### To delete an article:
+- In the **Published** section, click **Delete** next to the article you want to remove.
+- Confirm the deletion when prompted.  
+- The article will be permanently removed from the platform.
+- Please note you can only delete the article you have created.
+
+### 6. Manage Account
 
 To update account details:
 
@@ -296,7 +314,7 @@ Acceptance criteria:
       -  Select manual deployment
       -  In the Manual Deploys section, select a branch and click Deploy Branch.
   9.  Access the Live Application.
-      -  Once the deployment is complete an app link is generated. The live application can be accessed at <a href="https://harvest-main-55fca7957f91.herokuapp.com/" target="_blank">Harvest App</a>
+      -  Once the deployment is complete, an app link is generated. The live application can be accessed at <a href="https://harvest-main-55fca7957f91.herokuapp.com/" target="_blank">Harvest App</a>
 
 ## Installation of Harvest app 
 
@@ -534,7 +552,7 @@ content = forms.CharField(
   - [w3schools - Python](https://www.w3schools.com/python/ref_string_isdigit.asp)
   - [Codemy.com -a code snippet adapted from this tutorial -YouTube](https://www.youtube.com/watch?v=O5YkEFLXcRg&t=617s)
   - Wire Frames and Diagram Basics Templates adapted from [Figma](https://www.figma.com/)
-  - Several photos on the web app are Royalty Free Images from [Envato](https://elements.envato.com/). A couple of the photos are my own, taken in Brighton.
+  - Several photos on the web app are royalty-free images from [Envato](https://elements.envato.com/). A couple of the photos are my own, taken in Brighton.
   - Writing and Content adapted from [Wikipedia](https://en.wikipedia.org/wiki/Brighton_Palace_Pier) and online resources. Content is also rewritten by myself.
   - Richtext Editor on the Create Article page (ckeditor.js) Javascript adapted from [CKEditor 5](https://cdn.ckeditor.com/)
   - The Harvest Logo is my original design.
