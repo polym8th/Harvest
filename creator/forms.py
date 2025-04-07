@@ -34,3 +34,13 @@ class UpdateUserForm(ModelForm):
         model = CustomUser
         fields = ["first_name", "last_name", "email"]
         exclude = ["password1", "password2"]
+
+
+class EventForm(forms.ModelForm):
+    class Meta:
+        model = Article
+        fields = [
+            'title', 'content', 'image',
+            'event_date', 'event_name', 'event_venue',
+            'event_location', 'event_postcode'
+        ]

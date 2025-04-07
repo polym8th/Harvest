@@ -1,0 +1,29 @@
+{% extends 'account/base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block content %}
+<div class="container bg-white shadow-md p-5 rounded-3 mb-5" style="max-width: 900px;">
+    <h2 class="header mb-4">Update Event: {{ event.title }}</h2>
+
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+        {% endfor %}
+    {% endif %}
+
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form|crispy }}  <!-- Only render fields once, with CKEditor integration handled in the form -->
+
+        <div class="d-flex justify-content-between mt-4">
+            <button type="submit" class="btn btn-primary">Save Changes</button>
+            <a href="{% url 'published' %}" class="btn btn-secondary">Cancel</a>
+        </div>
+    </form>
+</div>
+
+<!-- CKEditor5 JS (if not already loaded globally) -->
+<script src="{% static 'js/ckeditor.js' %}"></script>
+<script src="{% static 'js/richeditor.js' %}"></script>
+{% endblock %}

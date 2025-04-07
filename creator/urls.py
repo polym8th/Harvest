@@ -24,6 +24,8 @@ urlpatterns = [
         views.update_article_success,
         name="update-article-success",
     ),
+    path('event/update/<int:pk>/', views.update_event, name='update-event'),
+    path('event/delete/<int:pk>/', views.delete_event, name='delete-event'),
     path("delete-success/", views.delete_success, name="delete-success"),
     path("article-guest/<str:pk>/", views.article_guest, name="article-guest"),
     path("ckeditor5/", include("django_ckeditor_5.urls")),
