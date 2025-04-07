@@ -380,91 +380,102 @@ Local access to the application is at [http://127.0.0.1:8000](http://127.0.0.1:8
 
 ## Manual Testing
 
-### A. User Registration & Login
-
-| Test Case                        | Steps                                                                                                                               | Expected Result                                                                  | Pass/Fail |
-| -------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------| --------- |
-| Register as a General User       | 1. Navigate to the Register page.<br>2. Fill in required fields.<br>3. Leave 'Are you a Content Creator' unchecked.<br>4. Click 'Submit'. | User receives a success message and can log in to the User Dashboard.      | ✅ PASS   |
-| Register as a Content Creator    | 1. Navigate to the Register page.<br>2. Fill in required fields.<br>3. Check 'Are you a Content Creator'.<br>4. Click 'Submit'.  | User receives a success message and can log in with access to the Creator Dashboard.| ✅ PASS   |
-| Invalid Registration             | 1. Leave required fields empty.<br>2. Enter an incorrect email format. 3. Enter an email already registered<br>4. Click 'Submit'.| User is shown an error message.                                                     | ✅ PASS   |
-| Login with Valid Credentials     | 1. Navigate to Login page.<br>2. Enter valid email and password.<br>3. Click 'Login'.                                            | User is redirected to their relevant dashboard                                      | ✅ PASS   |
-| Login with Incorrect Credentials | 1. Navigate to Login page.<br>2. Enter incorrect email or password.<br>3. Click 'Login'.                                         | Error message is displayed.                                                         | ✅ PASS   |
-| Login with Unverified Email      |  Try logging in without verifying email.                                                                                         | Error message asking to verify email.                                               | ✅ PASS   |
-| Enter password twice             |  Login with mismatched passwords                                                                                                 | Error message displays: 'The two password fields didn't match.                                         | ✅ PASS   |
+# ✅ User Testing Report
 
 ---
 
-### B. Navigation & UI Testing
+## A. User Registration & Login
 
-| Test Case                   | Steps                                      | Expected Result                            | Pass/Fail |
-|-----------------------------|--------------------------------------------|-------------------------------------       |-----------|
-| Landing Page Loads          | Open the home page.                        | Page loads with navigation options.        | ✅ PASS   |
-| Navigation Menu Works       | Click on each menu option.                 | Menu redirects correctly.                  | ✅ PASS   |
-| Button Interactivity        | Click on action buttons.                   | Buttons respond / hovers will change color.| ✅ PASS   |
-| Page Load Speed             | Test load time.                            | Page loads within 3 seconds.               | ✅ PASS   |
-| Mobile & Responsive Design  | Open site on mobile/tablet.                | UI adapts to screen size.                  | ✅ PASS   |
-
----
-
-### C. Content Creation (For Content Creators)
-
-| Test Case                           | Steps                                                                      | Expected Result                                                    | Pass/Fail |
-|------------------------------------|----------------------------------------------------------------------------|--------------------------------------------------------------------|-----------|
-| Access the Dashboard               | Log in as Content Creator.                                                 | Dashboard loads successfully.                                     | ✅ PASS   |
-| Create an Article                  | Fill in Title, Content, Upload an Image. Click 'Submit'.                   | Article appears in the dashboard.                                 | ✅ PASS   |
-| Create Article (Invalid)           | Try submitting an article with missing fields.                             | An error message or instruction is displayed.                     | ✅ PASS   |
-| Enable "Teaser" Mode for Article   | User selects the "Teaser" checkbox.                                        | Article is displayed as a teaser for guest (unauthenticated) visitors. | ✅ PASS   |
-| Edit / Update an Article           | Modify an existing article and save changes.                               | Changes are updated.                                              | ✅ PASS   |
-| Delete an Article                  | Click 'Delete' on an article.                                              | Article is removed.                                               | ✅ PASS   |
-| Enable Guest Visibility            | Tick the checkbox to allow guest visitors to view the article.             | Update form is submitted. The article becomes visible to users without logging in. | ✅ PASS   |
-| Create an Event                    | Enter event details (name, venue, time, etc.). Click 'Submit'.             | Event appears in dashboard.                                       | ✅ PASS   |
-| Select Calendar Date & Time        | Date selection cannot be in the past.                                      | Future date is successfully saved.                                | ✅ PASS   |
-| Add Postcode                       | Add postcode in correct format. 10 characters or fewer.                    | Error message appears if incorrect format is typed by the user.   | ✅ PASS   |
-| Edit an Event                      | Modify/update event details and save changes.                              | Changes are updated.                                              | ✅ PASS   |
-| Delete an Event                    | Click 'Delete' on an event.                                                | Event is removed.                                                 | ✅ PASS   |
-| Restrict Update (Article Ownership)| Log in as Creator B. Attempt to update an article created by Creator A.    | Error shown or redirect. Article not updated.                     | ✅ PASS   |
-| Restrict Delete (Article Ownership)| Log in as Creator B. Attempt to delete an article created by Creator A.    | Error shown or redirect. Article not deleted.                     | ✅ PASS   |
-| Restrict Event (Event Ownership)   | Log in as Creator B. Attempt to delete an event created by Creator A.      | Error shown or redirect. Event not deleted.                       | ✅ PASS   |
+| **Test Case**                   | **Steps**                                                                                                                                   | **Expected Result**                                                                   | **Pass/Fail** |
+|--------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------|--------------|
+| Register as a General User     | 1. Navigate to the Register page.<br>2. Fill in all required fields.<br>3. Leave 'Are you a Content Creator' unchecked.<br>4. Click 'Submit'. | User sees a success message and can log in to the General User Dashboard.             | ✅ PASS      |
+| Register as a Content Creator  | 1. Navigate to the Register page.<br>2. Fill in all required fields.<br>3. Check 'Are you a Content Creator'.<br>4. Click 'Submit'.          | User sees a success message and gains access to the Content Creator Dashboard.        | ✅ PASS      |
+| Invalid Registration           | 1. Leave required fields blank.<br>2. Enter an invalid email format.<br>3. Use an already registered email.<br>4. Click 'Submit'.            | A registration error messages is displayed.                                             | ✅ PASS      |
+| Login with Valid Credentials   | 1. Navigate to the Login page.<br>2. Enter valid email and password.<br>3. Click 'Login'.                                                   | User is redirected to their respective dashboard.                                     | ✅ PASS      |
+| Login with Incorrect Credentials | 1. Navigate to the Login page.<br>2. Enter incorrect email or password.<br>3. Click 'Login'.                                               | Error message is shown.                                                               | ✅ PASS      |
+| Login with Unverified Email    | Attempt to log in without verifying email.                                                                                                  | Error message instructs user to verify their email.                                   | ✅ PASS      |
+| Password Mismatch During Signup | Enter different values in the two password fields during registration.                                                                      | Error message displays: *"The two password fields didn't match."*                     | ✅ PASS      |
 
 ---
 
-### D. General User Actions
+## B. Navigation & UI Testing
 
-| Test Case                                  | Steps                                        | Expected Result                              | Pass/Fail |
-|--------------------------------------------|--------------------------------------------- |--------------------------------------        |-----------|
-| View Client Dashboard                      | Log in as a General User.                    | Dashboard loads correctly.                   | ✅ PASS   |
-| Browse Articles                            | Open and read articles.                      | Articles load correctly.                     | ✅ PASS   |
-| View Article Counter                       | A counter fetches the number of articles     | Counter displays the number of articles.     | ✅ PASS   |
-| Search bar - Search for articles or events | User enters partial title (e.g., one keyword)| Matching articles are found.                 | ✅ PASS   |
----
-
-### E. Account Management
-
-| Test Case           | Steps                                      | Expected Result                                  | Pass/Fail |
-|---------------------|--------------------------------------------|--------------------------------------------------|-----------|
-| Update Profile      | Navigate to Manage Account  .<br>Edit Name, Email. Click 'Save'. | Changes are updated.       | ✅ PASS   |
-| Change Password     | Navigate to Manage Account .<br>Enter new password. Click 'Update'. | Password is changed.    | ✅ PASS   |
-| Cancel Subscription | Navigate to Manage Account .<br>Click 'Cancel Subscription'.  | Subscription is ended.        | ✅ PASS   |
-| Delete Account      | Navigate to Manage Account .<br>Click 'Delete Account'. | Account is permanently removed.     | ✅ PASS   |
+| **Test Case**              | **Steps**                             | **Expected Result**                          | **Pass/Fail** |
+|---------------------------|---------------------------------------|----------------------------------------------|--------------|
+| Landing Page Loads        | Open the home page.                   | Page loads with visible navigation options.  | ✅ PASS      |
+| Navigation Menu Works     | Click on each menu option.            | Each option redirects to the correct page.   | ✅ PASS      |
+| Button Interactivity      | Click action buttons and hover.       | Buttons respond, hover effects work as expected. | ✅ PASS   |
+| Page Load Speed           | Test initial load time.               | Page loads within 3 seconds.                 | ✅ PASS      |
+| Mobile & Responsive Design| Open site on mobile/tablet devices.   | UI adjusts to screen size appropriately.     | ✅ PASS      |
 
 ---
 
-### F. Mobile & Cross-Browser Testing
+## C. Content Creation (For Content Creators)
 
-| Test Case             | Steps                                          | Expected Result          | Pass/Fail |
-|----------------------|------------------------------------------------ |--------------------------|-----------|
-| Mobile Compatibility | Open site on mobile, tablet, and desktop.       | UI adapts correctly.     | ✅ PASS   |
-| Cross-Browser Test   | Test site on Chrome, Firefox, Safari, Edge.     | No layout issues.        | ✅ PASS   |
+| **Test Case**                         | **Steps**                                                                                 | **Expected Result**                                                             | **Pass/Fail** |
+|--------------------------------------|-------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------|--------------|
+| Access the Dashboard                 | Log in as a Content Creator.                                                              | Creator Dashboard loads successfully.                                           | ✅ PASS      |
+| Create an Article                    | Fill in the Title, Content, and upload an image. Click 'Submit'.                          | Article appears in the dashboard.                                               | ✅ PASS      |
+| Create Article (Invalid)             | Try submitting an article with missing required fields.                                   | An appropriate error message is displayed.                                      | ✅ PASS      |
+| Enable "Teaser" Mode for Article     | Select the "Teaser" checkbox.                                                             | Article is shown as a teaser to guest (unauthenticated) users.                 | ✅ PASS      |
+| Edit / Update an Article             | Modify an existing article and save.                                                      | Changes are saved and reflected.                                                | ✅ PASS      |
+| Delete an Article                    | Click 'Delete' on an article.                                                             | Article is permanently removed.                                                 | ✅ PASS      |
+| Enable Guest Visibility              | Tick the "Guest Visibility" checkbox and submit the form.                                 | Article becomes accessible to unauthenticated users.                            | ✅ PASS      |
+| Create an Event                      | Enter event details (name, venue, time, etc.) and click 'Submit'.                         | Event appears in the Creator Dashboard.                                         | ✅ PASS      |
+| Select Calendar Date & Time          | Attempt to select a date in the past.                                                     | Past dates are restricted; future date is saved successfully.                   | ✅ PASS      |
+| Add Postcode                         | Enter postcode in correct format (≤10 characters).                                         | Error appears if the format is incorrect.                                       | ✅ PASS      |
+| Edit an Event                        | Modify existing event details and save.                                                   | Updates are saved.                                                              | ✅ PASS      |
+| Delete an Event                      | Click 'Delete' on an event.                                                               | Event is removed from the dashboard.                                            | ✅ PASS      |
+| Restrict Update (Article Ownership)  | Log in as Creator B and attempt to update Creator A’s article.                            | Action is blocked; error or redirect occurs.                                    | ✅ PASS      |
+| Restrict Delete (Article Ownership)  | Log in as Creator B and attempt to delete Creator A’s article.                            | Action is blocked; error or redirect occurs.                                    | ✅ PASS      |
+| Restrict Event (Event Ownership)     | Log in as Creator B and try deleting Creator A’s event.                                   | Deletion fails; appropriate error or redirect is shown.                         | ✅ PASS      |
 
-
-### G. CKEditor Rich Text Editor Testing
-| Test Case                | Steps                                             | Expected Result                      | Pass/Fail |
-|-------------------------|--------------------------------------------------|--------------------------------------|-----------|
-| Load CKEditor on form   | Open article creation page (`/create-article/`).   | CKEditor loads without errors.      | ✅ PASS   |
-| Bold & Italic Text      | Type text, select it, click **B** or *I*.(Italics) | Text applies bold/italic formatting.| ✅ PASS   |
-| Line Breaks             | Press `Enter` for a new paragraph.                 | New paragraph created.              | ✅ PASS   |
-| Save & Render HTML      | Submit article and view published page.            | HTML tags render properly (`<p>`, `<strong>`). | ✅ PASS   |
 ---
+
+## D. General User Actions
+
+| **Test Case**                            | **Steps**                                      | **Expected Result**                                | **Pass/Fail** |
+|-----------------------------------------|------------------------------------------------|----------------------------------------------------|--------------|
+| View Client Dashboard                   | Log in as a General User.                      | General User Dashboard loads correctly.            | ✅ PASS      |
+| Browse Articles                         | Open and read multiple articles.              | Articles load and display content as expected.     | ✅ PASS      |
+| View Article Counter                    | Fetch the article count from the server.       | Article count displays correctly.                  | ✅ PASS      |
+| Search for Articles or Events           | Enter a keyword in the search bar.             | Matching articles or events are returned.          | ✅ PASS      |
+
+---
+
+## E. Account Management
+
+| **Test Case**           | **Steps**                                                            | **Expected Result**                             | **Pass/Fail** |
+|------------------------|----------------------------------------------------------------------|-------------------------------------------------|--------------|
+| Update Profile         | Go to Manage Account.<br>Edit name and/or email.<br>Click 'Save'.    | Profile updates are saved.                      | ✅ PASS      |
+| Change Password        | Go to Manage Account.<br>Enter new password.<br>Click 'Update'.       | Password is successfully changed.               | ✅ PASS      |
+| Cancel Subscription    | Navigate to Manage Account.<br>Click 'Cancel Subscription'.           | Subscription is deactivated.                    | ✅ PASS      |
+| Delete Account         | Navigate to Manage Account.<br>Click 'Delete Account'.                | Account is permanently deleted.                 | ✅ PASS      |
+
+---
+
+## F. Mobile & Cross-Browser Testing
+
+| **Test Case**             | **Steps**                                             | **Expected Result**               | **Pass/Fail** |
+|--------------------------|--------------------------------------------------------|-----------------------------------|--------------|
+| Mobile Compatibility     | Open site on mobile, tablet, and desktop devices.       | UI renders properly on all devices.| ✅ PASS     |
+| Cross-Browser Test       | Open site in Chrome, Firefox, Safari, and Edge.         | Layout and functionality remain consistent. | ✅ PASS |
+
+---
+
+## G. CKEditor Rich Text Editor Testing
+
+| **Test Case**              | **Steps**                                                    | **Expected Result**                                        | **Pass/Fail** |
+|---------------------------|--------------------------------------------------------------|-------------------------------------------------------------|--------------|
+| Load CKEditor on Form     | Open the article creation page (`/create-article/`).         | CKEditor loads without issues.                             | ✅ PASS      |
+| Bold & Italic Text        | Type text, select it, and apply bold or italic formatting.   | Formatting is applied as expected.                         | ✅ PASS      |
+| Line Breaks               | Press `Enter` while typing.                                  | A new paragraph is created.                                | ✅ PASS      |
+| Save & Render HTML        | Submit an article and view the published page.               | HTML tags (`<p>`, `<strong>`, etc.) render correctly.       | ✅ PASS      |
+
+---
+
+**Last Updated:** April 7, 2025
+
 
 ## Summary
 
