@@ -410,20 +410,20 @@ Local access to the application is at [http://127.0.0.1:8000](http://127.0.0.1:8
 
 ---
 
-## C. Content Creation (For Content Creators)
+## C. Content Creation 
 
 | **Test Case**                         | **Steps**                                                                                 | **Expected Result**                                                             | **Pass/Fail** |
 |--------------------------------------|-------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------|--------------|
 | Access the Dashboard                 | Log in as a Content Creator.                                                              | Creator Dashboard loads successfully.                                           | ✅ PASS      |
 | Create an Article                    | Fill in the Title, Content, and upload an image. Click 'Submit'.                          | Article appears in the dashboard.                                               | ✅ PASS      |
 | Create Article (Invalid)             | Try submitting an article with missing required fields.                                   | An appropriate error message is displayed.                                      | ✅ PASS      |
-| Enable "Teaser" Mode for Article     | Select the "Teaser" checkbox.                                                             | Article is shown as a teaser to guest (unauthenticated) users.                 | ✅ PASS      |
+| Enable "Teaser" Mode for Article     | Select the "Teaser" checkbox.                                                             | Article is shown as a teaser to guest (unauthenticated) users.                  | ✅ PASS      |
 | Edit / Update an Article             | Modify an existing article and save.                                                      | Changes are saved and reflected.                                                | ✅ PASS      |
 | Delete an Article                    | Click 'Delete' on an article.                                                             | Article is permanently removed.                                                 | ✅ PASS      |
-| Enable Guest Visibility              | Tick the "Guest Visibility" checkbox and submit the form.                                 | Article becomes accessible to unauthenticated users.                            | ✅ PASS      |
+| Enable Guest Visibility on the Update form | Tick the "Guest Visibility" checkbox and submit the form.                           | Article becomes accessible to unauthenticated users as part of the update.      | ✅ PASS      |
 | Create an Event                      | Enter event details (name, venue, time, etc.) and click 'Submit'.                         | Event appears in the Creator Dashboard.                                         | ✅ PASS      |
 | Select Calendar Date & Time          | Attempt to select a date in the past.                                                     | Past dates are restricted; future date is saved successfully.                   | ✅ PASS      |
-| Add Postcode                         | Enter postcode in correct format (≤10 characters).                                         | Error appears if the format is incorrect.                                       | ✅ PASS      |
+| Add Postcode                         | Enter postcode in correct format (less than 10 characters).                               | Error appears if the format is incorrect.                                       | ✅ PASS      |
 | Edit an Event                        | Modify existing event details and save.                                                   | Updates are saved.                                                              | ✅ PASS      |
 | Delete an Event                      | Click 'Delete' on an event.                                                               | Event is removed from the dashboard.                                            | ✅ PASS      |
 | Restrict Update (Article Ownership)  | Log in as Creator B and attempt to update Creator A’s article.                            | Action is blocked; error or redirect occurs.                                    | ✅ PASS      |
