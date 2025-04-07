@@ -138,12 +138,17 @@ To create an article:
 As a content creator, you can manage your published articles:
 
 #### To update an article:
+
 - Go to the **Published** section of the Creator Dashboard.
+
+#### Use search bar to search for the article or event. Search by Article Title.
+
 - Click **Update Article** next to the article you want to update.
 - Make the necessary changes to the **Title**, **Content**, or **Image**.
 - If the article is not currently viewable by guest visitors, you can make it public by checking the box labelled **"Make this article a teaser for guest visitors"**.
 - Click **Update** to save your changes.
 - Please note you can only update the article you have created.
+- To update or delete an event, follow the same steps as above. Simply click **Update Event** or **Delete Event** next to the relevant event to open the edit form.
 
 #### To delete an article:
 - In the **Published** section, click **Delete** next to the article you want to remove.
@@ -425,12 +430,12 @@ Local access to the application is at [http://127.0.0.1:8000](http://127.0.0.1:8
 
 ### D. General User Actions
 
-| Test Case                          | Steps                                        | Expected Result                              | Pass/Fail |
-|------------------------------------|--------------------------------------------- |--------------------------------------        |-----------|
-| View Client Dashboard              | Log in as a General User.                    | Dashboard loads correctly.                   | ✅ PASS   |
-| Browse Articles                    | Open and read articles.                      | Articles load correctly.                     | ✅ PASS   |
-| View Article Counter               | A counter fetches the number of articles     | Counter displays the number of articles.     | ✅ PASS   |
-| Search bar - Search for Articles   | User enters partial title (e.g., one keyword)| Matching articles are found.                 | ✅ PASS   |
+| Test Case                                  | Steps                                        | Expected Result                              | Pass/Fail |
+|--------------------------------------------|--------------------------------------------- |--------------------------------------        |-----------|
+| View Client Dashboard                      | Log in as a General User.                    | Dashboard loads correctly.                   | ✅ PASS   |
+| Browse Articles                            | Open and read articles.                      | Articles load correctly.                     | ✅ PASS   |
+| View Article Counter                       | A counter fetches the number of articles     | Counter displays the number of articles.     | ✅ PASS   |
+| Search bar - Search for articles or events | User enters partial title (e.g., one keyword)| Matching articles are found.                 | ✅ PASS   |
 ---
 
 ### E. Account Management
