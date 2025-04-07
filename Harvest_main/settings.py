@@ -6,8 +6,6 @@ if os.path.isfile("env.py"):
     import env
 
 import cloudinary
-import cloudinary.uploader
-import cloudinary.api
 
 cloudinary.config(
     cloud_name=os.environ.get("CLOUDINARY_CLOUD_NAME"),
@@ -92,40 +90,38 @@ TEMPLATES = [
 WSGI_APPLICATION = "Harvest_main.wsgi.application"
 
 DATABASES = {
-    "default": dj_database_url.parse(
-        os.environ.get("DATABASE_URL")
-    )
+    "default": dj_database_url.parse(os.environ.get("DATABASE_URL"))
 }
 
 AUTH_PASSWORD_VALIDATORS = [
     {
         "NAME": (
-            "django.contrib.auth.password_validation"
-            ".UserAttributeSimilarityValidator"
+            "django.contrib.auth.password_validation."
+            "UserAttributeSimilarityValidator"
         ),
     },
     {
         "NAME": (
-            "django.contrib.auth.password_validation"
-            ".MinimumLengthValidator"
+            "django.contrib.auth.password_validation."
+            "MinimumLengthValidator"
         ),
     },
     {
         "NAME": (
-            "django.contrib.auth.password_validation"
-            ".CommonPasswordValidator"
+            "django.contrib.auth.password_validation."
+            "CommonPasswordValidator"
         ),
     },
     {
         "NAME": (
-            "django.contrib.auth.password_validation"
-            ".NumericPasswordValidator"
+            "django.contrib.auth.password_validation."
+            "NumericPasswordValidator"
         ),
     },
 ]
 
 SESSION_ENGINE = "django.contrib.sessions.backends.db"
-SESSION_COOKIE_AGE = 31536000 
+SESSION_COOKIE_AGE = 31536000
 SESSION_EXPIRE_AT_BROWSER_CLOSE = False
 SESSION_SAVE_EVERY_REQUEST = True
 
@@ -133,7 +129,7 @@ AUTHENTICATION_BACKENDS = [
     "django.contrib.auth.backends.ModelBackend",
 ]
 
-SESSION_COOKIE_SECURE = False 
+SESSION_COOKIE_SECURE = False
 
 CSRF_TRUSTED_ORIGINS = [
     "https://localhost",
@@ -145,35 +141,14 @@ TIME_ZONE = "UTC"
 USE_I18N = True
 USE_TZ = True
 
-# Static and Media Files via Cloudinary
 STATIC_URL = "/static/"
-
-STATICFILES_STORAGE = (
-    "whitenoise.storage.CompressedStaticFilesStorage"
-)
-
-DEFAULT_FILE_STORAGE = (
-    "cloudinary_storage.storage.MediaCloudinaryStorage"
-)
+STATICFILES_STORAGE = "whitenoise.storage.CompressedStaticFilesStorage"
+DEFAULT_FILE_STORAGE = "cloudinary_storage.storage.MediaCloudinaryStorage"
 
 MEDIA_URL = "/media/"
-DEFAULT_FILE_STORAGE = (
-    "cloudinary_storage.storage.MediaCloudinaryStorage"
-)
-
 STATIC_ROOT = BASE_DIR / "staticfiles"
-STATICFILES_DIRS = [
-    BASE_DIR / "Harvest_main/static",
-]
+STATICFILES_DIRS = [BASE_DIR / "Harvest_main/static"]
 
-CKEDITOR_BASEPATH = (
-    "/static/ckeditor/ckeditor/"
-)
-
-DEFAULT_AUTO_FIELD = (
-    "django.db.models.BigAutoField"
-)
-
-LOGOUT_REDIRECT_URL = (
-    "/"
-)
+CKEDITOR_BASEPATH = "/static/ckeditor/ckeditor/"
+DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+LOGOUT_REDIRECT_URL = "/"
