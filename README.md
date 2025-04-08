@@ -6,8 +6,7 @@
 
 ## About
 
-Harvest is a platform for content creators who are passionate about sharing the best local finds in Brighton and the surrounding areas.
-It enables users to share local insights, discover unique experiences, and contribute to a growing community of culture enthusiasts. It provides features for users to sign up to the platform to add articles and related events that are happening in Brighton and parts of East Sussex.
+Harvest is a platform for content creators, interested in sharing their best local finds in Brighton and the surrounding areas. It enables users to share local insights, discover unique experiences, and contribute to a growing community of culture enthusiasts. It provides features for users to sign up to the platform to add articles and related events that are happening in Brighton and parts of East Sussex.
 
 ### Target Users
 
@@ -28,7 +27,7 @@ The development process incorporates deployment strategies and follows Agile met
      See Figure 1
 
 - **Login Page**
-    - The user can log in with their email and password to log into the Creator Dashboard or the Client Dashboard.
+    - The user can log in with their email and password to log into the Creator dashboard or the Client dashboard.
      See Figure 2
 
 - **Creator Dashboard**
@@ -38,7 +37,7 @@ The development process incorporates deployment strategies and follows Agile met
   **Super Users** can create articles, add related events and have the privilege to update and delete ALL articles. 
 
     - **Navigation Menu:**
-        - **Dashboard** - The user arrives at the front page of the dashboard. The Dashboard shows the articles that have created by the authenticated user.
+        - **Dashboard** - The user arrives at the front page of the dashboard. The dashboard shows the articles that have created by the authenticated user.
         - **Create Article** - Allows authenticated users with the 'creator' role to create and publish an article by adding a title and content. A Rich Text Editor allows users to format text using paragraphs, bold, italics, and more.
         - **Add an Event** - Beneath the "Create Article" form, users can add an event related to the article.
         - **Upload Image** - Supports PNG, JPEG, and WebP formats. The uploaded image will be displayed above the article text.
@@ -49,7 +48,7 @@ The development process incorporates deployment strategies and follows Agile met
         - **Manage Account**
             - Users can update their first name, last name, and email.
             - Users can delete their account or cancel their subscription.
-        - **Logout** - The creator (user) can log out of the Creator Dashboard.
+        - **Logout** - The creator (user) can log out of the Creator dashboard.
 
 - **General User Dashboard**
     - **Navigation Menu:**
@@ -58,7 +57,7 @@ The development process incorporates deployment strategies and follows Agile met
         - **Manage Account**
             - Users can update their first name, last name, and email.
             - Users can delete their account or cancel their subscription.
-        - **Logout** - The user can log out of the General Dashboard.
+        - **Logout** - The user can log out of the General dashboard.
 
 
 ![Register](https://github.com/IsaHu-dev/Harvest/blob/main/media/readme/screens/register.webp)
@@ -96,7 +95,7 @@ Figure 5 - View Published Articles
 To register for an account, follow these steps:
 
 - Click on the **Register** button.
-- If you want to be a contributor to Harvest as a Content Creator, check the box labelled **"Are you a Content Creator"** for access to the Creator Dashboard.
+- If you want to be a contributor to Harvest as a Content Creator, check the box labelled **"Are you a Content Creator"** for access to the Creator dashboard.
 - Fill in your details:
   - Name
   - Email
@@ -121,7 +120,7 @@ To log in:
 
 - Navigate to the **Login** page.
 - Enter your registered email and password.
-- Click **Login** to access the Creator Dashboard.
+- Click **Login** to access the Creator dashboard.
 
 ### 4. Create an Article
 
@@ -140,7 +139,7 @@ As a content creator, you can manage your published articles:
 
 #### To update an article:
 
-- Go to the **Published** section of the Creator Dashboard.
+- Go to the **Published** section of the Creator dashboard.
 
 #### Use search bar to search for the article or event. Search by Article or Event Title.
 
@@ -161,7 +160,7 @@ As a content creator, you can manage your published articles:
 
 To update account details:
 
-- Navigate to **Account Settings** in the Creator Dashboard.
+- Navigate to **Account Settings** in the Creator dashboard.
 - Update your:
   - First Name
   - Last Name
@@ -287,7 +286,7 @@ Acceptance criteria:
   2. A Procfile document is defined. web: gunicorn harvest_main.wsgi.
   3. Store Dependencies - All required dependencies were documented in requirements.txt using: pip3 freeze --local > requirements.txt.
   4. Create a New Heroku App. 
-    - Log in to the Heroku Dashboard.
+    - Log in to the Heroku dashboard.
     - Click New > Create New App.
     - Enter a unique app name.
     - Click Create App.
