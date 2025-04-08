@@ -1,78 +1,60 @@
 {% extends 'account/base.html' %}
-
 {% load crispy_forms_tags %}
 {% load static %}
 
 {% block content %}
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-        const input = document.getElementById('id_image');
-        if (input) {
-            input.addEventListener('change', function (event) {
-                const preview = document.getElementById('preview');
-                preview.innerHTML = '';
-                const file = event.target.files[0];
-                if (file) {
-                    const img = document.createElement('img');
-                    img.src = URL.createObjectURL(file);
-                    img.style.maxWidth = '200px';
-                    img.style.marginTop = '10px';
-                    preview.appendChild(img);
-                }
-            });
-        }
-    });
-</script>
-    <div class="container col-md-8 col-lg-6 bg-white shadow-md p-5 rounded-3">
-        <h3>Update article</h3>
-        <hr>
-        <p>As a content creator you can update your articles accordingly:</p>
-        <br>
-        <form method="POST" enctype="multipart/form-data" autocomplete="off">
-            {% csrf_token %}
-            {{UpdateArticleForm|crispy}}
-            <!-- Current Image Preview -->
-            {% if article.image %}
+<div class="container col-md-8 col-lg-6 bg-white shadow-md p-5 rounded-3">
+    <h3>Update Article</h3>
+    <hr>
+    <p>As a content creator, you can update your articles accordingly:</p>
+
+    <form method="POST" enctype="multipart/form-data" autocomplete="off">
+        {% csrf_token %}
+        {{ UpdateArticleForm|crispy }}
+
+        {% if article.image %}
             <div class="form-group mb-3">
                 <label>Current Image:</label>
                 <div>
                     <img src="{{ article.image.url }}" alt="Current article image" style="max-width: 200px; margin-top: 10px;">
                 </div>
             </div>
-            {% endif %}
+        {% endif %}
 
-            <!-- Image Uploader -->
-            <div class="form-group">
-                <label for="id_image">Update Image</label>
-                <div id="drop-area">
-                    <p><strong>Upload a file</strong></p>
-                    <p>PNG, JPG, GIF or WebP up to 10MB</p>
-                    <input type="file" id="id_image" name="image" accept="image/*" style="display: none;">
-                    <button type="button" onclick="document.getElementById('id_image').click();" class="btn btn-outline-primary">Browse Files</button>
-                    <div id="preview"></div>
-                </div>
+        <!-- Image Uploader -->
+        <div class="form-group">
+            <label for="id_image">Update Image</label>
+            <div id="drop-area">
+                <p><strong>Upload a file</strong></p>
+                <p>PNG, JPG, GIF or WebP up to 10MB</p>
+                <input type="file" id="id_image" name="image" accept="image/*" style="display: none;">
+                <button type="button" onclick="document.getElementById('id_image').click();" class="btn btn-outline-primary">Browse Files</button>
+                <div id="preview"></div>
             </div>
-            <br>
-            <div class="form-check mb-3">
-                <input type="checkbox" class="form-check-input header" id="article_teaser" name="article_teaser" value="1">
-                <label class="form-check-label header" for="article_teaser">Make this article a teaser for guest visitors</label>
-            </div>
-            <br>
-            <input class="btn btn-success w-100" type="submit" value="Update article"/>
-        </form>
-    </div>
-   
+        </div>
+
+        <div class="form-check mb-3 mt-4">
+            <input type="checkbox" class="form-check-input header" id="article_teaser" name="article_teaser" value="1">
+            <label class="form-check-label header" for="article_teaser">Make this article a teaser for guest visitors</label>
+        </div>
+
+        <input class="btn btn-success w-100" type="submit" value="Update Article">
+    </form>
+
     {% if UpdateArticleForm.errors %}
-    <div class="alert alert-danger">
-        <strong>Form Errors:</strong>
-        <ul>
-            {% for field, errors in UpdateArticleForm.errors.items %}
-                <li>{{ field }}: {{ errors }}</li>
-            {% endfor %}
-        </ul>
-    </div>
-{% endif %}
-    <script src="https://cdn.ckeditor.com/ckeditor5/39.0.1/classic/ckeditor.js"></script>
-    <script src="{% static 'js/richeditor.js' %}"></script>
-    <script src="{% static 'js/image-upload.js' %}"></script>
+        <div class="alert alert-danger mt-4">
+            <strong>Form Errors:</strong>
+            <ul>
+                {% for field, errors in UpdateArticleForm.errors.items %}
+                    <li>{{ field }}: {{ errors }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    {% endif %}
+</div>
+
+<!-- JS Includes -->
+<script src="{% static 'js/ckeditor.js' %}"></script>
+<script src="{% static 'js/richeditor.js' %}"></script>
+<script src="{% static 'js/image-upload.js' %}"></script>
 {% endblock %}
