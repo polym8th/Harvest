@@ -410,7 +410,7 @@ Local access to the application is at [http://127.0.0.1:8000](http://127.0.0.1:8
 
 ---
 
-## C. Content Creation 
+## C. Content Creation - Access for Content Creators
 
 | **Test Case**                         | **Steps**                                                                                 | **Expected Result**                                                             | **Pass/Fail** |
 |--------------------------------------|-------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------|--------------|
@@ -432,7 +432,7 @@ Local access to the application is at [http://127.0.0.1:8000](http://127.0.0.1:8
 
 ---
 
-## D. General User Actions
+## D. General User Actions - Access for General Users
 
 | **Test Case**                            | **Steps**                                      | **Expected Result**                                | **Pass/Fail** |
 |-----------------------------------------|------------------------------------------------|----------------------------------------------------|--------------|

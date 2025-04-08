@@ -127,8 +127,6 @@ def manage_account(request):
                 return redirect("creator-dashboard")
             else:
                 return redirect("client-dashboard")
-        else:
-            messages.error(request, "Please correct the errors below.")
     return render(
         request, "account/manage-account.html", {"UpdateUserForm": form}
     )
