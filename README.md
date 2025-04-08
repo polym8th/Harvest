@@ -260,7 +260,7 @@ Acceptance criteria:
 ## Technologies Used
 
   - Backend: Python 3.13, Django 4.2
-  - Frontend: HTML, CSS (Bootstrap 5), JavaScript
+  - Frontend: HTML, CSS (Bootstrap 5), JavaScript and Django Crispy Forms
   - Database: PostgreSQL 
   - Tools: Git, GitHub, Heroku, VS Code
   - Testing: Flake8 and and Black to adhere to PEP 8 standards.
