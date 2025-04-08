@@ -128,10 +128,11 @@ To log in:
 To create an article:
 
 - Fill in the **Title**, **Content**, and **Upload an Image**.
-- If the article is related to an event, select **"Is this article related to an event?"**
+- If the article is related to an event, tick the checkbox **"Is this article related to an event?"**
   - Enter the **Event Date and Time**.
   - Provide the **Event Name**.
   - Enter the **Event Venue**, **Event Address**, and **Event Postcode**.
+  - Once this Event form is submitted, the Article will be assigned an Event ID, allowing you to update or delete it from the Published section as an **event**.
 
 ### 5. Update or Delete Your Articles
 
@@ -555,7 +556,7 @@ content = forms.CharField(
 ## Validator Testing
 
 - Passed the CI Python Linter. "All clear no errors found"
-- Passed JShint validator. 
+- Code passed JSHint – a JavaScript validator that checks for syntax errors and coding issues.
 
  ![W3 HTML Validator](https://github.com/IsaHu-dev/Harvest/blob/main/media/readme/testing/w3html.webp)
  ![W3 CSS Validator](https://github.com/IsaHu-dev/Harvest/blob/main/media/readme/testing/cssw3.webp)
