@@ -379,8 +379,7 @@ Local access to the application is at [http://127.0.0.1:8000](http://127.0.0.1:8
 # Testing
 
 ## Manual Testing
-
-# ✅ User Testing Report
+## User Testing Report
 
 ---
 
