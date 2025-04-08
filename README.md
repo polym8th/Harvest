@@ -141,7 +141,7 @@ As a content creator, you can manage your published articles:
 
 - Go to the **Published** section of the Creator Dashboard.
 
-#### Use search bar to search for the article or event. Search by Article Title.
+#### Use search bar to search for the article or event. Search by Article or Event Title.
 
 - Click **Update Article** next to the article you want to update.
 - Make the necessary changes to the **Title**, **Content**, or **Image**.
