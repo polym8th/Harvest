@@ -408,6 +408,8 @@ Local access to the application is at [http://127.0.0.1:8000](http://127.0.0.1:8
 | Button Interactivity      | Click action buttons and hover.       | Buttons respond, hover effects work as expected. | ✅ PASS   |
 | Page Load Speed           | Test initial load time.               | Page loads within 3 seconds.                 | ✅ PASS      |
 | Mobile & Responsive Design| Open site on mobile/tablet devices.   | UI adjusts to screen size appropriately.     | ✅ PASS      |
+| Access to Index Page via Harvest Logo   | After logging in as a Content Creator, click the Harvest logo.     | User is redirected to the index page and has full access to all articles. | ✅ PASS      |
+| Access to Index Page via Harvest Logo   | After logging in as a General User, click the Harvest logo.        | User is redirected to the index page and has full access to all articles. | ✅ PASS      |
 
 ---
 
