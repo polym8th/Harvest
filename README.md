@@ -393,7 +393,6 @@ Local access to the application is at [http://127.0.0.1:8000](http://127.0.0.1:8
 | Invalid Registration           | 1. Leave required fields blank.<br>2. Enter an invalid email format.<br>3. Use an already registered email.<br>4. Click 'Submit'.            | A registration error messages is displayed.                                             | ✅ PASS      |
 | Login with Valid Credentials   | 1. Navigate to the Login page.<br>2. Enter valid email and password.<br>3. Click 'Login'.                                                   | User is redirected to their respective dashboard.                                     | ✅ PASS      |
 | Login with Incorrect Credentials | 1. Navigate to the Login page.<br>2. Enter incorrect email or password.<br>3. Click 'Login'.                                               | Error message is shown.                                                               | ✅ PASS      |
-| Login with Unverified Email    | Attempt to log in without verifying email.                                                                                                  | Error message instructs user to verify their email.                                   | ✅ PASS      |
 | Password Mismatch During Signup | Enter different values in the two password fields during registration.                                                                      | Error message displays: *"The two password fields didn't match."*                     | ✅ PASS      |
 
 ---
