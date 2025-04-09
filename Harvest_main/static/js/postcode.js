@@ -1,3 +1,4 @@
+// jshint esversion: 8
 document.getElementById('article-form').addEventListener('submit', function (e) {
     const isEvent = document.getElementById('is_event_related').checked;
     const postcode = document.getElementById('event_postcode').value.trim();
