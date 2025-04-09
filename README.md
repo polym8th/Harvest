@@ -20,8 +20,8 @@ The development process incorporates deployment strategies and follows Agile met
 - **Index Page**
     - The site visitor can read articles in full with unrestricted guest access to sample content before registering on the Harvest Platform.
     - There are articles whereby the content is abridged for registered users only. The visitor can click on the register button to sign up. 
-- 
-**Teaser Articles**    
+
+- **Teaser Articles**    
    - Visitors can click on **"Read Full Article"** to access the full content as a guest. This link directs them to the ``article-guest`` page.
 
 - **Register Page**
@@ -62,10 +62,12 @@ The development process incorporates deployment strategies and follows Agile met
             - Users can delete their account or cancel their subscription.
         - **Logout** - The user can log out of the General dashboard.
 
-### Future Planned Additions 
+- **Future Planned Additions** 
 
   - **Implement a Paid Subscription User Portal** - In the future, I plan to implement a paid subscription portal that grants clients or general users access to premium features upon registering with the Harvest platform. 
   - Content creators will retain free access, as long as they continue contributing articles to the platform.
+
+
 
 
 ![Register](https://github.com/IsaHu-dev/Harvest/blob/main/media/readme/screens/register.webp)
