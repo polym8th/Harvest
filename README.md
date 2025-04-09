@@ -62,6 +62,11 @@ The development process incorporates deployment strategies and follows Agile met
             - Users can delete their account or cancel their subscription.
         - **Logout** - The user can log out of the General dashboard.
 
+### Future Planned Additions 
+
+  - **Implement a Paid Subscription User Portal** - In the future, I plan to implement a paid subscription portal that grants clients or general users access to premium features upon registering with the Harvest platform. 
+  - Content creators will retain free access, as long as they continue contributing articles to the platform.
+
 
 ![Register](https://github.com/IsaHu-dev/Harvest/blob/main/media/readme/screens/register.webp)
 
