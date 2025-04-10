@@ -3,7 +3,7 @@
 {% load static %}      
 
 {% block content %}
-<div class="container col-md-8 col-lg-6 bg-white shadow-md p-5 rounded-3">
+<div class="container col-md-10 col-lg-8 bg-white shadow-md p-5 rounded-3">
     <h3>Update Article</h3>
     <hr>
     <p>As a content creator, you can update your articles accordingly:</p>
@@ -22,7 +22,7 @@
         {% endif %}
 
         <!-- Image uploader input -->
-        <div class="form-group">
+        <div class="form-group mb-5">  <!-- Larger spacing added here -->
             <label for="id_image">Update Image</label>
             <div id="drop-area">
                 <p><strong>Upload a file</strong></p>
@@ -31,11 +31,6 @@
                 <button type="button" onclick="document.getElementById('id_image').click();" class="btn btn-outline-primary">Browse Files</button>
                 <div id="preview"></div>
             </div>
-        </div>
-        <!-- Checkbox to mark the article as a teaser (visible to non-logged-in users) -->
-        <div class="form-check mb-3 mt-4">
-            <input type="checkbox" class="form-check-input header" id="article_teaser" name="article_teaser" value="1">
-            <label class="form-check-label header" for="article_teaser">Make this article a teaser for guest visitors</label>
         </div>
 
         <input class="btn btn-success w-100" type="submit" value="Update Article">

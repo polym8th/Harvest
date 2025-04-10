@@ -284,7 +284,7 @@ def delete_event(request, pk):
         return redirect("my-login")
     event = get_object_or_404(Article, pk=pk, is_event_related=True)
 
-    # Restrict delete access to event owner or superuser
+    # Restrict delete access to creator or superuser
 
     if request.user.is_creator and event.user != request.user:
         messages.error(
