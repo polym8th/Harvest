@@ -1,9 +1,10 @@
-{% extends 'account/base.html' %}  
-{% load static %} 
+{% extends 'account/base.html' %}
+{% load static %}
 
+{# HERO SECTION: Shown only to unauthenticated (guest) users #}
 {% block hero %}
   {% if not request.user.is_authenticated %}
-    <div class="text-center mt-5 header">
+    <div class="text-center mt-5">
       <h5 class="mb-3">Discover Harvest... Subscribe to our local cultural hub!</h5>
       <p class="mb-3">Explore our selection of insights on Brighton's hidden gems in local and surrounding areas.</p>
       <p class="h5 mb-5">See what is happening near you!</p>
@@ -14,32 +15,39 @@
   {% endif %}
 {% endblock %}
 
+{# MAIN CONTENT: Article cards, shown to all users #}
 {% block content %}
   <div class="row g-4">
+    
     {% if articles %}
       {% for article in articles %}
         <div class="col-12 col-md-6 d-flex">
           <div class="card w-100 h-100 d-flex flex-column">
+            
+            {# Display image if one is associated with the article #}
             {% if article.image %}
               <img src="{{ article.image.url }}" class="w-100" style="height: 250px; object-fit: cover;" alt="{{ article.title }}">
             {% endif %}
 
-            <div class="card-body header d-flex flex-column {% if not article.image %}pt-0{% endif %}">
+            <div class="card-body d-flex flex-column {% if not article.image %}pt-0{% endif %}">
+
               {% if not request.user.is_authenticated and article.category %}
                 <span class="text-muted text-uppercase mb-1">{{ article.category }}</span>
               {% endif %}
 
-              <h3 class="card-title fw-bold text-dark text-decoration-none">{{ article.title }}</h3>
-              <span class="text-muted mb-0">By {{ article.user.first_name }} {{ article.user.last_name }}</span>
+              <h3 class="card-title fw-bold text-dark">{{ article.title }}</h3>
 
+              <span class="text-muted">By {{ article.user.first_name }} {{ article.user.last_name }}</span>
+
+              {# Show teaser (for logged-in users) or abridged content (for guests) #}
               <div class="mt-2 article-content fs-4">
-                {% if request.user.is_authenticated and article.article_teaser %}
+                {% if request.user.is_authenticated and article.article_teaser and article.article_teaser is not True %}
                   {{ article.article_teaser|safe }}
                 {% else %}
                   {{ article.content|safe|truncatechars_html:200 }}
                 {% endif %}
               </div>
-
+              
               <div class="mt-auto d-flex justify-content-center">
                 {% if request.user.is_authenticated or article.article_teaser %}
                   <a href="{% url 'article-guest' article.id %}" class="btn btn-outline-secondary">Read Full Article</a>
@@ -47,14 +55,18 @@
                   <a href="{% url 'register' %}" class="btn btn-link">Read More... Subscribe Now</a>
                 {% endif %}
               </div>
+
             </div>
           </div>
         </div>
       {% endfor %}
+    
     {% else %}
-      <div class="col-12 text-center align-self-start">
+      {# Fallback message if no articles are available #}
+      <div class="col-12 text-center">
         No articles available at the moment. Check back later!
       </div>
     {% endif %}
+  
   </div>
 {% endblock %}

@@ -23,7 +23,7 @@ def regular_articles(request):
     if request.user.is_creator or request.user.is_superuser:
         raise PermissionDenied
 
-    # Show only published articles to general users
+    # Fetch all published articles for general users
     articles = Article.objects.filter(is_published=True)
 
     return render(
