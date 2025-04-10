@@ -430,13 +430,13 @@ Local access to the application is at [http://127.0.0.1:8000](http://127.0.0.1:8
 | Enable "Teaser" Mode for Article     | Select the "Teaser" checkbox.                                                             | Article is shown as a teaser to guest (unauthenticated) users.                  | ✅ PASS      |
 | Edit / Update an Article             | Modify an existing article and save.                                                      | Changes are saved and reflected.                                                | ✅ PASS      |
 | Delete an Article                    | Click 'Delete' on an article.                                                             | Article is permanently removed.                                                 | ✅ PASS      |
-| Enable Guest Visibility on the Update Article form | Tick the "Guest Visibility" checkbox and submit the form.                   | Article becomes accessible to unauthenticated users as part of the update.      | ✅ PASS      |
 | Create an Event                      | Enter event details (name, venue, time, etc.) and click 'Submit'.                         | Event appears in the Creator Dashboard.                                         | ✅ PASS      |
 | Select Calendar Date & Time          | Attempt to select a date in the past.                                                     | Past dates are restricted; future date is saved successfully.                   | ✅ PASS      |
 | Add Postcode                         | Enter postcode in correct format (less than 10 characters).                               | Error appears if the format is incorrect.                                       | ✅ PASS      |
 | Leaving the Postcode field blank     |'Please enter a postcode' - pop up message occurs when the field is left blank.            | Error message appears when the user tries to submit without input.              | ✅ PASS      |
 | Edit an Event                        | Modify existing event details and save.                                                   | Updates are saved.                                                              | ✅ PASS      |
 | Delete an Event                      | Click 'Delete' on an event.                                                               | Event is removed from the dashboard.                                            | ✅ PASS      |
+| Shortcut to Article and Event        | Click on 'Article' or 'Event' shortcut from the creator dashboard.                        | User is navigated directly to the Article or Event list view.                   | ✅ PASS      |
 | Restrict Update (Article Ownership)  | Log in as Creator B and attempt to update Creator A’s article.                            | Action is blocked; error or redirect occurs.                                    | ✅ PASS      |
 | Restrict Delete (Article Ownership)  | Log in as Creator B and attempt to delete Creator A’s article.                            | Action is blocked; error or redirect occurs.                                    | ✅ PASS      |
 | Restrict Event (Event Ownership)     | Log in as Creator B and try deleting Creator A’s event.                                   | Deletion fails; appropriate error or redirect is shown.                         | ✅ PASS      |
@@ -448,7 +448,7 @@ Local access to the application is at [http://127.0.0.1:8000](http://127.0.0.1:8
 | **Test Case**                            | **Steps**                                      | **Expected Result**                                | **Pass/Fail** |
 |-----------------------------------------|------------------------------------------------|----------------------------------------------------|--------------|
 | View Client Dashboard                   | Log in as a General User.                      | General User Dashboard loads correctly.            | ✅ PASS      |
-| Browse Articles                         | Open and read multiple articles.              | Articles load and display content as expected.     | ✅ PASS      |
+| Browse Articles                         | Open and read multiple articles.               | Articles load and display content as expected.     | ✅ PASS      |
 | View Article Counter                    | Fetch the article count from the server.       | Article count displays correctly.                  | ✅ PASS      |
 | Search for Articles or Events           | Enter a keyword in the search bar.             | Matching articles or events are returned.          | ✅ PASS      |
 

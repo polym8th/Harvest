@@ -16,43 +16,49 @@ from creator.models import Article
 
 
 def home(request):
-    
-    # Show latest 10 published articles on homepage
-    if request.user.is_authenticated:
-        articles = Article.objects.filter(is_published=True).order_by(
-            "-pub_date"
-        )[:10]
-    else:
-        articles = Article.objects.filter(is_published=True).order_by(
-            "-pub_date"
-        )[:10]
-        
-    # Clear 'is_creator' flag from user object (likely for display logic)
+
+    # Fetch 10 most recent published articles
+
+    articles = Article.objects.filter(is_published=True).order_by("-pub_date")[
+        :10
+    ]
+# Remove 'is_creator' flag so it is not displayed in the template
+
     for article in articles:
         if hasattr(article.user, "is_creator") and article.user.is_creator:
             article.user.is_creator = ""
     return render(request, "account/index.html", {"articles": articles})
 
 
+def redirect_user_dashboard(user):
+
+    # Redirect user to appropriate dashboard based on role
+
+    if user.is_superuser or getattr(user, "is_creator", False):
+        return redirect("creator-dashboard")
+    return redirect("client-dashboard")
+
+
 def register(request):
-    
-    # Prevent access to registration if already logged in
+
+    # Redirect authenticated users to their dashboard
     if request.user.is_authenticated:
-        if request.user.is_superuser or request.user.is_creator:
-            return redirect("creator-dashboard")
-        return redirect("client-dashboard")
+        return redirect_user_dashboard(request.user)
     if request.method == "POST":
         form = CreateUserForm(request.POST)
         if form.is_valid():
+            # Save new user with 'is_creator' flag if set
+
             user = form.save(commit=False)
-            is_creator = form.cleaned_data.get("is_creator")
-            user.is_creator = is_creator
+            user.is_creator = form.cleaned_data.get("is_creator")
             user.save()
+
+            # Show tailored success messages
 
             messages = [
                 "Well done, your account has been created successfully!"
             ]
-            if is_creator:
+            if user.is_creator:
                 messages.append("You are now a content creator!")
             return render(
                 request,
@@ -65,12 +71,11 @@ def register(request):
 
 
 def my_login(request):
-    
-    # Prevent logged-in users from accessing login page
+
+    # Redirect already logged-in users
+
     if request.user.is_authenticated:
-        if request.user.is_superuser or request.user.is_creator:
-            return redirect("creator-dashboard")
-        return redirect("client-dashboard")
+        return redirect_user_dashboard(request.user)
     error_message = None
 
     if request.method == "POST":
@@ -85,14 +90,11 @@ def my_login(request):
 
                 if user is not None:
                     login(request, user)
-                    if user.is_superuser or user.is_staff or user.is_creator:
-                        return redirect("creator-dashboard")
-                    else:
-                        return redirect("client-dashboard")
+                    return redirect_user_dashboard(user)
                 else:
                     error_message = "Invalid username or password."
         except OperationalError:
-            # Handle potential DB or connection issues
+            # Handle DB connection failure gracefully
 
             error_message = (
                 "⚠️ Sorry, we're having trouble connecting to the database. "
@@ -112,49 +114,52 @@ def my_login(request):
 
 @login_required(login_url="my-login")
 def manage_account(request):
-    user = request.user  # Get the currently logged-in user
-    form = UpdateUserForm(instance=user)  # Pre-fill form with user info
+
+    # Allow users to update their account details
+
+    user = request.user
 
     if request.method == "POST":
-        # Populate form with submitted data
         form = UpdateUserForm(request.POST, instance=user)
         if form.is_valid():
-            form.save()  # Save updated user info
-            update_session_auth_hash(request, user)  # Prevent logout
+            form.save()
+            update_session_auth_hash(
+                request, user
+            )  # Keep session valid after password change
             messages.success(
-                request,
-                "✅ Your account details have been updated.",
+                request, "✅ Your account details have been updated."
             )
-
-            # Redirect based on user role
-
-            if user.is_superuser:
-                return redirect("creator-dashboard")
-            elif getattr(user, "is_creator", False):
-                return redirect("creator-dashboard")
-            else:
-                return redirect("client-dashboard")
+            return redirect_user_dashboard(user)
+    else:
+        form = UpdateUserForm(instance=user)
     return render(
-        request,
-        "account/manage-account.html",
-        {"UpdateUserForm": form},
+        request, "account/manage-account.html", {"UpdateUserForm": form}
     )
 
 
 def user_logout(request):
+
+    # Log the user out and return to home page
+
     logout(request)
     return redirect("home")
 
 
 @login_required(login_url="my-login")
 def delete_account(request):
+
+    # Confirm account deletion
+
     if request.method == "POST":
-        user = request.user  # capture the user object before logout
-        user.delete()  # delete user first
-        logout(request)  # logout after
+        user = request.user
+        user.delete()
+        logout(request)
         return redirect("delete-account-success")
     return render(request, "account/delete-account.html")
 
 
 def delete_account_success(request):
+
+    # Show deletion confirmation screen
+
     return render(request, "account/delete-account-success.html")
