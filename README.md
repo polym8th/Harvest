@@ -155,7 +155,6 @@ As a content creator, you can manage your published articles:
 
 - Click **Update Article** next to the article you want to update.
 - Make the necessary changes to the **Title**, **Content**, or **Image**.
-- If the article is not currently viewable by guest visitors, you can make it public by checking the box labelled **"Make this article a teaser for guest visitors"**.
 - Click **Update** to save your changes.
 - Please note you can only update the article you have created.
 - To update or delete an event, follow the same steps as above. Simply click **Update Event** or **Delete Event** next to the relevant event to open the edit form.
