@@ -6,6 +6,8 @@ from .models import CustomUser
 
 
 class CustomUserAdmin(UserAdmin):
+    
+    # Define field sections shown in the user edit form in the admin
     fieldsets = (
         (None, {"fields": ("email", "password")}),
         ("Personal info", {"fields": ("first_name", "last_name")}),
@@ -22,8 +24,13 @@ class CustomUserAdmin(UserAdmin):
             },
         ),
         ("Important dates", {"fields": ("last_login", "date_joined")}),
-        ("Custom fields", {"fields": ("is_creator",)}),
+        (
+            "Custom fields",
+            {"fields": ("is_creator",)},
+        ),  # Custom field specific to this project
     )
+
+    # Style boolean fields like 'is_creator' with a larger checkbox
 
     formfield_overrides = {
         models.BooleanField: {
@@ -32,6 +39,8 @@ class CustomUserAdmin(UserAdmin):
             )
         },
     }
+
+    # Define fields shown when adding a new user in the admin
 
     add_fieldsets = (
         (
@@ -50,6 +59,8 @@ class CustomUserAdmin(UserAdmin):
         ),
     )
 
+    # Admin list display columns
+
     list_display = (
         "email",
         "first_name",
@@ -57,9 +68,11 @@ class CustomUserAdmin(UserAdmin):
         "is_staff",
         "is_creator",
     )
-    list_filter = ("is_staff", "is_superuser", "is_creator")
-    search_fields = ("email", "first_name", "last_name")
-    ordering = ("email",)
+    list_filter = ("is_staff", "is_superuser", "is_creator") 
+    search_fields = ("email", "first_name", "last_name")  # Admin search
+    ordering = ("email",)  # Default sort order
 
+
+# Register the custom user model with its custom admin configuration
 
 admin.site.register(CustomUser, CustomUserAdmin)

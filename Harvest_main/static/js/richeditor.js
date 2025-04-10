@@ -15,12 +15,13 @@ document.addEventListener("DOMContentLoaded", function () {
         return;
     }
 
+    // Initialize CKEditor without image upload support
     ClassicEditor.create(editorElement, {
         toolbar: [
             'heading', '|', 'bold', 'italic', 'underline', '|',
             'bulletedList', 'numberedList', '|', 'blockQuote',
             'insertTable', 'undo', 'redo' 
-        ]
+        ] // image upload tools have been removed by IsaHu-Dev
     }).then(editor => {
         editorElement.ckeditorInstance = editor;
 
@@ -29,14 +30,14 @@ document.addEventListener("DOMContentLoaded", function () {
             form.addEventListener("submit", function (e) {
                 const content = editor.getData().trim();
 
-                // Block form submission if content is empty
+                // Prevent submission if content is empty
                 if (!content) {
                     e.preventDefault();
                     alert("The article content is required.");
                     return false;
                 }
 
-                // Push editor content back into the hidden textarea
+                // Sync content back into hidden textarea before submission
                 editorElement.value = content;
             });
         }

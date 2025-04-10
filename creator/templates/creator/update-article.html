@@ -1,6 +1,6 @@
-{% extends 'account/base.html' %}
-{% load crispy_forms_tags %}
-{% load static %}
+{% extends 'account/base.html' %} 
+{% load crispy_forms_tags %}    
+{% load static %}      
 
 {% block content %}
 <div class="container col-md-8 col-lg-6 bg-white shadow-md p-5 rounded-3">
@@ -9,10 +9,10 @@
     <p>As a content creator, you can update your articles accordingly:</p>
 
     <form method="POST" enctype="multipart/form-data" autocomplete="off">
-        {% csrf_token %}
-        {{ UpdateArticleForm|crispy }}
+        {% csrf_token %}  {# Protect the form against CSRF attacks #}
+        {{ UpdateArticleForm|crispy }}  
 
-        {% if article.image %}
+        {% if article.image %}  {# If an image exists, show a preview of the current image #}
             <div class="form-group mb-3">
                 <label>Current Image:</label>
                 <div>
@@ -21,7 +21,7 @@
             </div>
         {% endif %}
 
-        <!-- Image Uploader -->
+        <!-- Image uploader input -->
         <div class="form-group">
             <label for="id_image">Update Image</label>
             <div id="drop-area">
@@ -32,7 +32,7 @@
                 <div id="preview"></div>
             </div>
         </div>
-
+        <!-- Checkbox to mark the article as a teaser (visible to non-logged-in users) -->
         <div class="form-check mb-3 mt-4">
             <input type="checkbox" class="form-check-input header" id="article_teaser" name="article_teaser" value="1">
             <label class="form-check-label header" for="article_teaser">Make this article a teaser for guest visitors</label>
@@ -41,7 +41,7 @@
         <input class="btn btn-success w-100" type="submit" value="Update Article">
     </form>
 
-    {% if UpdateArticleForm.errors %}
+    {% if UpdateArticleForm.errors %}  {# Show validation errors if present #}
         <div class="alert alert-danger mt-4">
             <strong>Form Errors:</strong>
             <ul>
@@ -53,8 +53,8 @@
     {% endif %}
 </div>
 
-<!-- JS Includes -->
+<!-- Include JavaScript for CKEditor and image preview -->
 <script src="https://cdn.ckeditor.com/ckeditor5/35.0.1/classic/ckeditor.js"></script>
-<script src="{% static 'js/richeditor.js' %}"></script>
-<script src="{% static 'js/image-upload.js' %}"></script>
+<script src="{% static 'js/richeditor.js' %}"></script>  {# Initializes CKEditor and validation #}
+<script src="{% static 'js/image-upload.js' %}"></script>  {# Handles drag & drop image preview #}
 {% endblock %}

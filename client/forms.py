@@ -1,18 +1,9 @@
-from creator.models import Article  # Corrected import
-from account.models import CustomUser
 from django.forms import ModelForm
-
-
-class ArticleForm(ModelForm):
-    class Meta:
-        model = Article
-        fields = ["title", "content", "image"]
+from account.models import CustomUser
 
 
 class UpdateUserForm(ModelForm):
-    password = None
-
+    # Form for updating basic user details
     class Meta:
         model = CustomUser
         fields = ["first_name", "last_name", "email"]
-        exclude = ["password1", "password2"]

@@ -1,4 +1,5 @@
-{% extends 'account/base.html' %}
+{% extends 'account/base.html' %}  {# Inherit from the base layout template #}
+
 {% block content %}
 
 <div class="container mt-2 bg-white shadow p-5 mb-6" style="max-width: 75%;">
@@ -8,16 +9,19 @@
   <hr>
 
   <div class="text-center">
+    {# Show image if it exists #}
     {% if article.image %}
       <img src="{{ article.image.url }}" alt="Article Image" class="img-fluid w-80 rounded mb-3">
     {% else %}
     {% endif %}
   </div>
 
+  {# Render article body in rich text #}
   <div class="header" style="word-wrap: break-word; overflow-wrap: break-word; max-width: %;">
     {{ article.content|safe }}
   </div>
 
+  {# Display event info only if article is event-related and has a date #}
   {% if article.is_event_related and article.event_date %}
     <div class="event-info bg-light p-4 rounded mb-4 fs-4">
       <h3 class="mb-3">Event Details</h3>

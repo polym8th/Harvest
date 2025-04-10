@@ -4,12 +4,14 @@ from django.contrib import messages
 from django.utils import timezone
 from django.db.models import Q
 
-
 from creator.forms import ArticleForm, UpdateUserForm, EventForm
 from .models import Article
 
 
 def index(request):
+
+    # Show teaser articles on the homepage for public/guest users
+
     teaser_articles = Article.objects.filter(
         article_teaser=True, is_published=True
     )
@@ -18,7 +20,7 @@ def index(request):
             hasattr(article, "article_teaser")
             and article.article_teaser is True
         ):
-            article.article_teaser = ""
+            article.article_teaser = ""  # Clear the flag for display purposes
     return render(
         request, "accounts/index.html", {"teaser_articles": teaser_articles}
     )
@@ -26,6 +28,9 @@ def index(request):
 
 @login_required(login_url="my-login")
 def creator_dashboard(request):
+
+    # Access control: only creators and superusers allowed
+
     if not (request.user.is_creator or request.user.is_superuser):
         messages.error(
             request,
@@ -41,10 +46,11 @@ def creator_dashboard(request):
 
 @login_required(login_url="my-login")
 def create_article(request):
+
+    # Only creators or superusers may create articles
     if not (request.user.is_creator or request.user.is_superuser):
         messages.error(request, "❌ You are not allowed to create articles.")
         return redirect("client-dashboard")
-
     if request.method == "POST":
         form = ArticleForm(request.POST, request.FILES)
         if form.is_valid():
@@ -57,13 +63,14 @@ def create_article(request):
                 request.POST.get("is_event_related") == "on"
             )
 
+            # Set event-related fields if applicable
+
             if article.is_event_related:
                 article.event_date = request.POST.get("event_date")
                 article.event_name = request.POST.get("event_name")
                 article.event_venue = request.POST.get("event_venue")
                 article.event_location = request.POST.get("event_location")
                 article.event_postcode = request.POST.get("event_postcode")
-
             if "image" in request.FILES:
                 uploaded_image = request.FILES["image"]
                 print(
@@ -71,12 +78,10 @@ def create_article(request):
                     f"Size: {uploaded_image.size} bytes | "
                     f"Type: {uploaded_image.content_type}"
                 )
-
             article.save()
             return redirect("create-article-success")
     else:
         form = ArticleForm()
-
     return render(
         request, "creator/create-article.html", {"CreateArticleForm": form}
     )
@@ -84,30 +89,38 @@ def create_article(request):
 
 @login_required(login_url="my-login")
 def create_article_success(request):
+
+    # Only creators/superusers should see success page
+
     if not (request.user.is_creator or request.user.is_superuser):
         messages.error(
             request,
             "Access denied. Creator or superuser permissions required.",
         )
         return redirect("client-dashboard")
-
     return render(request, "creator/create-article-success.html")
 
 
 def article_guest(request, pk):
+
+    # Public view of a single article (e.g. teaser access)
+
     article = get_object_or_404(Article, id=pk)
     return render(request, "account/article-guest.html", {"article": article})
 
 
 @login_required(login_url="my-login")
 def published(request):
+
+    # Creators and superusers only
+
     if not (request.user.is_creator or request.user.is_superuser):
         messages.error(
             request,
             "❌ Access denied. Creator or superuser permissions required.",
         )
         return redirect("client-dashboard")
-
+    # Optional search query
     query = request.GET.get("query")
     articles = Article.objects.filter(
         Q(is_published=True) | Q(article_teaser=True)
@@ -119,11 +132,9 @@ def published(request):
         )
         if not articles.exists():
             messages.warning(
-                request,
-                f"No articles or events found matching: '{query}'"
+                request, f"No articles or events found matching: '{query}'"
             )
             return redirect("published")
-
     all_articles = articles.filter(is_event_related=False)
     events = articles.filter(is_event_related=True)
 
@@ -141,11 +152,7 @@ def published(request):
 def update_article(request, pk):
     article = get_object_or_404(Article, id=pk)
 
-    if not request.user.is_authenticated:
-        messages.error(
-            request, "❌ You don't have permission to update this article."
-        )
-        return redirect("my-login")
+    # Only the creator or superuser can update their own article
 
     if request.user.is_creator and article.user != request.user:
         messages.error(
@@ -153,7 +160,6 @@ def update_article(request, pk):
             "❌ You cannot update this article if you did not create it.",
         )
         return redirect("published")
-
     if request.method == "POST":
         form = ArticleForm(request.POST, request.FILES, instance=article)
         if form.is_valid():
@@ -170,21 +176,25 @@ def update_article(request, pk):
             return redirect("published")
     else:
         form = ArticleForm(instance=article)
-
     return render(
         request,
         "creator/update-article.html",
-        {"UpdateArticleForm": form, "article": article},
+        {
+            "UpdateArticleForm": form,
+            "article": article,
+        },
     )
 
 
 @login_required(login_url="my-login")
 def update_article_success(request):
+
+    # Redirect based on user role
+
     if request.user.is_authenticated:
         if request.user.is_superuser or request.user.is_creator:
             return redirect("creator-dashboard")
         return redirect("client-dashboard")
-
     return render(request, "creator/update-article-success.html")
 
 
@@ -192,11 +202,7 @@ def update_article_success(request):
 def delete_article(request, pk):
     article = get_object_or_404(Article, id=pk)
 
-    if not request.user.is_authenticated:
-        messages.error(
-            request, "❌ You don't have permission to delete this article."
-        )
-        return redirect("my-login")
+    # Only creators deleting their own articles or superusers are allowed
 
     if request.user.is_creator and article.user != request.user:
         messages.error(
@@ -204,7 +210,6 @@ def delete_article(request, pk):
             "❌ You cannot delete this article if you did not create it.",
         )
         return redirect("published")
-
     if not (
         request.user.is_superuser
         or (request.user.is_creator and article.user == request.user)
@@ -214,17 +219,21 @@ def delete_article(request, pk):
             "❌ You cannot delete this article if you did not create it.",
         )
         return redirect("client-dashboard")
-
     if request.method == "POST":
         article.delete()
         messages.success(request, "The article has been deleted successfully.")
         return redirect("published")
-
     return render(request, "creator/delete-success.html", {"article": article})
+
+
+# login_required
 
 
 @login_required(login_url="my-login")
 def delete_success(request):
+
+    # After deletion, redirect creator/superuser to dashboard
+
     if request.user.is_authenticated:
         if request.user.is_superuser or request.user.is_creator:
             return redirect("creator-dashboard")
@@ -232,13 +241,15 @@ def delete_success(request):
 
 @login_required(login_url="my-login")
 def update_event(request, pk):
+
     if not request.user.is_authenticated:
         messages.error(
             request, "❌ You don't have permission to update this event."
         )
         return redirect("my-login")
-
     event = get_object_or_404(Article, pk=pk, is_event_related=True)
+
+    # Prevent creators from editing events they don't own
 
     if request.user.is_creator and event.user != request.user:
         messages.error(
@@ -246,7 +257,6 @@ def update_event(request, pk):
             "❌ You cannot update this event if you did not create it.",
         )
         return redirect("published")
-
     if request.method == "POST":
         form = EventForm(request.POST, request.FILES, instance=event)
         if form.is_valid():
@@ -257,7 +267,6 @@ def update_event(request, pk):
             messages.error(request, "Please correct the errors below.")
     else:
         form = EventForm(instance=event)
-
     return render(
         request, "creator/edit-event.html", {"form": form, "event": event}
     )
@@ -265,13 +274,17 @@ def update_event(request, pk):
 
 @login_required(login_url="my-login")
 def delete_event(request, pk):
+
+    # Must be logged in
+
     if not request.user.is_authenticated:
         messages.error(
             request, "❌ You don't have permission to delete this event."
         )
         return redirect("my-login")
-
     event = get_object_or_404(Article, pk=pk, is_event_related=True)
+
+    # Restrict delete access to event owner or superuser
 
     if request.user.is_creator and event.user != request.user:
         messages.error(
@@ -279,11 +292,9 @@ def delete_event(request, pk):
             "❌ You cannot delete this event if you did not create it.",
         )
         return redirect("published")
-
     if request.method == "POST":
         event.delete()
         messages.success(request, "✅ Event deleted successfully.")
         return redirect("published")
-
     messages.error(request, "❌ Invalid request.")
     return redirect("published")

@@ -6,6 +6,7 @@ from django.forms import ModelForm
 
 
 class CreateUserForm(UserCreationForm):
+    # Extra field to let users identify as content creators during signup
     is_creator = forms.BooleanField(
         required=False, label="Are you a content creator?"
     )
@@ -18,11 +19,13 @@ class CreateUserForm(UserCreationForm):
             "last_name",
             "password1",
             "password2",
-            "is_creator",
+            "is_creator",  # Custom field added to user model
         ]
 
 
 class ArticleForm(ModelForm):
+    
+    # Basic form for creating or editing an article
     class Meta:
         model = Article
         fields = ["title", "content", "image"]

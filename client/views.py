@@ -7,10 +7,11 @@ from creator.models import Article
 from .forms import UpdateUserForm
 
 
-login_required(login_url="my-login")
+login_required(login_url="my-login")  # Misplaced — does nothing here
 
 
 def client_dashboard(request):
+    # Restrict access to non-creators and non-superusers
     if request.user.is_creator or request.user.is_superuser:
         raise PermissionDenied
     user_articles = Article.objects.filter(user=request.user)
@@ -21,10 +22,11 @@ def client_dashboard(request):
 
 @login_required(login_url="my-login")
 def regular_articles(request):
+    # Restrict creators and superusers from viewing this page
     if request.user.is_creator or request.user.is_superuser:
         raise PermissionDenied
-    # Fetch only published articles
 
+    # Show only published articles to general users
     articles = Article.objects.filter(is_published=True)
 
     return render(

@@ -16,8 +16,8 @@ from creator.models import Article
 
 
 def home(request):
+    
     # Show latest 10 published articles on homepage
-
     if request.user.is_authenticated:
         articles = Article.objects.filter(is_published=True).order_by(
             "-pub_date"
@@ -26,8 +26,8 @@ def home(request):
         articles = Article.objects.filter(is_published=True).order_by(
             "-pub_date"
         )[:10]
+        
     # Clear 'is_creator' flag from user object (likely for display logic)
-
     for article in articles:
         if hasattr(article.user, "is_creator") and article.user.is_creator:
             article.user.is_creator = ""
@@ -35,8 +35,8 @@ def home(request):
 
 
 def register(request):
+    
     # Prevent access to registration if already logged in
-
     if request.user.is_authenticated:
         if request.user.is_superuser or request.user.is_creator:
             return redirect("creator-dashboard")
@@ -65,8 +65,8 @@ def register(request):
 
 
 def my_login(request):
+    
     # Prevent logged-in users from accessing login page
-
     if request.user.is_authenticated:
         if request.user.is_superuser or request.user.is_creator:
             return redirect("creator-dashboard")
@@ -95,31 +95,38 @@ def my_login(request):
             # Handle potential DB or connection issues
 
             error_message = (
-                "⚠️ Sorry, we're having trouble connecting to the database."
-                " Please check your internet connection and try again."
+                "⚠️ Sorry, we're having trouble connecting to the database. "
+                "Please check your internet connection and try again."
             )
     else:
         form = AuthenticationForm()
     return render(
         request,
         "account/my-login.html",
-        {"LoginForm": form, "error_message": error_message},
+        {
+            "LoginForm": form,
+            "error_message": error_message,
+        },
     )
 
 
 @login_required(login_url="my-login")
 def manage_account(request):
-    user = request.user
-    form = UpdateUserForm(instance=user)
+    user = request.user  # Get the currently logged-in user
+    form = UpdateUserForm(instance=user)  # Pre-fill form with user info
 
     if request.method == "POST":
+        # Populate form with submitted data
         form = UpdateUserForm(request.POST, instance=user)
         if form.is_valid():
-            form.save()
-            update_session_auth_hash(request, user)
+            form.save()  # Save updated user info
+            update_session_auth_hash(request, user)  # Prevent logout
             messages.success(
-                request, "✅ Your account details have been updated."
+                request,
+                "✅ Your account details have been updated.",
             )
+
+            # Redirect based on user role
 
             if user.is_superuser:
                 return redirect("creator-dashboard")
@@ -128,13 +135,13 @@ def manage_account(request):
             else:
                 return redirect("client-dashboard")
     return render(
-        request, "account/manage-account.html", {"UpdateUserForm": form}
+        request,
+        "account/manage-account.html",
+        {"UpdateUserForm": form},
     )
 
 
 def user_logout(request):
-    # Log user out and redirect to home
-
     logout(request)
     return redirect("home")
 
@@ -142,7 +149,7 @@ def user_logout(request):
 @login_required(login_url="my-login")
 def delete_account(request):
     if request.method == "POST":
-        user = request.user  # capture the user object BEFORE logout
+        user = request.user  # capture the user object before logout
         user.delete()  # delete user first
         logout(request)  # logout after
         return redirect("delete-account-success")
