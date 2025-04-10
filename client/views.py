@@ -7,9 +7,6 @@ from creator.models import Article
 from .forms import UpdateUserForm
 
 
-login_required(login_url="my-login")  # Misplaced — does nothing here
-
-
 def client_dashboard(request):
     # Restrict access to non-creators and non-superusers
     if request.user.is_creator or request.user.is_superuser:

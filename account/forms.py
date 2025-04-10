@@ -24,7 +24,7 @@ class CreateUserForm(UserCreationForm):
 
 
 class ArticleForm(ModelForm):
-    
+
     # Basic form for creating or editing an article
     class Meta:
         model = Article
