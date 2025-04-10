@@ -1,55 +1,46 @@
 {% extends 'account/base.html' %}  
 {% load static %} 
 
-{# Hero section shown only to guests (not logged-in users) #}
 {% block hero %}
   {% if not request.user.is_authenticated %}
-    <div class="text-center mt-5">
-      <h5 class="header">Discover Harvest... Subscribe to our local cultural hub!</h5>
-      <p class="header">Explore our selection of insights on Brighton's hidden gems in local and surrounding areas.</p>
-      <p class="header h5">See what is happening near you!</p>
-      <a class="btn btn-success" href="{% url 'register' %}">  {# Link to registration page #}
+    <div class="text-center mt-5 header">
+      <h5 class="mb-3">Discover Harvest... Subscribe to our local cultural hub!</h5>
+      <p class="mb-3">Explore our selection of insights on Brighton's hidden gems in local and surrounding areas.</p>
+      <p class="h5 mb-5">See what is happening near you!</p>
+      <a class="btn btn-success mt-3" href="{% url 'register' %}">
         <i class="fa fa-angle-right" aria-hidden="true"></i>&nbsp;Join Harvest
       </a>
     </div>
-    <br><br><br>
   {% endif %}
 {% endblock %}
 
 {% block content %}
   <div class="row g-4">
-    {% if articles %}  {# If article list exists #}
-      {% for article in articles %}  {# Loop through each article #}
-        <div class="col-12 col-md-6 d-flex align-items-start">
-          <div class="card w-100">
-            {% if article.image %}  {# Display article image if available #}
+    {% if articles %}
+      {% for article in articles %}
+        <div class="col-12 col-md-6 d-flex">
+          <div class="card w-100 h-100 d-flex flex-column">
+            {% if article.image %}
               <img src="{{ article.image.url }}" class="w-100" style="height: 250px; object-fit: cover;" alt="{{ article.title }}">
             {% endif %}
 
-            <div class="card-body header {% if not article.image %}pt-0{% endif %}">
+            <div class="card-body header d-flex flex-column {% if not article.image %}pt-0{% endif %}">
               {% if not request.user.is_authenticated and article.category %}
                 <span class="text-muted text-uppercase mb-1">{{ article.category }}</span>
               {% endif %}
 
-              <h3 class="card-title fw-bold text-dark text-decoration-none">
-                {{ article.title }}
-              </h3>
-
-              <span class="text-muted mb-0">
-                By {{ article.user.first_name }} {{ article.user.last_name }}
-              </span>
+              <h3 class="card-title fw-bold text-dark text-decoration-none">{{ article.title }}</h3>
+              <span class="text-muted mb-0">By {{ article.user.first_name }} {{ article.user.last_name }}</span>
 
               <div class="mt-2 article-content fs-4">
-                {# Show teaser if logged in and teaser is present but not True; otherwise show abridged content preview #}
-                {% if request.user.is_authenticated and article.article_teaser and article.article_teaser is not True %}
+                {% if request.user.is_authenticated and article.article_teaser %}
                   {{ article.article_teaser|safe }}
                 {% else %}
-                  {{ article.content|safe|truncatechars_html:200 }}  {# Truncate content to 200 characters #}
+                  {{ article.content|safe|truncatechars_html:200 }}
                 {% endif %}
               </div>
 
-              <div class="mt-3 d-flex justify-content-center">
-                {# Logged-in users can view full article #}
+              <div class="mt-auto d-flex justify-content-center">
                 {% if request.user.is_authenticated or article.article_teaser %}
                   <a href="{% url 'article-guest' article.id %}" class="btn btn-outline-secondary">Read Full Article</a>
                 {% else %}
