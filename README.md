@@ -573,7 +573,7 @@ content = forms.CharField(
 
 ## Credits 
 
-  - [Real Python](https://realpython.com/.com/)
+  - [Real Python](https://realpython.com)
   - [Stack Overflow](https://stackoverflow.com/questions/10004850/python-classes-and-oop-basics)
   - [w3schools - Python](https://www.w3schools.com/python/ref_string_isdigit.asp)
   - [Codemy.com -a code snippet adapted from this tutorial -YouTube](https://www.youtube.com/watch?v=O5YkEFLXcRg&t=617s)
