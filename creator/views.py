@@ -90,8 +90,6 @@ def create_article(request):
 @login_required(login_url="my-login")
 def create_article_success(request):
 
-    # Only creators/superusers should see success page
-
     if not (request.user.is_creator or request.user.is_superuser):
         messages.error(
             request,
