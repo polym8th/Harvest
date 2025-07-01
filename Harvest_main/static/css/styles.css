@@ -5,6 +5,14 @@ body {
   font-size: 18px;
   font-weight: 400;
 }
+
+/* Navbar - Make background white */
+.navbar, .navbar * {
+  background-color: #fff !important;
+  box-shadow: none !important;
+}
+
+
 input[type="text"],
 textarea {
   font-size: 18px;
@@ -91,4 +99,12 @@ textarea {
 /* CKEditor Fix */
 .ck-button[aria-label="Insert image"] {
   display: none !important;
+}
+
+.copyright-footer {
+  font-size: 10px !important;
+}
+
+.big-gap {
+  margin-bottom: 100px !important;
 }
