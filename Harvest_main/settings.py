@@ -16,7 +16,7 @@ cloudinary.config(
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = os.environ.get("SECRET_KEY")
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = [
     "127.0.0.1",
@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     "account",
     "client",
     "creator",
-    
+    "django_ckeditor_5",
 ]
 
 CKEDITOR_5_CONFIGS = {
