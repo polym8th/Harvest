@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     "account",
     "client",
     "creator",
-    "django_ckeditor_5",
+    
 ]
 
 CKEDITOR_5_CONFIGS = {
