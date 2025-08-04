@@ -20,8 +20,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = [
     "127.0.0.1",
-    "harvest-main-55fca7957f91.herokuapp.com",
     "localhost",
+    "gentle-cat-production.up.railway.app",
 ]
 
 INSTALLED_APPS = [
