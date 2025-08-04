@@ -102,9 +102,13 @@ textarea {
 }
 
 .copyright-footer {
-  font-size: 18px !important;
+  font-size: 14px !important;
 }
 
 .big-gap {
   margin-bottom: 50px !important;
+}
+
+.grid-margin {
+  margin-bottom: 60px;
 }
