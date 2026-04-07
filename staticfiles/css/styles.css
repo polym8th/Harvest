@@ -1,0 +1,114 @@
+/* General Styles */
+body {
+  background-color: #e1eeeb;
+  overflow-x: hidden;
+  font-size: 18px;
+  font-weight: 400;
+}
+
+/* Navbar - Make background white */
+.navbar, .navbar * {
+  background-color: #fff !important;
+  box-shadow: none !important;
+}
+
+
+input[type="text"],
+textarea {
+  font-size: 18px;
+  font-weight: 300;
+  color: #212529;
+  padding: 10px;
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+  background-color: #fff;
+  width: 100%;
+}
+/* Layout */
+.form-layout {
+  width: 90%;
+  max-width: 800px;
+  margin: 20px auto 30px;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #fff;
+}
+
+/* Buttons */
+.register-btn {
+  background-color: #008b8b;
+  color: #fff;
+  text-transform: uppercase;
+  padding: 15px 35px;
+  font-size: 14px;
+  font-weight: bold;
+  border-radius: 2px;
+  text-decoration: none;
+  display: inline-block;
+  text-align: center;
+  margin: 20px 5px 5px;
+}
+
+.register-btn:hover {
+  background-color: #005f5f;
+  color: #fff;
+}
+
+/* Header */
+.header {
+  margin-top: 20px;
+  margin-bottom: 40px;
+}
+
+.header h1 {
+  margin: 0 0 40px;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+/* Success Message */
+.success-container {
+  background-color: #fff;
+  padding: 30px 40px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.success-container h1 {
+  color: #4CAF50;
+  margin-bottom: 20px;
+}
+
+.success-message {
+  font-size: 1.2em;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+}
+
+.success-message span {
+  font-weight: bold;
+}
+
+/* Article Content */
+.article-content {
+  line-height: 1.6;
+}
+
+/* CKEditor Fix */
+.ck-button[aria-label="Insert image"] {
+  display: none !important;
+}
+
+.copyright-footer {
+  font-size: 14px !important;
+}
+
+.big-gap {
+  margin-bottom: 50px !important;
+}
+
+.grid-margin {
+  margin-bottom: 60px;
+}

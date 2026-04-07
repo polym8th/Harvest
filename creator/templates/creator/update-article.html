@@ -1,0 +1,55 @@
+{% extends 'account/base.html' %} 
+{% load crispy_forms_tags %}    
+{% load static %}      
+
+{% block content %}
+<div class="container col-md-10 col-lg-8 bg-white shadow-md p-5 rounded-3">
+    <h3>Update Article</h3>
+    <hr>
+    <p>As a content creator, you can update your articles accordingly:</p>
+
+    <form method="POST" enctype="multipart/form-data" autocomplete="off">
+        {% csrf_token %}  {# Protect the form against CSRF attacks #}
+        {{ UpdateArticleForm|crispy }}  
+
+        {% if article.image %}  {# If an image exists, show a preview of the current image #}
+            <div class="form-group mb-3">
+                <label>Current Image:</label>
+                <div>
+                    <img src="{{ article.image.url }}" alt="Current article image" style="max-width: 200px; margin-top: 10px;">
+                </div>
+            </div>
+        {% endif %}
+
+        <!-- Image uploader input -->
+        <div class="form-group mb-5">  <!-- Larger spacing added here -->
+            <label for="id_image">Update Image</label>
+            <div id="drop-area">
+                <p><strong>Upload a file</strong></p>
+                <p>PNG, JPG, GIF or WebP up to 10MB</p>
+                <input type="file" id="id_image" name="image" accept="image/*" style="display: none;">
+                <button type="button" onclick="document.getElementById('id_image').click();" class="btn btn-outline-primary">Browse Files</button>
+                <div id="preview"></div>
+            </div>
+        </div>
+
+        <input class="btn btn-success w-100" type="submit" value="Update Article">
+    </form>
+
+    {% if UpdateArticleForm.errors %}  {# Show validation errors if present #}
+        <div class="alert alert-danger mt-4">
+            <strong>Form Errors:</strong>
+            <ul>
+                {% for field, errors in UpdateArticleForm.errors.items %}
+                    <li>{{ field }}: {{ errors }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    {% endif %}
+</div>
+
+<!-- Include JavaScript for CKEditor and image preview -->
+<script src="https://cdn.ckeditor.com/ckeditor5/35.0.1/classic/ckeditor.js"></script>
+<script src="{% static 'js/richeditor.js' %}"></script>  {# Initializes CKEditor and validation #}
+<script src="{% static 'js/image-upload.js' %}"></script>  {# Handles drag & drop image preview #}
+{% endblock %}
