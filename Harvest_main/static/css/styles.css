@@ -112,3 +112,9 @@ textarea {
 .grid-margin {
   margin-bottom: 60px;
 }
+.navbar .btn-outline-primary:hover {
+  background-color: #cccccc !important;
+  border-color: #cccccc !important;
+  color: #000 !important;
+  transition: all 0.3s ease;
+}
