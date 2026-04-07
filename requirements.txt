@@ -13,3 +13,4 @@ requests==2.32.3
 tzdata==2025.1
 urllib3==1.26.20
 whitenoise==6.9.0
+setuptools==79.0.1
